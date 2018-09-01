@@ -1,5 +1,6 @@
 var obj_lineA = {
     "linename": "Line A",
+    "iconID": "ICON_LINEA_BIG",
     "color": "#FF0000",
     "strokewidth": "8px",
     "stationstrokewidth": 2,
@@ -13,6 +14,8 @@ var obj_lineA = {
         {
             "name": "2nd Street",
             "icons": [
+                "ICON_LINEB",
+                "ICON_LINEC"
             ]
         },
         {
@@ -23,6 +26,12 @@ var obj_lineA = {
         {
             "name": "4th Street",
             "icons": [
+            ]
+        },
+        {
+            "name": "5th Street",
+            "icons": [
+                "ICON_LINEB"
             ]
         }
     ]
