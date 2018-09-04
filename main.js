@@ -23,11 +23,24 @@ function loadMap(lineobj, iconobj, targetdiv) {
     smsvg += '<path d="M 128 240 H 1600" stroke="' + lineobj.color + '" stroke-width="' + lineobj.strokewidth + '""></path>';
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
+    // Note that station information must be retrieved
     var numstations = lineobj.stations.length;
     for(var i = 0; i < numstations; i += 1) {
-        smsvg += '<circle cx="' + (128 + 1472/(numstations - 1) * i) + '" cy="240" r="' + lineobj.stationradius + '" stroke="' + lineobj.color + '" stroke-width="' + lineobj.stationstrokewidth + '" fill="white"></circle>';
-        smsvg += '<text x="' + (128 + 1472/(numstations - 1) * i) + '" y="224" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (128 + 1472/(numstations - 1) * i) + ' 224)">' + lineobj.stations[i].name + '</text>';
-        var stationIcons = lineobj.stations[i].icons;
+        var currstn = lineobj.stations[i];
+        // First, before drawing, determine station features
+        var stntypeobj;
+        for (var j = 0; j < lineobj.stationtypes.length; j += 1) {
+            if (lineobj.stationtypes[j].stypeID == currstn.stationtype) {
+                stntypeobj = lineobj.stationtypes[j];
+            }
+        }
+        if (stntypeobj === undefined || stntypeobj === null) {
+            console.log("Error: Station type " + currstn.stationtype + " associated with station with name " + currstn.name + " was not found.");
+            return;
+        }
+        smsvg += '<circle cx="' + (128 + 1472/(numstations - 1) * i) + '" cy="240" r="' + stntypeobj.stationradius + '" stroke="' + lineobj.color + '" stroke-width="' + stntypeobj.stationstrokewidth + '" fill="white"></circle>';
+        smsvg += '<text x="' + (128 + 1472/(numstations - 1) * i) + '" y="224" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (128 + 1472/(numstations - 1) * i) + ' 224)">' + currstn.name + '</text>';
+        var stationIcons = currstn.icons;
         for (var j = 0; j < stationIcons.length; j += 1) {
             smsvg += '<rect x="' + (128 + 1472/(numstations - 1) * i - 16) + '" y="' + (256 + 36*j) + '" height="32" width="32" fill="url(#PATTERN_' + stationIcons[j] + ')" />';
         }
