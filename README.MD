@@ -13,6 +13,7 @@ Each line object has the following required fields:
 The required `strokes` field of the line object is an array of objects that has the following requirements.
 * `color` - The color of the line. Supports Hex, RGB, and HTML/CSS standard colors.
 * `strokewidth` - The width of the line. 
+* `dy` - [OPTIONAL] The vertical offset of the stroke.
 
 The required `stationtypes` field of the line object is an array of objects that has the following requirements.
 * `stypeID` - The ID for the specified station, for cross referencing later.

@@ -25,7 +25,11 @@ function loadMap(lineobj, iconobj, targetdiv) {
         // Defaults
         var strokeStart = 128;
         var strokeEnd = 1600;
-        smsvg += '<path d="M ' + strokeStart + ' 240 H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '""></path>';
+        var ycoord = 240;
+        if ("dy" in lineStroke) {
+            ycoord += lineStroke.dy;
+        }
+        smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '""></path>';
     }
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
