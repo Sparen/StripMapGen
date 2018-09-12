@@ -77,6 +77,7 @@ var obj_lineA = {
             "name": "Zoo",
             "stationtype": "STATION_TYPEA",
             "icons": [
+                "ICON_LINED"
             ]
         }
     ]
@@ -224,6 +225,98 @@ var obj_lineC = {
         },
         {
             "name": "Navy Yard",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        }
+    ]
+};
+
+var obj_lineD = {
+    "linename": "Line D - East Suburbs Line",
+    "iconID": "ICON_LINED_BIG",
+    "strokes": [
+        {
+            "color": "#CC00CC",
+            "strokewidth": "8px"
+        },
+        {
+            "startpoint": 3.33,
+            "endpoint": 3.67,
+            "color": "#CC00CC",
+            "strokewidth": "8px",
+            "linkheight": -32
+        },
+        {
+            "startpoint": 3.67,
+            "endpoint": 5,
+            "color": "#CC00CC",
+            "strokewidth": "8px",
+            "dy": -32
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stationstrokewidth": 2,
+            "stationradius": 8,
+            "scolor": "#CC00CC"
+        }
+    ],
+    "stations": [
+        {
+            "name": "Zoo",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                "ICON_LINEA"
+            ]
+        },
+        {
+            "name": "A-Town",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "B-Town",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "C-Town",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "D-Town",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "dy": -32
+        },
+        {
+            "name": "E-Town",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "dy": -32
+        },
+        {
+            "name": "F-Town",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "G-Town",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "H-Town",
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]

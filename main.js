@@ -41,7 +41,11 @@ function loadMap(lineobj, iconobj, targetdiv) {
         if ("dy" in lineStroke) {
             ycoord += lineStroke.dy;
         }
-        smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '""></path>';
+        if ("linkheight" in lineStroke) { // Vertical
+            smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' L ' + strokeEnd + ' ' + (ycoord + lineStroke.linkheight) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '""></path>';
+        } else { //Horizontal
+            smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '""></path>';
+        }
     }
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
@@ -59,8 +63,14 @@ function loadMap(lineobj, iconobj, targetdiv) {
             console.log("Error: Station type " + currstn.stationtype + " associated with station with name " + currstn.name + " was not found.");
             return;
         }
-        smsvg += '<circle cx="' + (128 + 1472/(numstations - 1) * i) + '" cy="240" r="' + stntypeobj.stationradius + '" stroke="' + stntypeobj.scolor + '" stroke-width="' + stntypeobj.stationstrokewidth + '" fill="white"></circle>';
-        smsvg += '<text x="' + (128 + 1472/(numstations - 1) * i) + '" y="224" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (128 + 1472/(numstations - 1) * i) + ' 224)">' + currstn.name + '</text>';
+        // Handle offsets
+        var ycoord = 240;
+        if ("dy" in currstn) {
+            ycoord += currstn.dy;
+        }
+        // Draw
+        smsvg += '<circle cx="' + (128 + 1472/(numstations - 1) * i) + '" cy="' + ycoord + '" r="' + stntypeobj.stationradius + '" stroke="' + stntypeobj.scolor + '" stroke-width="' + stntypeobj.stationstrokewidth + '" fill="white"></circle>';
+        smsvg += '<text x="' + (128 + 1472/(numstations - 1) * i) + '" y="' + (ycoord - 16) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (128 + 1472/(numstations - 1) * i) + ' ' + (ycoord - 16) + ')">' + currstn.name + '</text>';
         var stationIcons = currstn.icons;
         for (var j = 0; j < stationIcons.length; j += 1) {
             smsvg += '<rect x="' + (128 + 1472/(numstations - 1) * i - 16) + '" y="' + (256 + 36*j) + '" height="32" width="32" fill="url(#PATTERN_' + stationIcons[j] + ')" />';
