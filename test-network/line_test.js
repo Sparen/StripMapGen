@@ -148,14 +148,8 @@ var obj_lineC = {
     "iconID": "ICON_LINEC_BIG",
     "strokes": [
         {
-            "endpoint": 7,
             "color": "#44CC44",
             "strokewidth": "8px"
-        },
-        {
-            "startpoint": 7,
-            "color": "#44CC44",
-            "strokewidth": "4px"
         }
     ],
     "stationtypes": [
@@ -244,14 +238,14 @@ var obj_lineD = {
             "startpoint": 3.33,
             "endpoint": 3.67,
             "color": "#CC00CC",
-            "strokewidth": "8px",
+            "strokewidth": "4px",
             "linkheight": -32
         },
         {
             "startpoint": 3.67,
             "endpoint": 5,
             "color": "#CC00CC",
-            "strokewidth": "8px",
+            "strokewidth": "4px",
             "dy": -32
         }
     ],
@@ -290,14 +284,14 @@ var obj_lineD = {
             ]
         },
         {
-            "name": "D-Town",
+            "name": "D-Town (Rush Hours Only)",
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
             "dy": -32
         },
         {
-            "name": "E-Town",
+            "name": "E-Town (Rush Hours Only)",
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
