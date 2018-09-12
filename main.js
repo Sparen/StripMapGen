@@ -19,8 +19,14 @@ function loadMap(lineobj, iconobj, targetdiv) {
     smsvg += '<rect x="20" y="24" height="48" width="48" fill="url(#PATTERN_' + lineobj.iconID + ')" />';
     smsvg += '<text x="80" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
-    // Next, draw the line
-    smsvg += '<path d="M 128 240 H 1600" stroke="' + lineobj.color + '" stroke-width="' + lineobj.strokewidth + '""></path>';
+    // Next, draw the line strokes
+    for (var i = 0; i < lineobj.strokes.length; i += 1) {
+        var lineStroke = lineobj.strokes[i];
+        // Defaults
+        var strokeStart = 128;
+        var strokeEnd = 1600;
+        smsvg += '<path d="M ' + strokeStart + ' 240 H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '""></path>';
+    }
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
     // Note that station information must be retrieved
@@ -38,7 +44,7 @@ function loadMap(lineobj, iconobj, targetdiv) {
             console.log("Error: Station type " + currstn.stationtype + " associated with station with name " + currstn.name + " was not found.");
             return;
         }
-        smsvg += '<circle cx="' + (128 + 1472/(numstations - 1) * i) + '" cy="240" r="' + stntypeobj.stationradius + '" stroke="' + lineobj.color + '" stroke-width="' + stntypeobj.stationstrokewidth + '" fill="white"></circle>';
+        smsvg += '<circle cx="' + (128 + 1472/(numstations - 1) * i) + '" cy="240" r="' + stntypeobj.stationradius + '" stroke="' + stntypeobj.scolor + '" stroke-width="' + stntypeobj.stationstrokewidth + '" fill="white"></circle>';
         smsvg += '<text x="' + (128 + 1472/(numstations - 1) * i) + '" y="224" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (128 + 1472/(numstations - 1) * i) + ' 224)">' + currstn.name + '</text>';
         var stationIcons = currstn.icons;
         for (var j = 0; j < stationIcons.length; j += 1) {

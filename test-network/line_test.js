@@ -1,13 +1,18 @@
 var obj_lineA = {
     "linename": "Line A - Avenue C Line",
     "iconID": "ICON_LINEA_BIG",
-    "color": "#FF0000",
-    "strokewidth": "8px",
+    "strokes": [
+        {
+            "color": "#FF0000",
+            "strokewidth": "8px"
+        }
+    ],
     "stationtypes": [
         {
             "stypeID": "STATION_TYPEA",
             "stationstrokewidth": 2,
-            "stationradius": 8
+            "stationradius": 8,
+            "scolor": "#FF0000"
         }
     ],
     "stations": [
@@ -80,13 +85,18 @@ var obj_lineA = {
 var obj_lineB = {
     "linename": "Line B - 2nd Street Line",
     "iconID": "ICON_LINEB_BIG",
-    "color": "#0000FF",
-    "strokewidth": "8px",
+    "strokes": [
+        {
+            "color": "#0000FF",
+            "strokewidth": "8px"
+        }
+    ],
     "stationtypes": [
         {
             "stypeID": "STATION_TYPEA",
             "stationstrokewidth": 2,
-            "stationradius": 8
+            "stationradius": 8,
+            "scolor": "#0000FF"
         }
     ],
     "stations": [
@@ -135,13 +145,18 @@ var obj_lineB = {
 var obj_lineC = {
     "linename": "Line C - South River Line",
     "iconID": "ICON_LINEC_BIG",
-    "color": "#00FF00",
-    "strokewidth": "8px",
+    "strokes": [
+        {
+            "color": "#00FF00",
+            "strokewidth": "8px"
+        }
+    ],
     "stationtypes": [
         {
             "stypeID": "STATION_TYPEA",
             "stationstrokewidth": 2,
-            "stationradius": 8
+            "stationradius": 8,
+            "scolor": "#00FF00"
         }
     ],
     "stations": [

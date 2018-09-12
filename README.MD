@@ -9,6 +9,8 @@ Each line object has the following required fields:
 
 * `linename` - Name of the line. Displayed on each generated strip map in the top left.
 * `iconID` - The large 48x48 icon to use for this line. Displayed to the left of the line's name.
+
+The required `strokes` field of the line object is an array of objects that has the following requirements.
 * `color` - The color of the line. Supports Hex, RGB, and HTML/CSS standard colors.
 * `strokewidth` - The width of the line. 
 
@@ -16,6 +18,7 @@ The required `stationtypes` field of the line object is an array of objects that
 * `stypeID` - The ID for the specified station, for cross referencing later.
 * `stationstrokewidth` - The stroke width of the station icons.
 * `stationradius` - The radius of each station icon.
+* `scolor` - The color of the station stroke. Supports Hex, RGB, and HTML/CSS standard colors.
 
 The required `stations` field of the line object is an array of objects that has the following requirements. Note that stations go from left to right on the strip map.
 
