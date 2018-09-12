@@ -14,6 +14,8 @@ The required `strokes` field of the line object is an array of objects that has 
 * `color` - The color of the line. Supports Hex, RGB, and HTML/CSS standard colors.
 * `strokewidth` - The width of the line. 
 * `dy` - [OPTIONAL] The vertical offset of the stroke.
+* `startpoint` - [OPTIONAL] The starting station of the stroke. Can be negative to extend line offscreen to the left.
+* `endpoint` - [OPTIONAL] The ending station of the stroke. Can be greater than number of stations on line to extend line offscreen to the right.
 
 The required `stationtypes` field of the line object is an array of objects that has the following requirements.
 * `stypeID` - The ID for the specified station, for cross referencing later.

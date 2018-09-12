@@ -19,12 +19,24 @@ function loadMap(lineobj, iconobj, targetdiv) {
     smsvg += '<rect x="20" y="24" height="48" width="48" fill="url(#PATTERN_' + lineobj.iconID + ')" />';
     smsvg += '<text x="80" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
+    // Number of stations. Used for spacing and placement
+    var numstations = lineobj.stations.length;
+
     // Next, draw the line strokes
     for (var i = 0; i < lineobj.strokes.length; i += 1) {
         var lineStroke = lineobj.strokes[i];
         // Defaults
-        var strokeStart = 128;
-        var strokeEnd = 1600;
+        var LINE_LEFT = 128;
+        var LINE_RIGHT = 1600;
+        var strokeStart = LINE_LEFT;
+        var strokeEnd = LINE_RIGHT;
+        // Note: It is possible to extend the line beyond the set bounds of 128 and 1600
+        if ("startpoint" in lineStroke) {
+            strokeStart = LINE_LEFT + lineStroke.startpoint * 1472/(numstations - 1);
+        }
+        if ("endpoint" in lineStroke) {
+            strokeEnd = LINE_LEFT + lineStroke.endpoint * 1472/(numstations - 1);
+        }
         var ycoord = 240;
         if ("dy" in lineStroke) {
             ycoord += lineStroke.dy;
@@ -34,7 +46,6 @@ function loadMap(lineobj, iconobj, targetdiv) {
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
     // Note that station information must be retrieved
-    var numstations = lineobj.stations.length;
     for(var i = 0; i < numstations; i += 1) {
         var currstn = lineobj.stations[i];
         // First, before drawing, determine station features

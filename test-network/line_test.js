@@ -147,8 +147,14 @@ var obj_lineC = {
     "iconID": "ICON_LINEC_BIG",
     "strokes": [
         {
-            "color": "#00FF00",
+            "endpoint": 7,
+            "color": "#44CC44",
             "strokewidth": "8px"
+        },
+        {
+            "startpoint": 7,
+            "color": "#44CC44",
+            "strokewidth": "4px"
         }
     ],
     "stationtypes": [
@@ -156,7 +162,7 @@ var obj_lineC = {
             "stypeID": "STATION_TYPEA",
             "stationstrokewidth": 2,
             "stationradius": 8,
-            "scolor": "#00FF00"
+            "scolor": "#44CC44"
         }
     ],
     "stations": [
