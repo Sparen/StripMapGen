@@ -9,6 +9,63 @@
 
 <body onload="loadMap(obj_lineA, obj_iconTest, 'targetdiv1'); loadMap(obj_lineB, obj_iconTest, 'targetdiv2'); loadMap(obj_lineC, obj_iconTest, 'targetdiv3'); loadMap(obj_lineD, obj_iconTest, 'targetdiv4')">
 <div id="top">
+      <h1 style="background-color:#AAAAAA;color:white">Test Network</h1>
+      <div>This is an example network. The strip maps for each line are generated from <code>line_test.js</code> and <code>icon_test.js</code>. The below map shows the map in its entirety, for comparison.</div>
+      <br>
+      <div style="width:50%;height:auto;text-align:center">
+      <svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 800" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<rect width="1200" height="800" style="fill:#FFEEDD" />
+
+	<!-- Water: #AACCFF by default -->
+	<path d="M 200 0 V 480 L -120 800" stroke="#AACCFF" stroke-width="32" fill="none" />
+
+	<!-- Lines -->
+	<path d="M 240 400 H 672" stroke="#FF0000" stroke-width="8" fill="none" /> <!-- A -->
+	<path d="M 288 320 V 432 L 296 440 H 424 L 432 432 V 400" stroke="#0000FF" stroke-width="8" fill="none" /> <!-- B -->
+	<path d="M 240 320 V 352 L 280 392 V 408 L 240 448 V 520 L 120 640 V 720" stroke="#44CC44" stroke-width="8" fill="none" /> <!-- C -->
+	<path d="M 672 400 H 992" stroke="#CC00CC" stroke-width="8" fill="none" /> <!-- D -->
+	<path d="M 864 400 L 896 432 V 640" stroke="#CC00CC" stroke-width="8" fill="none" /> <!-- D -->
+
+	<!-- Stations -->
+	<circle cx="240" cy="400" r="8" fill="white" stroke="#FF0000" stroke-width="2" />
+	<circle cx="284" cy="400" r="12" fill="white" stroke="#444444" stroke-width="2" />
+	<circle cx="336" cy="400" r="8" fill="white" stroke="#FF0000" stroke-width="2" />
+	<circle cx="384" cy="400" r="8" fill="white" stroke="#FF0000" stroke-width="2" />
+	<circle cx="432" cy="400" r="8" fill="white" stroke="#444444" stroke-width="2" />
+	<circle cx="480" cy="400" r="8" fill="white" stroke="#FF0000" stroke-width="2" />
+	<circle cx="528" cy="400" r="8" fill="white" stroke="#FF0000" stroke-width="2" />
+	<circle cx="576" cy="400" r="8" fill="white" stroke="#FF0000" stroke-width="2" />
+	<circle cx="624" cy="400" r="8" fill="white" stroke="#FF0000" stroke-width="2" />
+	<circle cx="672" cy="400" r="8" fill="white" stroke="#444444" stroke-width="2" />
+
+	<circle cx="288" cy="320" r="8" fill="white" stroke="#0000FF" stroke-width="2" />
+	<circle cx="288" cy="360" r="8" fill="white" stroke="#0000FF" stroke-width="2" />
+	<circle cx="336" cy="440" r="8" fill="white" stroke="#0000FF" stroke-width="2" />
+	<circle cx="384" cy="440" r="8" fill="white" stroke="#0000FF" stroke-width="2" />
+
+	<circle cx="240" cy="320" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+	<circle cx="248" cy="360" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+	<circle cx="248" cy="440" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+	<circle cx="240" cy="480" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+	<circle cx="240" cy="520" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+	<circle cx="200" cy="560" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+	<circle cx="160" cy="600" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+	<circle cx="120" cy="640" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+	<circle cx="120" cy="720" r="8" fill="white" stroke="#44CC44" stroke-width="2" />
+
+	<circle cx="728" cy="400" r="8" fill="white" stroke="#CC00CC" stroke-width="2" />
+	<circle cx="784" cy="400" r="8" fill="white" stroke="#CC00CC" stroke-width="2" />
+	<circle cx="840" cy="400" r="8" fill="white" stroke="#CC00CC" stroke-width="2" />
+	<circle cx="912" cy="400" r="8" fill="white" stroke="#CC00CC" stroke-width="2" />
+	<circle cx="992" cy="400" r="8" fill="white" stroke="#CC00CC" stroke-width="2" />
+
+	<circle cx="896" cy="448" r="8" fill="white" stroke="#CC00CC" stroke-width="2" />
+	<circle cx="896" cy="544" r="8" fill="white" stroke="#CC00CC" stroke-width="2" />
+	<circle cx="896" cy="640" r="8" fill="white" stroke="#CC00CC" stroke-width="2" />
+
+      </svg>
+      </div>
+
       <h1 style="background-color:#FF0000;color:white">Test - Line A</h1>
       <div id="targetdiv1"></div>
       <h1 style="background-color:#0000FF;color:white">Test - Line B</h1>
