@@ -41,10 +41,15 @@ function loadMap(lineobj, iconobj, targetdiv) {
         if ("dy" in lineStroke) {
             ycoord += lineStroke.dy;
         }
+        // Additional parameters to strokes
+        var additionalParameters = " ";
+        if ("dasharray" in lineStroke) {
+            additionalParameters += 'stroke-dasharray="' + lineStroke.dasharray + '" ';
+        }
         if ("linkheight" in lineStroke) { // Vertical
-            smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' L ' + strokeEnd + ' ' + (ycoord + lineStroke.linkheight) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '""></path>';
+            smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' L ' + strokeEnd + ' ' + (ycoord + lineStroke.linkheight) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         } else { //Horizontal
-            smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '""></path>';
+            smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         }
     }
 

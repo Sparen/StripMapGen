@@ -88,6 +88,13 @@ var obj_lineB = {
     "iconID": "ICON_LINEB_BIG",
     "strokes": [
         {
+            "endpoint": 5,
+            "color": "#0000FF",
+            "strokewidth": "8px",
+            "dasharray": "4 4"
+        },
+        {
+            "startpoint": 5,
             "color": "#0000FF",
             "strokewidth": "8px"
         }
@@ -101,6 +108,36 @@ var obj_lineB = {
         }
     ],
     "stations": [
+        {
+            "name": "Road 5 North",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "Road 4 North",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "Road 3 North",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "Road 2 North",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": "Road 1 North",
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
         {
             "name": "Avenue A",
             "stationtype": "STATION_TYPEA",

@@ -17,6 +17,7 @@ The required `strokes` field of the line object is an array of objects that has 
 * `startpoint` - [OPTIONAL] The starting station of the stroke. Can be negative to extend line offscreen to the left.
 * `endpoint` - [OPTIONAL] The ending station of the stroke. Can be greater than number of stations on line to extend line offscreen to the right.
 * `linkheight` - [OPTIONAL] The vertical offset from the stroke for the `endpoint`, with the `startpoint` being at the standard height of the line. Enables horizontal and angled portions.
+* `dasharray` - [OPTIONAL] Sets the `stroke-dasharray` field for the stroke. Should be a string of space delimited numbers, e.g. `4 4`
 
 The required `stationtypes` field of the line object is an array of objects that has the following requirements.
 * `stypeID` - The ID for the specified station, for cross referencing later.
