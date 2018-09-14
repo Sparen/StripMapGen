@@ -91,7 +91,7 @@ var obj_lineB = {
             "endpoint": 5,
             "color": "#0000FF",
             "strokewidth": "8px",
-            "dasharray": "4 4"
+            "dasharray": "4,4"
         },
         {
             "startpoint": 5,
