@@ -2,6 +2,9 @@
 
 This is a specification and generator for simple strip maps.
 
+The following samples are provided:  
+* `/test-network` - Basic usage examples covering most of the features
+
 ## Usage
 
 ## Line Format
@@ -31,6 +34,7 @@ The required `stations` field of the line object is an array of objects that has
 * `stationtype` - Station type associated with this station. Refers to a `stypeID` within `stationtypes`.
 * `icons` - Array of strings referring to icon IDs to attach to the station. These are rendered below the station icon, in order.
 * `dy` - [OPTIONAL] The vertical offset of the station. Does not affect rendering of icons.
+* `iconshift` - [OPTIONAL] If set to true, will apply dy shift to icons as well.
 
 ## Icon Format
 Each icon object has a single `icons` field which is an array of objects with the following specification:
