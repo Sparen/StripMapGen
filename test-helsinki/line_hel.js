@@ -47,6 +47,7 @@ var obj_lineHel = {
             "name": "Matinkylä",
             "stationtype": "STATION_TYPEA",
             "icons": [
+                "ICON_LINEM1"
             ]
         },
         {
@@ -65,6 +66,7 @@ var obj_lineHel = {
             "name": "Tapiola",
             "stationtype": "STATION_TYPEA",
             "icons": [
+                "ICON_LINEM2"
             ]
         },
         {
@@ -193,15 +195,19 @@ var obj_lineHel = {
             "name": "Mellunmäki",
             "stationtype": "STATION_TYPEA",
             "icons": [
+                "ICON_LINEM2"
             ],
             "dy": -128,
+            "iconshift": true,
             "xshift": 1
         },
         {
             "name": "Vuosaari",
             "stationtype": "STATION_TYPEA",
             "icons": [
+                "ICON_LINEM1"
             ],
+            "iconshift": true,
             "dy": 128
         }
     ]
