@@ -20,8 +20,9 @@ The required `strokes` field of the line object is an array of objects that has 
 * `dy` - [OPTIONAL] The vertical offset of the stroke.
 * `startpoint` - [OPTIONAL] The starting station of the stroke. Can be negative to extend line offscreen to the left.
 * `endpoint` - [OPTIONAL] The ending station of the stroke. Can be greater than number of stations on line to extend line offscreen to the right.
-* `linkheight` - [OPTIONAL] The vertical offset from the stroke for the `endpoint`, with the `startpoint` being at the standard height of the line. Enables horizontal and angled portions.
+* `linkheight` - [OPTIONAL] The vertical offset from the stroke for the `endpoint`, with the `startpoint` being at the standard height of the line. Enables horizontal and angled portions. It is suggested to set `linecap` to "round" to cover the breaks in the lines if using angles.
 * `dasharray` - [OPTIONAL] Sets the `stroke-dasharray` field for the stroke. Should be a string of space delimited numbers, e.g. `4 4`
+* `linecap` - [OPTIONAL] Sets the `stroke-linecap` field for the stroke. Should be "butt" (svg default if field not provided), "square", or "round"
 
 The required `stationtypes` field of the line object is an array of objects that has the following requirements.
 * `stypeID` - The ID for the specified station, for cross referencing later.

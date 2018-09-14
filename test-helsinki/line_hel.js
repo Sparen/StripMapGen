@@ -12,14 +12,16 @@ var obj_lineHel = {
             "endpoint": 20.5,
             "color": "#FF6600",
             "strokewidth": "10px",
-            "linkheight": -128
+            "linkheight": -128,
+            "linecap": "round"
         },
         {
             "startpoint": 18.5,
             "endpoint": 20.5,
             "color": "#FF6600",
             "strokewidth": "10px",
-            "linkheight": 128
+            "linkheight": 128,
+            "linecap": "round"
         },
         {
             "startpoint": 20.5,

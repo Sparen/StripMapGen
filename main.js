@@ -46,6 +46,9 @@ function loadMap(lineobj, iconobj, targetdiv) {
         if ("dasharray" in lineStroke) {
             additionalParameters += 'stroke-dasharray="' + lineStroke.dasharray + '" ';
         }
+        if ("linecap" in lineStroke) {
+            additionalParameters += 'stroke-linecap="' + lineStroke.linecap + '" ';
+        }
         if ("linkheight" in lineStroke) { // Vertical
             smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' L ' + strokeEnd + ' ' + (ycoord + lineStroke.linkheight) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         } else { //Horizontal
