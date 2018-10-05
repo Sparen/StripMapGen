@@ -20,9 +20,22 @@ function loadMap(lineobj, iconobj, targetdiv) {
     smsvg += '<text x="80" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
     // Number of stations. Used for spacing and placement
-    let numstations = lineobj.stations.length;
+    const numstations = lineobj.stations.length;
 
     // Next, draw the line strokes
+    smsvg += drawLine(lineobj, numstations);
+
+    // Next, add the stations, their icons, and their names, rotated 45 degrees
+    // Note that station information must be retrieved
+    smsvg += drawStations(lineobj, numstations);
+
+    smsvg += '</svg>';
+    document.getElementById(targetdiv).innerHTML = smsvg;
+}
+
+// Returns SVG for the line paths
+function drawLine(lineobj, numstations) {
+    let linepath = "";
     for (let i = 0; i < lineobj.strokes.length; i += 1) {
         let lineStroke = lineobj.strokes[i];
         // Defaults
@@ -50,14 +63,17 @@ function loadMap(lineobj, iconobj, targetdiv) {
             additionalParameters += 'stroke-linecap="' + lineStroke.linecap + '" ';
         }
         if ("linkheight" in lineStroke) { // Vertical
-            smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' L ' + strokeEnd + ' ' + (ycoord + lineStroke.linkheight) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
+            linepath += '<path d="M ' + strokeStart + ' ' + ycoord + ' L ' + strokeEnd + ' ' + (ycoord + lineStroke.linkheight) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         } else { //Horizontal
-            smsvg += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
+            linepath += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         }
     }
+    return linepath;
+}
 
-    // Next, add the stations, their icons, and their names, rotated 45 degrees
-    // Note that station information must be retrieved
+// Returns SVG for the stations and their names
+function drawStations(lineobj, numstations) {
+    let stationsvg = "";
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];
         // First, before drawing, determine station features
@@ -85,14 +101,13 @@ function loadMap(lineobj, iconobj, targetdiv) {
             xshift += 1472/(numstations - 1) * currstn.xshift;
         }
         // Draw
-        smsvg += '<circle cx="' + (128 + xshift + 1472/(numstations - 1) * i) + '" cy="' + ycoord + '" r="' + stntypeobj.stationradius + '" stroke="' + stntypeobj.scolor + '" stroke-width="' + stntypeobj.stationstrokewidth + '" fill="white"></circle>';
-        smsvg += '<text x="' + (128 + xshift + 1472/(numstations - 1) * i) + '" y="' + (ycoord - 16) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (128 + xshift + 1472/(numstations - 1) * i) + ' ' + (ycoord - 16) + ')">' + currstn.name + '</text>';
+        let stationxpos = 128 + xshift + 1472/(numstations - 1) * i; // x position of station icon(s)
+        stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + ycoord + '" r="' + stntypeobj.stationradius + '" stroke="' + stntypeobj.scolor + '" stroke-width="' + stntypeobj.stationstrokewidth + '" fill="white"></circle>';
+        stationsvg += '<text x="' + (stationxpos) + '" y="' + (ycoord - 16) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (ycoord - 16) + ')">' + currstn.name + '</text>';
         let stationIcons = currstn.icons;
         for (let j = 0; j < stationIcons.length; j += 1) {
-            smsvg += '<rect x="' + (128 + xshift + 1472/(numstations - 1) * i - 16) + '" y="' + (iconycoord + 36*j) + '" height="32" width="32" fill="url(#PATTERN_' + stationIcons[j] + ')" />';
+            stationsvg += '<rect x="' + (stationxpos - 16) + '" y="' + (iconycoord + 36*j) + '" height="32" width="32" fill="url(#PATTERN_' + stationIcons[j] + ')" />';
         }
     }
-
-    smsvg += '</svg>';
-    document.getElementById(targetdiv).innerHTML = smsvg;
+    return stationsvg;
 }
