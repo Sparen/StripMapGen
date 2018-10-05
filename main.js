@@ -104,7 +104,11 @@ function drawStations(lineobj, numstations) {
         let stationxpos = 128 + xshift + 1472/(numstations - 1) * i; // x position of station icon(s)
         for (let k = 0; k < stntypeobj.stnnodes.length; k += 1) {
             const currstntype = stntypeobj.stnnodes[k];
-            stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + ycoord + '" r="' + currstntype.stationradius + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="white"></circle>';
+            let nodefill = 'white';
+            if ("fcolor" in currstntype) {
+                nodefill = currstntype.fcolor;
+            }
+            stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + ycoord + '" r="' + currstntype.stationradius + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></circle>';
         }
         // Station Name
         stationsvg += '<text x="' + (stationxpos) + '" y="' + (ycoord - 16) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (ycoord - 16) + ')">' + currstn.name + '</text>';

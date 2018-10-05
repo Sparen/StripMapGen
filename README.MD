@@ -32,6 +32,7 @@ Each object in `stnnodes` contains the following options.
 * `stationstrokewidth` - The stroke width of the station icons.
 * `stationradius` - The radius of each station icon.
 * `scolor` - The color of the station stroke. Supports Hex, RGB, and HTML/CSS standard colors.
+* `fcolor` - [OPTIONAL] The color of the station fill. Supports Hex, RGB, and HTML/CSS standard colors. Defaults to white.
 
 The required `stations` field of the line object is an array of objects that has the following options. Note that stations go from left to right on the strip map.
 
