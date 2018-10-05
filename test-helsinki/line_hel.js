@@ -39,9 +39,13 @@ var obj_lineHel = {
     "stationtypes": [
         {
             "stypeID": "STATION_TYPEA",
-            "stationstrokewidth": 4,
-            "stationradius": 8,
-            "scolor": "#FF6600"
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 8,
+                    "scolor": "#FF6600"
+                }
+            ]
         }
     ],
     "stations": [

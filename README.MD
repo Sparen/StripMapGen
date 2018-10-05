@@ -14,7 +14,7 @@ Each line object has the following required fields:
 * `linename` - Name of the line. Displayed on each generated strip map in the top left.
 * `iconID` - The large 48x48 icon to use for this line. Displayed to the left of the line's name.
 
-The required `strokes` field of the line object is an array of objects that has the following requirements.
+The required `strokes` field of the line object is an array of objects that has the following options.
 * `color` - The color of the line. Supports Hex, RGB, and HTML/CSS standard colors.
 * `strokewidth` - The width of the line. 
 * `dy` - [OPTIONAL] The vertical offset of the stroke.
@@ -24,13 +24,16 @@ The required `strokes` field of the line object is an array of objects that has 
 * `dasharray` - [OPTIONAL] Sets the `stroke-dasharray` field for the stroke. Should be a string of comma delimited numbers, e.g. `4,4`
 * `linecap` - [OPTIONAL] Sets the `stroke-linecap` field for the stroke. Should be "butt" (svg default if field not provided), "square", or "round"
 
-The required `stationtypes` field of the line object is an array of objects that has the following requirements.
+The required `stationtypes` field of the line object is an array of objects that has the following options.
 * `stypeID` - The ID for the specified station, for cross referencing later.
+* `stnnodes` - Array of nodes that are part of the station
+
+Each object in `stnnodes` contains the following options.
 * `stationstrokewidth` - The stroke width of the station icons.
 * `stationradius` - The radius of each station icon.
 * `scolor` - The color of the station stroke. Supports Hex, RGB, and HTML/CSS standard colors.
 
-The required `stations` field of the line object is an array of objects that has the following requirements. Note that stations go from left to right on the strip map.
+The required `stations` field of the line object is an array of objects that has the following options. Note that stations go from left to right on the strip map.
 
 * `name` - Name of the station.
 * `stationtype` - Station type associated with this station. Refers to a `stypeID` within `stationtypes`.

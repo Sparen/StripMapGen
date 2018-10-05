@@ -100,10 +100,15 @@ function drawStations(lineobj, numstations) {
         if ("xshift" in currstn) { // Shifts are relative to station positions rather than absolute
             xshift += 1472/(numstations - 1) * currstn.xshift;
         }
-        // Draw
+        // Draw Station components
         let stationxpos = 128 + xshift + 1472/(numstations - 1) * i; // x position of station icon(s)
-        stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + ycoord + '" r="' + stntypeobj.stationradius + '" stroke="' + stntypeobj.scolor + '" stroke-width="' + stntypeobj.stationstrokewidth + '" fill="white"></circle>';
+        for (let k = 0; k < stntypeobj.stnnodes.length; k += 1) {
+            const currstntype = stntypeobj.stnnodes[k];
+            stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + ycoord + '" r="' + currstntype.stationradius + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="white"></circle>';
+        }
+        // Station Name
         stationsvg += '<text x="' + (stationxpos) + '" y="' + (ycoord - 16) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (ycoord - 16) + ')">' + currstn.name + '</text>';
+        // Draw Icons
         let stationIcons = currstn.icons;
         for (let j = 0; j < stationIcons.length; j += 1) {
             stationsvg += '<rect x="' + (stationxpos - 16) + '" y="' + (iconycoord + 36*j) + '" height="32" width="32" fill="url(#PATTERN_' + stationIcons[j] + ')" />';

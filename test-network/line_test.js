@@ -10,9 +10,13 @@ var obj_lineA = {
     "stationtypes": [
         {
             "stypeID": "STATION_TYPEA",
-            "stationstrokewidth": 2,
-            "stationradius": 8,
-            "scolor": "#FF0000"
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 8,
+                    "scolor": "#FF0000"
+                }
+            ]
         }
     ],
     "stations": [
@@ -102,9 +106,13 @@ var obj_lineB = {
     "stationtypes": [
         {
             "stypeID": "STATION_TYPEA",
-            "stationstrokewidth": 2,
-            "stationradius": 8,
-            "scolor": "#0000FF"
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 8,
+                    "scolor": "#0000FF"
+                }
+            ]
         }
     ],
     "stations": [
@@ -192,9 +200,13 @@ var obj_lineC = {
     "stationtypes": [
         {
             "stypeID": "STATION_TYPEA",
-            "stationstrokewidth": 2,
-            "stationradius": 8,
-            "scolor": "#44CC44"
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 8,
+                    "scolor": "#44CC44"
+                }
+            ]
         }
     ],
     "stations": [
@@ -290,9 +302,13 @@ var obj_lineD = {
     "stationtypes": [
         {
             "stypeID": "STATION_TYPEA",
-            "stationstrokewidth": 2,
-            "stationradius": 8,
-            "scolor": "#CC00CC"
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 8,
+                    "scolor": "#CC00CC"
+                }
+            ]
         }
     ],
     "stations": [
