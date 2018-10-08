@@ -29,10 +29,13 @@ The required `stationtypes` field of the line object is an array of objects that
 * `stnnodes` - Array of nodes that are part of the station
 
 Each object in `stnnodes` contains the following options.
-* `stationstrokewidth` - The stroke width of the station icons.
-* `stationradius` - The radius of each station icon.
-* `scolor` - The color of the station stroke. Supports Hex, RGB, and HTML/CSS standard colors.
-* `fcolor` - [OPTIONAL] The color of the station fill. Supports Hex, RGB, and HTML/CSS standard colors. Defaults to white.
+* `stationstrokewidth` - The stroke width of the station icon components.
+* `stationradius` - [CIRCLE ONLY] The radius of the circle station icon component.
+* `stationwidth` - [RECT ONLY] The width of the station icon component.
+* `stationheight` - [RECT ONLY] The width of the station icon component.
+* `scolor` - The stroke color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors.
+* `fcolor` - [OPTIONAL] The fill color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Defaults to white.
+* `componenttype` - [OPTIONAL] The component type of the station icon component - possible values include "RECT" for rectangle. If this field is not present, the component defaults to a circle.
 
 The required `stations` field of the line object is an array of objects that has the following options. Note that stations go from left to right on the strip map.
 
