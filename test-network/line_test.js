@@ -288,7 +288,7 @@ var obj_lineD = {
             "endpoint": 3.67,
             "color": "#CC00CC",
             "strokewidth": "4px",
-            "linkheight": -32,
+            "endlinkheight": -32,
             "linecap": "round"
         },
         {

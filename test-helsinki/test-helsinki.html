@@ -7,12 +7,14 @@
     <meta name="keywords" content="Helsinki">
     <meta name="viewport" content="initial-scale=1">
 
-<body onload="loadMap(obj_lineHel, obj_iconHel, 'targetdiv1')">
+<body onload="loadMap(obj_lineHel, obj_iconHel, 'targetdiv1'); loadMap(obj_lineHel2, obj_iconHel, 'targetdiv2')">
 <div id="top">
       <h1 style="background-color:#AAAAAA;color:white">Helsinki Metro</h1>
       <div>This is an example strip map to showcase the features of the SVG Strip Map Generator software and may not be up to date/up to standard. The strip map for the line is generated from <code>line_hel.js</code> and <code>icon_hel.js</code>.</div>
+      <div>Two strip maps are provided. The first is more basic while the second makes use of offsets and multiple station components.</div>
        <h1 style="background-color:#FF6600;color:white">Strip Map</h1>
       <div id="targetdiv1"></div>
+      <div id="targetdiv2"></div>
 </div>
 
     <script type="text/javascript" src="../main.js"></script>

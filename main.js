@@ -62,8 +62,12 @@ function drawLine(lineobj, numstations) {
         if ("linecap" in lineStroke) {
             additionalParameters += 'stroke-linecap="' + lineStroke.linecap + '" ';
         }
-        if ("linkheight" in lineStroke) { // Vertical
-            linepath += '<path d="M ' + strokeStart + ' ' + ycoord + ' L ' + strokeEnd + ' ' + (ycoord + lineStroke.linkheight) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
+        if ("startlinkheight" in lineStroke || "endlinkheight" in lineStroke) { // Vertical
+            let startoffset = 0;
+            let endoffset = 0;
+            if ("startlinkheight" in lineStroke) {startoffset = lineStroke.startlinkheight;}
+            if ("endlinkheight" in lineStroke) {endoffset = lineStroke.endlinkheight;}
+            linepath += '<path d="M ' + strokeStart + ' ' + (ycoord + startoffset) + ' L ' + strokeEnd + ' ' + (ycoord + endoffset) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         } else { //Horizontal
             linepath += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         }
