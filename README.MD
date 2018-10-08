@@ -35,6 +35,7 @@ Each object in `stnnodes` contains the following options.
 * `stationheight` - [RECT ONLY] The width of the station icon component.
 * `scolor` - The stroke color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors.
 * `fcolor` - [OPTIONAL] The fill color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Defaults to white.
+* `dy` - [OPTIONAL] The vertical offset of the station icon component. Additive effect with same named field on the station objects.
 * `componenttype` - [OPTIONAL] The component type of the station icon component - possible values include "RECT" for rectangle. If this field is not present, the component defaults to a circle.
 
 The required `stations` field of the line object is an array of objects that has the following options. Note that stations go from left to right on the strip map.
@@ -42,7 +43,7 @@ The required `stations` field of the line object is an array of objects that has
 * `name` - Name of the station.
 * `stationtype` - Station type associated with this station. Refers to a `stypeID` within `stationtypes`.
 * `icons` - Array of strings referring to icon IDs to attach to the station. These are rendered below the station icon, in order.
-* `dy` - [OPTIONAL] The vertical offset of the station. Does not affect rendering of icons.
+* `dy` - [OPTIONAL] The vertical offset of the station. Does not affect rendering of icons. Additive effect with same named field on the stnnodes objects.
 * `iconshift` - [OPTIONAL] If set to true, will apply dy shift to icons as well.
 * `xshift` - [OPTIONAL] Offsets the station position using the distance between stations. Refer to Helsinki example for usage.
 

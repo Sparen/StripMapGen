@@ -108,10 +108,14 @@ function drawStations(lineobj, numstations) {
             if ("fcolor" in currstntype) {
                 nodefill = currstntype.fcolor;
             }
+            let yoffset = 0;
+            if ("dy" in currstntype) {
+                yoffset = currstntype.dy;
+            }
             if ("componenttype" in currstntype && currstntype.componenttype === "RECT") {
-                stationsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></rect>';
+                stationsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2 + yoffset) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></rect>';
             } else {
-                stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + ycoord + '" r="' + currstntype.stationradius + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></circle>';
+                stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></circle>';
             }
         }
         // Station Name
