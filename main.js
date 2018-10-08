@@ -129,8 +129,16 @@ function drawStations(lineobj, numstations) {
                 stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></circle>';
             }
         }
-        // Station Name
-        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">' + currstn.name + '</text>';
+        // Station Name(s)
+        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">';
+        let stationNames = currstn.name;
+        for (let j = 0; j < stationNames.length; j += 1) {
+            let stnNameDY = 16; // In the future, needs to be a factor of font size
+            if (j === 0) {stnNameDY = 0;} // Prevent the first name from shifting downwards - dy should only be applied to non-first elements
+            // Note that x position shifted using stnNameDY: This forces alignment on the bottom 
+            stationsvg += '<tspan x="' + (stationxpos + stnNameDY * j) + '" dy="' + (stnNameDY) + '">' + stationNames[j] + '</tspan>';
+        }
+        stationsvg += '</text>';
         // Draw Icons
         let stationIcons = currstn.icons;
         for (let j = 0; j < stationIcons.length; j += 1) {

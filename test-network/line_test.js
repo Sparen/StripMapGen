@@ -21,13 +21,13 @@ var obj_lineA = {
     ],
     "stations": [
         {
-            "name": "1st Street",
+            "name": ["1st Street"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "2nd Street - Avenue C",
+            "name": ["2nd Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEB",
@@ -35,50 +35,50 @@ var obj_lineA = {
             ]
         },
         {
-            "name": "3rd Street",
+            "name": ["3rd Street"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "4th Street",
+            "name": ["4th Street"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "5th Street - Avenue C",
+            "name": ["5th Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEB"
             ]
         },
         {
-            "name": "6th Street",
+            "name": ["6th Street"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "7th Street",
+            "name": ["7th Street"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "8th Street",
+            "name": ["8th Street"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "9th Street",
+            "name": ["9th Street"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Zoo",
+            "name": ["Zoo"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINED"
@@ -117,49 +117,49 @@ var obj_lineB = {
     ],
     "stations": [
         {
-            "name": "Road 5 North",
+            "name": ["Road 5 North"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Road 4 North",
+            "name": ["Road 4 North"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Road 3 North",
+            "name": ["Road 3 North"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Road 2 North",
+            "name": ["Road 2 North"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Road 1 North",
+            "name": ["Road 1 North"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Avenue A",
+            "name": ["Avenue A"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Avenue B",
+            "name": ["Avenue B"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "2nd Street - Avenue C",
+            "name": ["2nd Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEA",
@@ -167,19 +167,19 @@ var obj_lineB = {
             ]
         },
         {
-            "name": "3rd Street - Avenue D",
+            "name": ["3rd Street - Avenue D"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "City Hall",
+            "name": ["City Hall"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "5th Street - Avenue C",
+            "name": ["5th Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEA"
@@ -211,19 +211,19 @@ var obj_lineC = {
     ],
     "stations": [
         {
-            "name": "Avenue A Bridge",
+            "name": ["Avenue A Bridge"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Avenue B Bridge",
+            "name": ["Avenue B Bridge"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "2nd Street - Avenue C",
+            "name": ["2nd Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEA",
@@ -231,43 +231,43 @@ var obj_lineC = {
             ]
         },
         {
-            "name": "Avenue D Bridge",
+            "name": ["Avenue D Bridge"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Avenue E",
+            "name": ["Avenue E"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Avenue F",
+            "name": ["Avenue F"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Airport North",
+            "name": ["Airport North"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Airport Terminal 1",
+            "name": ["Airport Terminal 1"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Airport Terminal 2",
+            "name": ["Airport Terminal 2"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Navy Yard",
+            "name": ["Navy Yard"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
@@ -313,58 +313,58 @@ var obj_lineD = {
     ],
     "stations": [
         {
-            "name": "Zoo",
+            "name": ["Zoo"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEA"
             ]
         },
         {
-            "name": "A-Town",
+            "name": ["A-Town"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "B-Town",
+            "name": ["B-Town"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "C-Town",
+            "name": ["C-Town"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "D-Town (Rush Hours Only)",
+            "name": ["D-Town (Rush Hours Only)"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
             "dy": -32
         },
         {
-            "name": "E-Town (Rush Hours Only)",
+            "name": ["E-Town (Rush Hours Only)"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
             "dy": -32
         },
         {
-            "name": "F-Town",
+            "name": ["F-Town"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "G-Town",
+            "name": ["G-Town"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "H-Town",
+            "name": ["H-Town"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]

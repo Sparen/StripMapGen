@@ -50,123 +50,123 @@ var obj_lineHel = {
     ],
     "stations": [
         {
-            "name": "Matinkylä",
+            "name": ["Matinkylä"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEM1"
             ]
         },
         {
-            "name": "Niittykumpu",
+            "name": ["Niittykumpu"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Urheilupuisto",
+            "name": ["Urheilupuisto"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Tapiola",
+            "name": ["Tapiola"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEM2"
             ]
         },
         {
-            "name": "Aalto-yliopisto",
+            "name": ["Aalto-yliopisto"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Keilaniemi",
+            "name": ["Keilaniemi"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Koivusaari",
+            "name": ["Koivusaari"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Lauttasaari",
+            "name": ["Lauttasaari"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Ruoholahti",
+            "name": ["Ruoholahti"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Kamppi",
+            "name": ["Kamppi"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Rautatientori",
+            "name": ["Rautatientori"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Helsingin yliopisto",
+            "name": ["Helsingin yliopisto"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Hakaniemi",
+            "name": ["Hakaniemi"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Sörnäinen",
+            "name": ["Sörnäinen"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Kalasatama",
+            "name": ["Kalasatama"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Kulosaari",
+            "name": ["Kulosaari"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Herttoniemi",
+            "name": ["Herttoniemi"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Siilitie",
+            "name": ["Siilitie"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Itäkeskus",
+            "name": ["Itäkeskus"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ]
         },
         {
-            "name": "Myllypuro",
+            "name": ["Myllypuro"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
@@ -174,7 +174,7 @@ var obj_lineHel = {
             "xshift": 2
         },
         {
-            "name": "Puotila",
+            "name": ["Puotila"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
@@ -182,7 +182,7 @@ var obj_lineHel = {
             "xshift": 1
         },
         {
-            "name": "Kontula",
+            "name": ["Kontula"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
@@ -190,7 +190,7 @@ var obj_lineHel = {
             "xshift": 1.5
         },
         {
-            "name": "Rastila",
+            "name": ["Rastila"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
@@ -198,7 +198,7 @@ var obj_lineHel = {
             "xshift": 0.5
         },
         {
-            "name": "Mellunmäki",
+            "name": ["Mellunmäki"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEM2"
@@ -208,7 +208,7 @@ var obj_lineHel = {
             "xshift": 1
         },
         {
-            "name": "Vuosaari",
+            "name": ["Vuosaari"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEM1"
@@ -322,7 +322,7 @@ var obj_lineHel2 = {
     ],
     "stations": [
         {
-            "name": "Matinkylä",
+            "name": ["Matinkylä"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEM1"
@@ -330,21 +330,21 @@ var obj_lineHel2 = {
             "textoffset": -32
         },
         {
-            "name": "Niittykumpu",
+            "name": ["Niittykumpu"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Urheilupuisto",
+            "name": ["Urheilupuisto"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Tapiola",
+            "name": ["Tapiola"],
             "stationtype": "STATION_TYPEB",
             "icons": [
                 "ICON_LINEM2"
@@ -352,112 +352,112 @@ var obj_lineHel2 = {
             "textoffset": -32
         },
         {
-            "name": "Aalto-yliopisto",
+            "name": ["Aalto-yliopisto"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Keilaniemi",
+            "name": ["Keilaniemi"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Koivusaari",
+            "name": ["Koivusaari"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Lauttasaari",
+            "name": ["Lauttasaari"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Ruoholahti",
+            "name": ["Ruoholahti"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Kamppi",
+            "name": ["Kamppi"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Rautatientori",
+            "name": ["Rautatientori"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Helsingin yliopisto",
+            "name": ["Helsingin yliopisto"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Hakaniemi",
+            "name": ["Hakaniemi"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Sörnäinen",
+            "name": ["Sörnäinen"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Kalasatama",
+            "name": ["Kalasatama"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Kulosaari",
+            "name": ["Kulosaari"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Herttoniemi",
+            "name": ["Herttoniemi"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Siilitie",
+            "name": ["Siilitie"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Itäkeskus",
+            "name": ["Itäkeskus"],
             "stationtype": "STATION_TYPEB",
             "icons": [
             ],
             "textoffset": -32
         },
         {
-            "name": "Myllypuro",
+            "name": ["Myllypuro"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
@@ -465,7 +465,7 @@ var obj_lineHel2 = {
             "xshift": 2
         },
         {
-            "name": "Puotila",
+            "name": ["Puotila"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
@@ -473,7 +473,7 @@ var obj_lineHel2 = {
             "xshift": 1
         },
         {
-            "name": "Kontula",
+            "name": ["Kontula"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
@@ -481,7 +481,7 @@ var obj_lineHel2 = {
             "xshift": 1.5
         },
         {
-            "name": "Rastila",
+            "name": ["Rastila"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
@@ -489,7 +489,7 @@ var obj_lineHel2 = {
             "xshift": 0.5
         },
         {
-            "name": "Mellunmäki",
+            "name": ["Mellunmäki"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEM2"
@@ -499,7 +499,7 @@ var obj_lineHel2 = {
             "xshift": 1
         },
         {
-            "name": "Vuosaari",
+            "name": ["Vuosaari"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 "ICON_LINEM1"

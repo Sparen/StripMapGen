@@ -41,7 +41,7 @@ Each object in `stnnodes` contains the following options.
 
 The required `stations` field of the line object is an array of objects that has the following options. Note that stations go from left to right on the strip map.
 
-* `name` - Name of the station.
+* `name` - Name of the station as an array (in case of multiple names).
 * `stationtype` - Station type associated with this station. Refers to a `stypeID` within `stationtypes`.
 * `icons` - Array of strings referring to icon IDs to attach to the station. These are rendered below the station icon, in order.
 * `dy` - [OPTIONAL] The vertical offset of the station and station text. Does not affect rendering of icons. Additive effect with same named field on the stnnodes objects.
