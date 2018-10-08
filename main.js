@@ -90,11 +90,18 @@ function drawStations(lineobj, numstations) {
         // Handle offsets
         let ycoord = 240;
         let iconycoord = 256;
+        let textycoord = 240;
         if ("dy" in currstn) {
             ycoord += currstn.dy;
+            textycoord += currstn.dy;
             if ("iconshift" in currstn && currstn.iconshift) {
                 iconycoord += currstn.dy;
             }
+        }
+        if ("textoffset" in currstn) {
+            textycoord += currstn.textoffset;
+        } else {
+            textycoord -= 16;
         }
         let xshift = 0;
         if ("xshift" in currstn) { // Shifts are relative to station positions rather than absolute
@@ -119,7 +126,7 @@ function drawStations(lineobj, numstations) {
             }
         }
         // Station Name
-        stationsvg += '<text x="' + (stationxpos) + '" y="' + (ycoord - 16) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (ycoord - 16) + ')">' + currstn.name + '</text>';
+        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">' + currstn.name + '</text>';
         // Draw Icons
         let stationIcons = currstn.icons;
         for (let j = 0; j < stationIcons.length; j += 1) {

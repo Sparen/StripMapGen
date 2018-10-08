@@ -43,7 +43,8 @@ The required `stations` field of the line object is an array of objects that has
 * `name` - Name of the station.
 * `stationtype` - Station type associated with this station. Refers to a `stypeID` within `stationtypes`.
 * `icons` - Array of strings referring to icon IDs to attach to the station. These are rendered below the station icon, in order.
-* `dy` - [OPTIONAL] The vertical offset of the station. Does not affect rendering of icons. Additive effect with same named field on the stnnodes objects.
+* `dy` - [OPTIONAL] The vertical offset of the station and station text. Does not affect rendering of icons. Additive effect with same named field on the stnnodes objects.
+* `textoffset` - [OPTIONAL] Sets y offset for text (distance between center of station icon and text). Defaults to -16px.
 * `iconshift` - [OPTIONAL] If set to true, will apply dy shift to icons as well.
 * `xshift` - [OPTIONAL] Offsets the station position using the distance between stations. Refer to Helsinki example for usage.
 
