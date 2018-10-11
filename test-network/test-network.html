@@ -6,9 +6,26 @@
     <meta content="Test" name="description">
     <meta name="keywords" content="Test">
     <meta name="viewport" content="initial-scale=1">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-58194930-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 
 <body onload="loadMap(obj_lineA, obj_iconTest, 'targetdiv1'); loadMap(obj_lineB, obj_iconTest, 'targetdiv2'); loadMap(obj_lineC, obj_iconTest, 'targetdiv3'); loadMap(obj_lineD, obj_iconTest, 'targetdiv4')">
 <div id="top">
+      <div class="sm-navbar-container">
+	<div class="sm-navbar-header">Navigation Bar</div>
+	<div class="sm-navbar"><a href="../index.html">[ HOME ]</a></div>
+	<div class="sm-navbar"><a href="../docs.html">[ DOCS ]</a></div>
+	<div class="sm-navbar-header">Example Strip Maps</div>
+	<div class="sm-navbar"><a href="./test-network.html">[ Test Network ]</a></div>
+	<div class="sm-navbar"><a href="../test-helsinki/test-helsinki.html">[ Helsinki ]</a></div>
+      </div>
       <h1 style="background-color:#AAAAAA;color:white">Test Network</h1>
       <div>This is an example network. The strip maps for each line are generated from <code>line_test.js</code> and <code>icon_test.js</code>. The below map shows the map in its entirety, for comparison.</div>
       <br>

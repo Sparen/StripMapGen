@@ -5,3 +5,25 @@ body {
 h1 {
     padding: 2px 2px 2px 8px;
 }
+
+.sm-navbar-container {
+    text-align: center;
+    border: 4px double #CCCCCC;
+    margin: 2px;
+    padding: 2px;
+}
+
+.sm-navbar-header {
+    padding: 2px;
+}
+
+.sm-navbar {
+    padding: 2px;
+    border: 2px solid #CCFFFF;
+    display: inline-block;
+    background: #FFDDAA;
+}
+
+.sm-navbar a {
+    text-decoration: none;
+}

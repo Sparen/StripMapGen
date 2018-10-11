@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <meta charset="utf-8">
+    <title>SVG Strip Map Generator - Documentation</title>
+    <link rel="stylesheet" type="text/css" href="./test.css">
+    <meta content="Test" name="description">
+    <meta name="keywords" content="SVG, Strip, Map, Generator">
+    <meta name="viewport" content="initial-scale=1">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-58194930-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+<body>
+<div id="top">
+      <div class="sm-navbar-container">
+	<div class="sm-navbar-header">Navigation Bar</div>
+	<div class="sm-navbar"><a href="./index.html">[ HOME ]</a></div>
+	<div class="sm-navbar"><a href="./docs.html">[ DOCS ]</a></div>
+	<div class="sm-navbar-header">Example Strip Maps</div>
+	<div class="sm-navbar"><a href="./test-network/test-network.html">[ Test Network ]</a></div>
+	<div class="sm-navbar"><a href="./test-helsinki/test-helsinki.html">[ Helsinki ]</a></div>
+      </div>
+      <h1 style="background-color:#AAAAAA;color:white">SVG Strip Map Generator - Documentation</h1>
+      <div>This page serves to document all of the customization options available.</div>
+      <h1 style="background-color:#AAAAAA;color:white">Lines and Stations</h1>
+      <div>The primary component of a strip map is the line, including stations and text. The SVG Strip Map Generator provides the following features.</div>
+      <div>
+<p>Each line object has the following fields. <span style="color:red">Required fields are in red</span>, <span style="color:blue">Optional fields are in blue</span>.</p>
+
+<ul>
+<li><code style="color:red">linename</code> - Name of the line. Displayed on each generated strip map in the top left.</li>
+<li><code style="color:red">iconID</code> - The large 48x48 icon to use for this line. Displayed to the left of the line's name.</li>
+</ul>
+
+<p>The required <code>strokes</code> field of the line object is an array of objects that has the following options.</p>
+<ul>
+<li><code style="color:red">color</code> - The color of the line. Supports Hex, RGB, and HTML/CSS standard colors.</li>
+<li><code style="color:red">strokewidth</code> - The width of the line. </li>
+<li><code style="color:blue">dy</code> - The vertical offset of the stroke.</li>
+<li><codestyle="color:blue">startpoint</code> - The starting station of the stroke. Can be negative to extend line offscreen to the left.</li>
+<li><codestyle="color:blue">endpoint</code> - The ending station of the stroke. Can be greater than number of stations on line to extend line offscreen to the right.</li>
+<li><code style="color:blue">startlinkheight</code> - The vertical offset from the stroke for the <code>endpoint</code>. Enables horizontal and angled portions. It is suggested to set <code>linecap</code> to "round" to cover the breaks in the lines if using angles.</li>
+<li><code style="color:blue">endlinkheight</code> - The vertical offset from the stroke for the <code>startpoint</code>. Enables horizontal and angled portions. It is suggested to set <code>linecap</code> to "round" to cover the breaks in the lines if using angles.</li>
+<li><code style="color:blue">dasharray</code> - Sets the <code>stroke-dasharray</code> field for the stroke. Should be a string of comma delimited numbers, e.g. <code>4,4</code></li>
+<li><code style="color:blue">linecap</code> - Sets the <code>stroke-linecap</code> field for the stroke. Should be "butt" (svg default if field not provided), "square", or "round"</li>
+</ul>
+
+<p>The required <code>stationtypes</code> field of the line object is an array of objects that has the following options.</p>
+<ul>
+<li><code style="color:red">stypeID</code> - The ID for the specified station, for cross referencing later.</li>
+<li><code style="color:red">stnnodes</code> - Array of nodes that are part of the station</li>
+</ul>
+
+<p>Each object in <code>stnnodes</code> contains the following options.</p>
+<ul>
+<li><code style="color:red">stationstrokewidth</code> - The stroke width of the station icon components.</li>
+<li><code style="color:blue">stationradius</code> - [CIRCLE ONLY] The radius of the circle station icon component.</li>
+<li><code style="color:blue">stationwidth</code> - [RECT ONLY] The width of the station icon component.</li>
+<li><code style="color:blue">stationheight</code> - [RECT ONLY] The width of the station icon component.</li>
+<li><code style="color:red">scolor</code> - The stroke color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors.</li>
+<li><code style="color:blue">fcolor</code> - The fill color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Defaults to white.</li>
+<li><code style="color:blue">dy</code> - The vertical offset of the station icon component. Additive effect with same named field on the station objects.</li>
+<li><code style="color:blue">componenttype</code> - The component type of the station icon component - possible values include "RECT" for rectangle. If this field is not present, the component defaults to a circle.</li>
+</ul>
+
+<p>The required <code>stations</code> field of the line object is an array of objects that has the following options. Note that stations go from left to right on the strip map.</p>
+<ul>
+<li><code style="color:red">name</code> - Name of the station as an array (in case of multiple names).</li>
+<li><code style="color:red">stationtype</code> - Station type associated with this station. Refers to a <code>stypeID</code> within <code>stationtypes</code>.</li>
+<li><code style="color:red">icons</code> - Array of strings referring to icon IDs to attach to the station. These are rendered below the station icon, in order.</li>
+<li><code style="color:blue">dy</code> - The vertical offset of the station and station text. Does not affect rendering of icons. Additive effect with same named field on the stnnodes objects.</li>
+<li><code style="color:blue">textoffset</code> - Sets y offset for text (distance between center of station icon and text). Defaults to -16px.</li>
+<li><code style="color:blue">iconshift</code> - If set to true, will apply dy shift to icons as well.</li>
+<li><code style="color:blue">xshift</code> - Offsets the station position using the distance between stations. Refer to <a href="./test-helsinki/test-helsinki.html">Helsinki example</a> for usage.</li>
+</ul>
+    </div>
+      <h1 style="background-color:#AAAAAA;color:white">Icons</h1>
+      <div>The SVG Strip Map Generator also uses reusable icon defintions.</div>
+    <div>
+<p>Each icon object has a single <code>icons</code> field which is an array of objects with the following specification:</p>
+<ul>
+<li><code style="color:red">iconID</code> - ID of the icon. This ID is used to cross reference specific icons. Naturally, each ID must be unique.</li>
+<li><code style="color:red">iconSVG</code> - SVG of the icon. Main line icons must be 48x48, while transfer icons must be 32x32. </li>
+</ul>
+    </div>
+</div>
+
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+</body>
+</html>
