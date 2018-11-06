@@ -1,6 +1,6 @@
 var obj_lineHel = {
     "linename": "Metrolinja",
-    "iconID": "ICON_LINEM_BIG",
+    "iconID": ["ICON_LINEM_BIG"],
     "strokes": [
         {
             "endpoint": 18.5,
@@ -221,7 +221,7 @@ var obj_lineHel = {
 
 var obj_lineHel2 = {
     "linename": "Metrolinja",
-    "iconID": "ICON_LINEM_BIG",
+    "iconID": ["ICON_LINEM_BIG"],
     "strokes": [
         {
             "startpoint": 3,

@@ -1,6 +1,6 @@
 var obj_lineA = {
     "linename": "Line A - Avenue C Line",
-    "iconID": "ICON_LINEA_BIG",
+    "iconID": ["ICON_LINEA_BIG"],
     "strokes": [
         {
             "color": "#FF0000",
@@ -89,7 +89,7 @@ var obj_lineA = {
 
 var obj_lineB = {
     "linename": "Line B - 2nd Street Line",
-    "iconID": "ICON_LINEB_BIG",
+    "iconID": ["ICON_LINEB_BIG"],
     "strokes": [
         {
             "endpoint": 5,
@@ -190,7 +190,7 @@ var obj_lineB = {
 
 var obj_lineC = {
     "linename": "Line C - South River Line",
-    "iconID": "ICON_LINEC_BIG",
+    "iconID": ["ICON_LINEC_BIG"],
     "strokes": [
         {
             "color": "#44CC44",
@@ -277,7 +277,7 @@ var obj_lineC = {
 
 var obj_lineD = {
     "linename": "Line D - East Suburbs Line",
-    "iconID": "ICON_LINED_BIG",
+    "iconID": ["ICON_LINED_BIG"],
     "strokes": [
         {
             "color": "#CC00CC",

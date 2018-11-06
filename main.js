@@ -16,8 +16,12 @@ function loadMap(lineobj, iconobj, targetdiv) {
     smsvg += '</defs>';
 
     // First, place the name of the line in the top left with its own icon
-    smsvg += '<rect x="20" y="24" height="48" width="48" fill="url(#PATTERN_' + lineobj.iconID + ')" />';
-    smsvg += '<text x="80" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
+    let numicons = lineobj.iconID.length;
+    let bigiconsize = 48;
+    for (let j = 0; j < numicons; j += 1) {
+        smsvg += '<rect x="' + (20 + bigiconsize * j) + '" y="24" height="' + bigiconsize + '" width="' + bigiconsize + '" fill="url(#PATTERN_' + lineobj.iconID[j] + ')" />';
+    }
+    smsvg += '<text x="' + (32 + bigiconsize * numicons) + '" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
     // Number of stations. Used for spacing and placement
     const numstations = lineobj.stations.length;
