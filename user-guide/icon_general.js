@@ -34,6 +34,13 @@ var obj_iconGeneral = {
             "width": 48,
             "scale": [1.0, 0.67],
             "iconSVG": "<rect x='8' y='8' width='32' height='32' transform='rotate(45 24 24)' stroke-width='0px' stroke='none' fill='#00AA88'></rect><text x='24' y='24' font-family='Verdana' font-size='24px' fill='white' text-anchor='middle' dominant-baseline='central'>A</text>"
+        },
+        {
+            "iconID": "ICON_LINEBKR_ANK",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<rect x='8' y='8' width='32' height='32' transform='rotate(45 24 24)' stroke-width='0px' stroke='none' fill='#000088'></rect><text x='24' y='24' font-family='Verdana' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>B</text>"
         }
     ]
 };

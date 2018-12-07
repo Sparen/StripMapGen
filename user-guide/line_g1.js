@@ -32,6 +32,7 @@ var obj_line1_v1 = {
             "name": ["Sıhhiye"],
             "stationtype": "STATION_TYPEA",
             "icons": [
+                ["ICON_LINEBKR_ANK"]
             ]
         },
         {
@@ -140,6 +141,7 @@ var obj_line1_v2 = {
             "name": ["Sıhhiye"],
             "stationtype": "STATION_TYPEA",
             "icons": [
+                ["ICON_LINEBKR_ANK"]
             ],
             "dy": 32
         },
@@ -209,8 +211,10 @@ var obj_line1_v3 = {
             "name": ["Sıhhiye"],
             "stationtype": "STATION_TYPEA",
             "icons": [
+                ["ICON_LINEBKR_ANK"]
             ],
-            "dy": 32
+            "dy": 32,
+            "iconshift": true
         },
         {
             "name": ["Ulus"],
