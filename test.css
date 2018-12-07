@@ -18,10 +18,10 @@ h1 {
 }
 
 .sm-navbar {
-    padding: 2px;
-    border: 2px solid #CCFFFF;
+    padding: 4px;
+    border: 2px solid #AAAAAA;
     display: inline-block;
-    background: #FFDDAA;
+    background: white;
 }
 
 .sm-navbar a {
