@@ -53,7 +53,7 @@ var obj_lineHel = {
             "name": ["Matinkylä"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEM1"
+                ["ICON_LINEM1"]
             ]
         },
         {
@@ -72,7 +72,7 @@ var obj_lineHel = {
             "name": ["Tapiola"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEM2"
+                ["ICON_LINEM2"]
             ]
         },
         {
@@ -201,7 +201,7 @@ var obj_lineHel = {
             "name": ["Mellunmäki"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEM2"
+                ["ICON_LINEM2"]
             ],
             "dy": -128,
             "iconshift": true,
@@ -211,7 +211,7 @@ var obj_lineHel = {
             "name": ["Vuosaari"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEM1"
+                ["ICON_LINEM1"]
             ],
             "iconshift": true,
             "dy": 128
@@ -325,7 +325,7 @@ var obj_lineHel2 = {
             "name": ["Matinkylä"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEM1"
+                ["ICON_LINEM1"]
             ],
             "textoffset": -32
         },
@@ -347,7 +347,7 @@ var obj_lineHel2 = {
             "name": ["Tapiola"],
             "stationtype": "STATION_TYPEB",
             "icons": [
-                "ICON_LINEM2"
+                ["ICON_LINEM2"]
             ],
             "textoffset": -32
         },
@@ -492,7 +492,7 @@ var obj_lineHel2 = {
             "name": ["Mellunmäki"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEM2"
+                ["ICON_LINEM2"]
             ],
             "dy": -144,
             "iconshift": true,
@@ -502,7 +502,7 @@ var obj_lineHel2 = {
             "name": ["Vuosaari"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEM1"
+                ["ICON_LINEM1"]
             ],
             "iconshift": true,
             "dy": 128

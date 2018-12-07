@@ -30,8 +30,8 @@ var obj_lineA = {
             "name": ["2nd Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEB",
-                "ICON_LINEC"
+                ["ICON_LINEB"],
+                ["ICON_LINEC"]
             ]
         },
         {
@@ -50,7 +50,7 @@ var obj_lineA = {
             "name": ["5th Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEB"
+                ["ICON_LINEB"]
             ]
         },
         {
@@ -81,7 +81,7 @@ var obj_lineA = {
             "name": ["Zoo"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINED"
+                ["ICON_LINED"]
             ]
         }
     ]
@@ -162,8 +162,8 @@ var obj_lineB = {
             "name": ["2nd Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEA",
-                "ICON_LINEC"
+                ["ICON_LINEA"],
+                ["ICON_LINEC"]
             ]
         },
         {
@@ -182,7 +182,7 @@ var obj_lineB = {
             "name": ["5th Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEA"
+                ["ICON_LINEA"]
             ]
         }
     ]
@@ -226,8 +226,8 @@ var obj_lineC = {
             "name": ["2nd Street - Avenue C"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEA",
-                "ICON_LINEB"
+                ["ICON_LINEA"],
+                ["ICON_LINEB"]
             ]
         },
         {
@@ -316,7 +316,7 @@ var obj_lineD = {
             "name": ["Zoo"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-                "ICON_LINEA"
+                ["ICON_LINEA"]
             ]
         },
         {
