@@ -44,6 +44,7 @@ var obj_line1_v1 = {
             "name": ["Atatürk Kültür Merkezi"],
             "stationtype": "STATION_TYPEA",
             "icons": [
+                ["ICON_LINEM4_ANK"]
             ]
         },
         {
@@ -152,6 +153,7 @@ var obj_line1_v2 = {
             "name": ["Atatürk Kültür Merkezi"],
             "stationtype": "STATION_TYPEA",
             "icons": [
+                ["ICON_LINEM4_ANK"]
             ],
             "dy": -32
         },
@@ -220,8 +222,10 @@ var obj_line1_v3 = {
             "name": ["Atatürk Kültür Merkezi"],
             "stationtype": "STATION_TYPEA",
             "icons": [
+                ["ICON_LINEM4_ANK"]
             ],
-            "dy": -32
+            "dy": -32,
+            "iconshift": true
         },
         {
             "name": ["Akköprü"],

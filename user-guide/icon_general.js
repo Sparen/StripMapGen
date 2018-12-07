@@ -22,6 +22,13 @@ var obj_iconGeneral = {
             "iconSVG": "<rect x='8' y='8' width='32' height='32' transform='rotate(45 24 24)' stroke-width='0px' stroke='none' fill='#0088DD'></rect><text x='24' y='24' font-family='Verdana' font-size='18px' fill='white' text-anchor='middle' dominant-baseline='central'>M3</text>"
         },
         {
+            "iconID": "ICON_LINEM4_ANK",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<rect x='8' y='8' width='32' height='32' transform='rotate(45 24 24)' stroke-width='0px' stroke='none' fill='#6666CC'></rect><text x='24' y='24' font-family='Verdana' font-size='18px' fill='white' text-anchor='middle' dominant-baseline='central'>M4</text>"
+        },
+        {
             "iconID": "ICON_LINEAKR_ANK",
             "height": 48,
             "width": 48,
