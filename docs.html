@@ -16,17 +16,9 @@
     ga('send', 'pageview');
   </script>
 
-<body>
+<body onload="docs_load('.')">
 <div id="top">
-      <div class="sm-navbar-container">
-	<div class="sm-navbar-header">Navigation Bar</div>
-	<div class="sm-navbar"><a href="./index.html">[ HOME ]</a></div>
-	<div class="sm-navbar"><a href="./docs.html">[ DOCS ]</a></div>
-	<div class="sm-navbar"><a href="./user-guide/index.html">[ USER GUIDE ]</a></div>
-	<div class="sm-navbar-header">Example Strip Maps</div>
-	<div class="sm-navbar"><a href="./test-network/test-network.html">[ Test Network ]</a></div>
-	<div class="sm-navbar"><a href="./test-helsinki/test-helsinki.html">[ Helsinki ]</a></div>
-      </div>
+      <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">SVG Strip Map Generator - Documentation</h1>
       <div>This page serves to document all of the customization options available.</div>
       <h1 style="background-color:#AAAAAA;color:white">Lines and Stations</h1>
@@ -92,6 +84,7 @@
     </div>
 </div>
 
+    <script type="text/javascript" src="docs.js"></script>
     <script type="text/javascript" src="main.js"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 

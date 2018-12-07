@@ -16,17 +16,9 @@
     ga('send', 'pageview');
   </script>
 
-<body>
+<body onload="docs_load('..')">
 <div id="top">
-      <div class="sm-navbar-container">
-	<div class="sm-navbar-header">Navigation Bar</div>
-	<div class="sm-navbar"><a href="../index.html">[ HOME ]</a></div>
-	<div class="sm-navbar"><a href="../docs.html">[ DOCS ]</a></div>
-	<div class="sm-navbar"><a href="./index.html">[ USER GUIDE ]</a></div>
-	<div class="sm-navbar-header">Example Strip Maps</div>
-	<div class="sm-navbar"><a href="../test-network/test-network.html">[ Test Network ]</a></div>
-	<div class="sm-navbar"><a href="../test-helsinki/test-helsinki.html">[ Helsinki ]</a></div>
-      </div>
+      <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">SVG Strip Map Generator - User Guide</h1>
       <div>Welcome to the user guide for the SVG Strip Map Generator. In this guide, we will walk through creating a number of Strip Maps for real world transit networks. Together with the example networks that showcase what this software is capable of, this user guide should provide sufficient guidance and examples for using the software.</div>
       <div>
@@ -46,6 +38,7 @@
       </div>
 </div>
 
+    <script type="text/javascript" src="../docs.js"></script>
     <script type="text/javascript" src="../strip-map-gen.js"></script>
 
 </body>

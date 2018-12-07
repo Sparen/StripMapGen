@@ -16,17 +16,9 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="SMG_loadMap(obj_lineA, obj_iconTest, 'targetdiv1'); SMG_loadMap(obj_lineB, obj_iconTest, 'targetdiv2'); SMG_loadMap(obj_lineC, obj_iconTest, 'targetdiv3'); SMG_loadMap(obj_lineD, obj_iconTest, 'targetdiv4')">
+<body onload="docs_load('..'); SMG_loadMap(obj_lineA, obj_iconTest, 'targetdiv1'); SMG_loadMap(obj_lineB, obj_iconTest, 'targetdiv2'); SMG_loadMap(obj_lineC, obj_iconTest, 'targetdiv3'); SMG_loadMap(obj_lineD, obj_iconTest, 'targetdiv4')">
 <div id="top">
-      <div class="sm-navbar-container">
-	<div class="sm-navbar-header">Navigation Bar</div>
-	<div class="sm-navbar"><a href="../index.html">[ HOME ]</a></div>
-	<div class="sm-navbar"><a href="../docs.html">[ DOCS ]</a></div>
-	<div class="sm-navbar"><a href="../user-guide/index.html">[ USER GUIDE ]</a></div>
-	<div class="sm-navbar-header">Example Strip Maps</div>
-	<div class="sm-navbar"><a href="./test-network.html">[ Test Network ]</a></div>
-	<div class="sm-navbar"><a href="../test-helsinki/test-helsinki.html">[ Helsinki ]</a></div>
-      </div>
+      <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Test Network</h1>
       <div>This is an example network. The strip maps for each line are generated from <code>line_test.js</code> and <code>icon_test.js</code>. The below map shows the map in its entirety, for comparison.</div>
       <br>
@@ -102,6 +94,7 @@
       <div id="targetdiv4"></div>
 </div>
 
+    <script type="text/javascript" src="../docs.js"></script>
     <script type="text/javascript" src="../strip-map-gen.js"></script>
     <script type="text/javascript" src="line_test.js"></script>
     <script type="text/javascript" src="icon_test.js"></script>

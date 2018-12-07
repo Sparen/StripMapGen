@@ -16,17 +16,9 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="SMG_loadMap(obj_lineHel, obj_iconHel, 'targetdiv1'); SMG_loadMap(obj_lineHel2, obj_iconHel, 'targetdiv2')">
+<body onload="docs_load('..'); SMG_loadMap(obj_lineHel, obj_iconHel, 'targetdiv1'); SMG_loadMap(obj_lineHel2, obj_iconHel, 'targetdiv2')">
 <div id="top">
-      <div class="sm-navbar-container">
-	<div class="sm-navbar-header">Navigation Bar</div>
-	<div class="sm-navbar"><a href="../index.html">[ HOME ]</a></div>
-	<div class="sm-navbar"><a href="../docs.html">[ DOCS ]</a></div>
-	<div class="sm-navbar"><a href="../user-guide/index.html">[ USER GUIDE ]</a></div>
-	<div class="sm-navbar-header">Example Strip Maps</div>
-	<div class="sm-navbar"><a href="../test-network/test-network.html">[ Test Network ]</a></div>
-	<div class="sm-navbar"><a href="./test-helsinki.html">[ Helsinki ]</a></div>
-      </div>
+      <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Helsinki Metro</h1>
       <div>This is an example strip map to showcase the features of the SVG Strip Map Generator software and may not be up to date/up to standard. The strip map for the line is generated from <code>line_hel.js</code> and <code>icon_hel.js</code>.</div>
       <div>Two strip maps are provided. The first is more basic while the second makes use of offsets and multiple station components.</div>
@@ -35,6 +27,7 @@
       <div id="targetdiv2"></div>
 </div>
 
+    <script type="text/javascript" src="../docs.js"></script>
     <script type="text/javascript" src="../strip-map-gen.js"></script>
     <script type="text/javascript" src="line_hel.js"></script>
     <script type="text/javascript" src="icon_hel.js"></script>
