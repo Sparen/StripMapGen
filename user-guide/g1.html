@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <meta charset="utf-8">
+    <title>SVG Strip Map Generator - User Guide - Guide 1: Stations</title>
+    <link rel="stylesheet" type="text/css" href="../test.css">
+    <meta content="Test" name="description">
+    <meta name="keywords" content="SVG, Strip, Map, Generator, User, Guide">
+    <meta name="viewport" content="initial-scale=1">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-58194930-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+<body onload="SMG_loadMap(obj_line1_v1, obj_iconGeneral, 'ank1-1'); SMG_loadMap(obj_line1_v2, obj_iconGeneral, 'ank1-2'); SMG_loadMap(obj_line1_v3, obj_iconGeneral, 'ank1-3'); docs_load('..')">
+<div id="top">
+      <div class="sm-navbar-container" id="navbar"></div>
+      <h1 style="background-color:#AAAAAA;color:white">Guide 1 - Stations</h1>
+      <p>In this guide, we will demonstrate the usage of fields relating to stations.</p>
+      <p>The following fields will be covered:</p>
+<ul>
+<li><code style="color:red">name</code></li>
+<li><code style="color:red">stationtype</code></li>
+<li><code style="color:red">icons</code></li>
+<li><code style="color:blue">dy</code></li>
+<li><code style="color:blue">textoffset</code></li>
+<li><code style="color:blue">iconshift</code></li>
+<li><code style="color:blue">xshift</code></li>
+</ul>
+      <div id="ank1-1"></div>
+      <p>Our unfortunate victim will be Ankara Metro Line 1 (map as of Dec 2018). <strong>Please note that some of the changes that we will make will be done solely for the sake of explaining the features that come with this system. Some of the things we will be doing are NOT recommended when it comes to this particular strip map. Most of the changes will NOT result in an accurate portrayal of the real world metro line.</strong></p>
+      <p>For now, let us observe the code used to generate Kızılay.</p>
+      <pre><code>        {
+            "name": ["Kızılay"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEM2_ANK"],
+                ["ICON_LINEAKR_ANK"]
+            ]
+        }</code></pre>
+      <p>Here we are only using the three required features - <code>name</code>, <code>stationtype</code>, and <code>icons</code>. Our basic station type for this map is a simple circle, as you can see below.</p>
+      <pre><code>    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "#DD0000"
+                }
+            ]
+        }
+    ]</code></pre>
+      <p>Currently, we have two rows of icons, one for the connection to M2, and the other for the connection to the Ankaray.</p>
+      <p>We will now discuss the four optional parameters for stations.</p>
+      <h3 style="background-color:#AAAAAA;color:white">Optional Field: dy and iconshift</h3>
+      <p>Let's begin with <code>dy</code>. We will focus on the first three stations and perform different offsets for each. We have adjusted the main line for this example (so that it still connects the station icons) and have also provided the original straight line in a lighter color.</p>
+      <div id="ank1-2"></div>
+      <pre><code>    "stations": [
+        {
+            "name": ["Kızılay"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEM2_ANK"],
+                ["ICON_LINEAKR_ANK"]
+            ],
+            "dy": 64
+        },
+        {
+            "name": ["Sıhhiye"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "dy": 32
+        },
+        {
+            "name": ["Ulus"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Atatürk Kültür Merkezi"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "dy": -32
+        },
+        {
+            "name": ["Akköprü"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "dy": -64
+        }
+    ]</code></pre>
+      <p>As you can observe, by adding a value for <code>dy</code>, we offset both the station and its name, but NOT the icons. Adding a negative value makes them shift up. Adding a positive value makes them shift down. Values are in pixels.</p>
+      <p>Now, let's observe the change that occurs when adding <code>iconshift</code>.</p>
+      <div id="ank1-3"></div>
+      <pre><code>        {
+            "name": ["Kızılay"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEM2_ANK"],
+                ["ICON_LINEAKR_ANK"]
+            ],
+            "dy": 64,
+            "iconshift": true
+        }</code></pre>
+      <p>As seen in the example above, setting <code>iconshift</code> to <code>true</code> allows the icons to shift with the station and station name.</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+</div>
+
+    <script type="text/javascript" src="../docs.js"></script>
+    <script type="text/javascript" src="icon_general.js"></script>
+    <script type="text/javascript" src="line_g1.js"></script>
+    <script type="text/javascript" src="../strip-map-gen.js"></script>
+
+</body>
+</html>
