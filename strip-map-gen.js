@@ -6,11 +6,16 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     smsvg += '<rect width="2000" height="480" fill="white" />';
 
     // Define def patterns for icons. Loading all of them.
+    // Make sure to load them for all scales (hardcoded to 2)
     smsvg += '<defs>';
     for (let i = 0; i < iconobj.icons.length; i += 1) {
-        let lineIconSmall = iconobj.icons[i];
-        smsvg += '<pattern id="PATTERN_' + lineIconSmall.iconID + '" x="0" y="0" width="100%" height="100%" patternUnits="objectBoundingBox">';
-        smsvg += lineIconSmall.iconSVG;
+        let lineIcon = iconobj.icons[i];
+        let sc = lineIcon.scale;
+        smsvg += '<pattern id="PATTERN_' + lineIcon.iconID + '_SCALE1" x="0" y="0" width="100%" height="100%" patternUnits="objectBoundingBox">';
+        smsvg += "<g transform='scale(" + sc[0] + " " + sc[0] + ")'>" + lineIcon.iconSVG + "</g>";
+        smsvg += '</pattern>';
+        smsvg += '<pattern id="PATTERN_' + lineIcon.iconID + '_SCALE2" x="0" y="0" width="100%" height="100%" patternUnits="objectBoundingBox">';
+        smsvg += "<g transform='scale(" + sc[1] + " " + sc[1] + ")'>" + lineIcon.iconSVG + "</g>";
         smsvg += '</pattern>';
     }
     smsvg += '</defs>';
@@ -19,7 +24,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     let numicons = lineobj.iconID.length;
     let bigiconsize = 48;
     for (let j = 0; j < numicons; j += 1) {
-        smsvg += '<rect x="' + (20 + bigiconsize * j) + '" y="24" height="' + bigiconsize + '" width="' + bigiconsize + '" fill="url(#PATTERN_' + lineobj.iconID[j] + ')" />';
+        smsvg += '<rect x="' + (20 + bigiconsize * j) + '" y="24" height="' + bigiconsize + '" width="' + bigiconsize + '" fill="url(#PATTERN_' + lineobj.iconID[j] + '_SCALE1)" />';
     }
     smsvg += '<text x="' + (32 + bigiconsize * numicons) + '" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
@@ -146,7 +151,7 @@ function SMG_drawStations(lineobj, numstations) {
         // Draw Icons
         let stationIcons = currstn.icons;
         for (let j = 0; j < stationIcons.length; j += 1) {
-            stationsvg += '<rect x="' + (stationxpos - 16) + '" y="' + (iconycoord + 36*j) + '" height="32" width="32" fill="url(#PATTERN_' + stationIcons[j] + ')" />';
+            stationsvg += '<rect x="' + (stationxpos - 16) + '" y="' + (iconycoord + 36*j) + '" height="32" width="32" fill="url(#PATTERN_' + stationIcons[j] + '_SCALE2)" />';
         }
     }
     return stationsvg;
