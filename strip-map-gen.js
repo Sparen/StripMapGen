@@ -1,7 +1,7 @@
 "use strict"
 
 // This function takes a line object and icon object (required to include those scripts) and outputs to the specified target div
-function loadMap(lineobj, iconobj, targetdiv) {
+function SMG_loadMap(lineobj, iconobj, targetdiv) {
     let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 2000 480" version="1.1" xmlns="http://www.w3.org/2000/svg">';
     smsvg += '<rect width="2000" height="480" fill="white" />';
 
@@ -27,18 +27,18 @@ function loadMap(lineobj, iconobj, targetdiv) {
     const numstations = lineobj.stations.length;
 
     // Next, draw the line strokes
-    smsvg += drawLine(lineobj, numstations);
+    smsvg += SMG_drawLine(lineobj, numstations);
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
     // Note that station information must be retrieved
-    smsvg += drawStations(lineobj, numstations);
+    smsvg += SMG_drawStations(lineobj, numstations);
 
     smsvg += '</svg>';
     document.getElementById(targetdiv).innerHTML = smsvg;
 }
 
 // Returns SVG for the line paths
-function drawLine(lineobj, numstations) {
+function SMG_drawLine(lineobj, numstations) {
     let linepath = "";
     for (let i = 0; i < lineobj.strokes.length; i += 1) {
         let lineStroke = lineobj.strokes[i];
@@ -80,7 +80,7 @@ function drawLine(lineobj, numstations) {
 }
 
 // Returns SVG for the stations and their names
-function drawStations(lineobj, numstations) {
+function SMG_drawStations(lineobj, numstations) {
     let stationsvg = "";
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];
