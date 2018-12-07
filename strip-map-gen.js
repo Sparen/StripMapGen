@@ -22,11 +22,22 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
 
     // First, place the name of the line in the top left with its own icon
     let numicons = lineobj.iconID.length;
-    let bigiconsize = 48;
+    let linenamexoffset = 0; // Offset (based on size of icons)
     for (let j = 0; j < numicons; j += 1) {
-        smsvg += '<rect x="' + (20 + bigiconsize * j) + '" y="24" height="' + bigiconsize + '" width="' + bigiconsize + '" fill="url(#PATTERN_' + lineobj.iconID[j] + '_SCALE1)" />';
+        let tgtheight = 48;
+        let tgtwidth = 48;
+        // Search list of icons and retrieve the height + width
+        for (let i = 0; i < iconobj.icons.length; i += 1) {
+            let lineIcon = iconobj.icons[i];
+            if (lineIcon.iconID == lineobj.iconID[j]) {
+                tgtheight = lineIcon.height;
+                tgtwidth = lineIcon.width;
+            }
+        }
+        smsvg += '<rect x="' + (20 + linenamexoffset) + '" y="24" height="' + tgtheight + '" width="' + tgtwidth + '" fill="url(#PATTERN_' + lineobj.iconID[j] + '_SCALE1)" />';
+        linenamexoffset += tgtwidth;
     }
-    smsvg += '<text x="' + (32 + bigiconsize * numicons) + '" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
+    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
     // Number of stations. Used for spacing and placement
     const numstations = lineobj.stations.length;
