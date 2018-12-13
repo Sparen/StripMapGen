@@ -4,6 +4,7 @@ function render() {
     // NOTE: Hardcoded!
     render_block(obj_iconNYC_IRT, "div_nyc1");
     render_block(obj_iconNYC_BMTIND, "div_nyc2");
+    render_block(obj_iconAnkara, "div_ankara");
 }
 
 function render_block(icon, targetdiv) {
