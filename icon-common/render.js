@@ -5,6 +5,8 @@ function render() {
     render_block(obj_iconNYC_IRT, "div_nyc1");
     render_block(obj_iconNYC_BMTIND, "div_nyc2");
     render_block(obj_iconAnkara, "div_ankara");
+    render_block(obj_iconTokyoSubway, "div_tokyo_subway");
+    render_block(obj_iconToeiSubway, "div_toei_subway");
 }
 
 function render_block(icon, targetdiv) {
