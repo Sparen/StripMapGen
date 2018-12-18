@@ -318,9 +318,16 @@ var obj_line1_v5 = {
             "stypeID": "STATION_TYPEA",
             "stnnodes": [
                 {
-                    "stationsvg": "<path d='M 16 0 L 0 16 L 16 32 L 32 16 z' stroke-width='4px' stroke='#DD0000' fill='white'></path>",
-                    "stationwidth": 32,
-                    "stationheight": 32,
+                    "stationsvg": "<path d='M 20 0 L 0 20 L 20 40 L 40 20 z' stroke-width='4px' stroke='#DD0000' fill='white'></path>",
+                    "stationwidth": 40,
+                    "stationheight": 40,
+                    "scolor": "#DD0000",
+                    "componenttype": "CUSTOM"
+                },
+                {
+                    "stationsvg": "<text x='20' y='20' font-family='Verdana' font-size='18px' fill='#DD0000' text-anchor='middle' dominant-baseline='central'>M</text>",
+                    "stationwidth": 40,
+                    "stationheight": 40,
                     "scolor": "#DD0000",
                     "componenttype": "CUSTOM"
                 }

@@ -27,8 +27,9 @@
 <li><code style="color:red">stationtype</code></li>
 <li><code style="color:red">icons</code></li>
 <li><code style="color:blue">dy</code></li>
-<li><code style="color:blue">textoffset</code></li>
 <li><code style="color:blue">iconshift</code></li>
+<li><code style="color:blue">textoffset</code></li>
+<li><code style="color:blue">iconoffset</code></li>
 <li><code style="color:blue">xshift</code></li>
 </ul>
       <div id="ank1-1"></div>
@@ -134,8 +135,8 @@
         }</code></pre>
       <p>As seen in the example above, setting <code>iconshift</code> to <code>true</code> allows the icons to shift with the station and station name.</p>
       <p><code>dy</code> and <code>iconshift</code> are commonly used fields due to the prevalence of branching lines, where there may be a need to move stations, station names, and perhaps icons.</p>
-      <h3 style="background-color:#AAAAAA;color:white">Optional Field: textoffset</h3>
-      <p>Next we will cover text offsets. This is the distance between the center of the station icon and the text itself, and defaults to -16px. In contrast to <code>dy</code>, which moves the icon AND the text, <code>textoffset</code> only moves the text itself. This is particularly useful if your station icons are particularly large or if they are variable sized. In the next guide, we will cover cases where this text offset is necessary for readability.</p>
+      <h3 style="background-color:#AAAAAA;color:white">Optional Field: textoffset and iconoffset</h3>
+      <p>Next we will cover text and icon offsets. These are the distance between the center of the station icon and the text/icons themselves, and default to -16px and 16px respectively. In contrast to <code>dy</code>, which moves the icon AND the text, <code>textoffset</code> and <code>iconoffset</code> only move the text/icons themselves. This is particularly useful if your station icons are particularly large or if they are variable sized. In the next guide, we will cover cases where this text offset is necessary for readability.</p>
       <div id="ank1-4"></div>
       <pre><code>        {
             "name": ["Kızılay"],
@@ -176,9 +177,9 @@
             "textoffset": -64
         }</code></pre>
       <p>As can be observed, there is still an initial offset maintained. when no <code>textoffset</code> is specified and it is additive with the specified text offsets (in pixels).</p>
-      <p>Let's see <code>textoffset</code> used in a more realistic scenario.</p>
+      <p>Let's see <code>textoffset</code> used in a more realistic scenario. Here we also use <code>iconoffset</code>.</p>
       <div id="ank1-5"></div>
-      <p></p>
+      <p>Here we have created a custom station icon that is 40x40. Without the text and icon offsets, the text and icons would render on top of the icon itself. As this is undesirable, <code>textoffset</code> and <code>iconoffset</code> provide much needed offsets for a more pleasant map.</p>
       <h3 style="background-color:#AAAAAA;color:white">Optional Field: xshift</h3>
       <p></p>
       <p></p>
