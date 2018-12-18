@@ -303,3 +303,69 @@ var obj_line1_v4 = {
         }
     ]
 };
+
+var obj_line1_v5 = {
+    "linename": "Example 4 - textoffset (in a reasonable scenario",
+    "iconID": ["ICON_LINEM1_ANK"],
+    "strokes": [
+        {
+            "color": "#DD0000",
+            "strokewidth": "8px"
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationwidth": 16,
+                    "stationheight": 16,
+                    "scolor": "#DD0000",
+                    "componenttype": "CUSTOM"
+                }
+            ]
+        }
+    ],
+    "stations": [
+        {
+            "name": ["Kızılay"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEM2_ANK"],
+                ["ICON_LINEAKR_ANK"]
+            ],
+            "textoffset": -16
+        },
+        {
+            "name": ["Sıhhiye"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEBKR_ANK"]
+            ],
+            "textoffset": -16
+        },
+        {
+            "name": ["Ulus"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -16
+        },
+        {
+            "name": ["Atatürk Kültür Merkezi"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEM4_ANK"]
+            ],
+            "textoffset": -16
+        },
+        {
+            "name": ["Akköprü"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -16
+        }
+    ]
+};

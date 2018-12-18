@@ -43,18 +43,18 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     const numstations = lineobj.stations.length;
 
     // Next, draw the line strokes
-    smsvg += SMG_drawLine(lineobj, numstations);
+    smsvg += SVG_drawLine(lineobj, numstations);
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
     // Note that station information must be retrieved
-    smsvg += SMG_drawStations(lineobj, numstations, iconobj);
+    smsvg += SVG_drawStations(lineobj, numstations, iconobj);
 
     smsvg += '</svg>';
     document.getElementById(targetdiv).innerHTML = smsvg;
 }
 
 // Returns SVG for the line paths
-function SMG_drawLine(lineobj, numstations) {
+function SVG_drawLine(lineobj, numstations) {
     let linepath = "";
     for (let i = 0; i < lineobj.strokes.length; i += 1) {
         let lineStroke = lineobj.strokes[i];
@@ -96,7 +96,7 @@ function SMG_drawLine(lineobj, numstations) {
 }
 
 // Returns SVG for the stations and their names
-function SMG_drawStations(lineobj, numstations, iconobj) {
+function SVG_drawStations(lineobj, numstations, iconobj) {
     let stationsvg = "";
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];
@@ -139,14 +139,18 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             if ("fcolor" in currstntype) {
                 nodefill = currstntype.fcolor;
             }
+            let nodestroke = 'black';
+            if ("scolor" in currstntype) {
+                nodestroke = currstntype.scolor;
+            }
             let yoffset = 0;
             if ("dy" in currstntype) {
                 yoffset = currstntype.dy;
             }
             if ("componenttype" in currstntype && currstntype.componenttype === "RECT") {
-                stationsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2 + yoffset) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></rect>';
+                stationsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2 + yoffset) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + nodestroke + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></rect>';
             } else {
-                stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + currstntype.scolor + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></circle>';
+                stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + nodestroke + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></circle>';
             }
         }
         // Station Name(s)
