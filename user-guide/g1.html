@@ -16,12 +16,12 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="SMG_loadMap(obj_line1_v1, obj_iconAnkara, 'ank1-1'); SMG_loadMap(obj_line1_v2, obj_iconAnkara, 'ank1-2'); SMG_loadMap(obj_line1_v3, obj_iconAnkara, 'ank1-3'); docs_load('..')">
+<body onload="SMG_loadMap(obj_line1_v1, obj_iconAnkara, 'ank1-1'); SMG_loadMap(obj_line1_v2, obj_iconAnkara, 'ank1-2'); SMG_loadMap(obj_line1_v3, obj_iconAnkara, 'ank1-3'); SMG_loadMap(obj_line1_v4, obj_iconAnkara, 'ank1-4'); docs_load('..')">
 <div id="top">
       <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Guide 1 - Stations</h1>
       <p>In this guide, we will demonstrate the usage of fields relating to stations. Source code for this guide can be found <a href="line_g1.js">here</a>.</p>
-      <p>The following fields will be covered:</p>
+      <p>The following fields in the <code>stations</code> field of the line object will be covered:</p>
 <ul>
 <li><code style="color:red">name</code></li>
 <li><code style="color:red">stationtype</code></li>
@@ -135,6 +135,48 @@
       <p>As seen in the example above, setting <code>iconshift</code> to <code>true</code> allows the icons to shift with the station and station name.</p>
       <p><code>dy</code> and <code>iconshift</code> are commonly used fields due to the prevalence of branching lines, where there may be a need to move stations, station names, and perhaps icons.</p>
       <h3 style="background-color:#AAAAAA;color:white">Optional Field: textoffset</h3>
+      <p>Next we will cover text offsets. This is the distance between the center of the station icon and the text itself, and defaults to -16px. In contrast to <code>dy</code>, which moves the icon AND the text, <code>textoffset</code> only moves the text itself. This is particularly useful if your station icons are particularly large or if they are variable sized. In the next guide, we will cover cases where this text offset is necessary for readability.</p>
+      <div id="ank1-4"></div>
+      <pre><code>        {
+            "name": ["Kızılay"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEM2_ANK"],
+                ["ICON_LINEAKR_ANK"]
+            ],
+            "textoffset": 64
+        },
+        {
+            "name": ["Sıhhiye"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEBKR_ANK"]
+            ],
+            "textoffset": 32
+        },
+        {
+            "name": ["Ulus"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Atatürk Kültür Merkezi"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEM4_ANK"]
+            ],
+            "textoffset": -32
+        },
+        {
+            "name": ["Akköprü"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -64
+        }</code></pre>
+      <p>As can be observed, there is still an initial offset maintained. when no <code>textoffset</code> is specified and it is additive with the specified text offsets (in pixels).</p>
+      <p></p>
       <h3 style="background-color:#AAAAAA;color:white">Optional Field: xshift</h3>
       <p></p>
       <p></p>
