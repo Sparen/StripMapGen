@@ -52,10 +52,11 @@
 
 <p>Each object in <code>stnnodes</code> contains the following options.</p>
 <ul>
-<li><code style="color:red">stationstrokewidth</code> - The stroke width of the station icon components.</li>
-<li><code style="color:blue">stationradius</code> - [CIRCLE ONLY] The radius of the circle station icon component.</li>
-<li><code style="color:blue">stationwidth</code> - [RECT/CUSTOM ONLY] The width of the station icon component.</li>
-<li><code style="color:blue">stationheight</code> - [RECT/CUSTOM ONLY] The width of the station icon component.</li>
+<li><code style="color:blue">stationstrokewidth</code> - The stroke width of the station icon components. Not used in CUSTOM.</li>
+<li><code style="color:blue">stationradius</code> - The radius of the circle station icon component. Only used in CIRCLE.</li>
+<li><code style="color:blue">stationwidth</code> - The width of the station icon component. Not used in CIRCLE.</li>
+<li><code style="color:blue">stationheight</code> - The width of the station icon component. Not used in CIRCLE.</li>
+<li><code style="color:blue">stationsvg</code> - The svg of the station icon component. Meant for usage when circles and rectangles are insufficient (e.g. text/custom paths). Only used in CUSTOM</li>
 <li><code style="color:blue">scolor</code> - The stroke color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Not used in CUSTOM. Defaults to black.</li>
 <li><code style="color:blue">fcolor</code> - The fill color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Not used in CUSTOM. Defaults to white.</li>
 <li><code style="color:blue">dy</code> - The vertical offset of the station icon component. Additive effect with same named field on the station objects.</li>

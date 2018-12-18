@@ -43,18 +43,18 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     const numstations = lineobj.stations.length;
 
     // Next, draw the line strokes
-    smsvg += SVG_drawLine(lineobj, numstations);
+    smsvg += SMG_drawLine(lineobj, numstations);
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
     // Note that station information must be retrieved
-    smsvg += SVG_drawStations(lineobj, numstations, iconobj);
+    smsvg += SMG_drawStations(lineobj, numstations, iconobj);
 
     smsvg += '</svg>';
     document.getElementById(targetdiv).innerHTML = smsvg;
 }
 
 // Returns SVG for the line paths
-function SVG_drawLine(lineobj, numstations) {
+function SMG_drawLine(lineobj, numstations) {
     let linepath = "";
     for (let i = 0; i < lineobj.strokes.length; i += 1) {
         let lineStroke = lineobj.strokes[i];
@@ -96,7 +96,7 @@ function SVG_drawLine(lineobj, numstations) {
 }
 
 // Returns SVG for the stations and their names
-function SVG_drawStations(lineobj, numstations, iconobj) {
+function SMG_drawStations(lineobj, numstations, iconobj) {
     let stationsvg = "";
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];
@@ -135,6 +135,10 @@ function SVG_drawStations(lineobj, numstations, iconobj) {
         let stationxpos = 128 + xshift + 1472/(numstations - 1) * i; // x position of station icon(s)
         for (let k = 0; k < stntypeobj.stnnodes.length; k += 1) {
             const currstntype = stntypeobj.stnnodes[k];
+            let stationstrokewidth = '4px';
+            if ("stationstrokewidth" in currstntype) {
+                stationstrokewidth = currstntype.stationstrokewidth;
+            }
             let nodefill = 'white';
             if ("fcolor" in currstntype) {
                 nodefill = currstntype.fcolor;
@@ -148,9 +152,11 @@ function SVG_drawStations(lineobj, numstations, iconobj) {
                 yoffset = currstntype.dy;
             }
             if ("componenttype" in currstntype && currstntype.componenttype === "RECT") {
-                stationsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2 + yoffset) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + nodestroke + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></rect>';
+                stationsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2 + yoffset) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></rect>';
+            } else if ("componenttype" in currstntype && currstntype.componenttype === "CUSTOM") {
+                stationsvg += '<g transform="translate(' + (currstntype.stationwidth/2) + '" "' + (currstntype.stationheight/2 + yoffset) + ')">' + currstntype.stationsvg + '</g>';
             } else {
-                stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + nodestroke + '" stroke-width="' + currstntype.stationstrokewidth + '" fill="' + nodefill + '"></circle>';
+                stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></circle>';
             }
         }
         // Station Name(s)

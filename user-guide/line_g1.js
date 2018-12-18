@@ -305,7 +305,7 @@ var obj_line1_v4 = {
 };
 
 var obj_line1_v5 = {
-    "linename": "Example 4 - textoffset (in a reasonable scenario",
+    "linename": "Example 4 - textoffset (in a reasonable scenario)",
     "iconID": ["ICON_LINEM1_ANK"],
     "strokes": [
         {
