@@ -113,7 +113,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         }
         // Handle offsets
         let ycoord = 240;
-        let iconycoord = 256;
+        let iconycoord = 240;
         let textycoord = 240;
         if ("dy" in currstn) {
             ycoord += currstn.dy;
@@ -122,10 +122,15 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
                 iconycoord += currstn.dy;
             }
         }
+        if ("iconoffset" in currstn) {
+                iconycoord += currstn.iconoffset;
+            } else {
+                iconycoord += 16; // Default is 16 pixels from path
+            }
         if ("textoffset" in currstn) {
             textycoord += currstn.textoffset;
         } else {
-            textycoord -= 16;
+            textycoord -= 16; // Default is 16 pixels from path
         }
         let xshift = 0;
         if ("xshift" in currstn) { // Shifts are relative to station positions rather than absolute
@@ -154,7 +159,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             if ("componenttype" in currstntype && currstntype.componenttype === "RECT") {
                 stationsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2 + yoffset) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></rect>';
             } else if ("componenttype" in currstntype && currstntype.componenttype === "CUSTOM") {
-                stationsvg += '<g transform="translate(' + (currstntype.stationwidth/2) + '" "' + (currstntype.stationheight/2 + yoffset) + ')">' + currstntype.stationsvg + '</g>';
+                stationsvg += '<g transform="translate(' + (stationxpos - currstntype.stationwidth/2) + ' ' + (ycoord - currstntype.stationheight/2 + yoffset) + ')">' + currstntype.stationsvg + '</g>';
             } else {
                 stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></circle>';
             }

@@ -318,9 +318,9 @@ var obj_line1_v5 = {
             "stypeID": "STATION_TYPEA",
             "stnnodes": [
                 {
-                    "stationstrokewidth": 4,
-                    "stationwidth": 16,
-                    "stationheight": 16,
+                    "stationsvg": "<path d='M 16 0 L 0 16 L 16 32 L 32 16 z' stroke-width='4px' stroke='#DD0000' fill='white'></path>",
+                    "stationwidth": 32,
+                    "stationheight": 32,
                     "scolor": "#DD0000",
                     "componenttype": "CUSTOM"
                 }
@@ -335,7 +335,8 @@ var obj_line1_v5 = {
                 ["ICON_LINEM2_ANK"],
                 ["ICON_LINEAKR_ANK"]
             ],
-            "textoffset": -16
+            "textoffset": -32,
+            "iconoffset": 32
         },
         {
             "name": ["Sıhhiye"],
@@ -343,14 +344,16 @@ var obj_line1_v5 = {
             "icons": [
                 ["ICON_LINEBKR_ANK"]
             ],
-            "textoffset": -16
+            "textoffset": -32,
+            "iconoffset": 32
         },
         {
             "name": ["Ulus"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
-            "textoffset": -16
+            "textoffset": -32,
+            "iconoffset": 32
         },
         {
             "name": ["Atatürk Kültür Merkezi"],
@@ -358,14 +361,16 @@ var obj_line1_v5 = {
             "icons": [
                 ["ICON_LINEM4_ANK"]
             ],
-            "textoffset": -16
+            "textoffset": -32,
+            "iconoffset": 32
         },
         {
             "name": ["Akköprü"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
-            "textoffset": -16
+            "textoffset": -32,
+            "iconoffset": 32
         }
     ]
 };
