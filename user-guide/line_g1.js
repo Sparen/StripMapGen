@@ -342,8 +342,8 @@ var obj_line1_v5 = {
                 ["ICON_LINEM2_ANK"],
                 ["ICON_LINEAKR_ANK"]
             ],
-            "textoffset": -32,
-            "iconoffset": 32
+            "textoffset": -28,
+            "iconoffset": 28
         },
         {
             "name": ["Sıhhiye"],
@@ -351,16 +351,16 @@ var obj_line1_v5 = {
             "icons": [
                 ["ICON_LINEBKR_ANK"]
             ],
-            "textoffset": -32,
-            "iconoffset": 32
+            "textoffset": -28,
+            "iconoffset": 28
         },
         {
             "name": ["Ulus"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
-            "textoffset": -32,
-            "iconoffset": 32
+            "textoffset": -28,
+            "iconoffset": 28
         },
         {
             "name": ["Atatürk Kültür Merkezi"],
@@ -368,16 +368,73 @@ var obj_line1_v5 = {
             "icons": [
                 ["ICON_LINEM4_ANK"]
             ],
-            "textoffset": -32,
-            "iconoffset": 32
+            "textoffset": -28,
+            "iconoffset": 28
         },
         {
             "name": ["Akköprü"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
-            "textoffset": -32,
-            "iconoffset": 32
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["İvedik"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Yenimahalle"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Demetevler"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Hastane"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Macunköy"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Ostim"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Batıkent"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+                ["ICON_LINEM3_ANK"]
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
         }
     ]
 };
