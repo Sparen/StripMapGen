@@ -111,6 +111,15 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             console.log("Error: Station type " + currstn.stationtype + " associated with station with name " + currstn.name + " was not found.");
             return;
         }
+        // Station Name fields
+        let stationnamefont = "Arial";
+        let stationnamefontsize = "16px";
+        if ("stnfonttype" in stntypeobj) {
+            stationnamefont = stntypeobj.stnfonttype;
+        }
+        if ("stnfontsize" in stntypeobj) {
+            stationnamefontsize = stntypeobj.stnfontsize;
+        }
         // Handle offsets
         let ycoord = 240;
         let iconycoord = 240;
@@ -165,7 +174,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             }
         }
         // Station Name(s)
-        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="Arial" font-size="16px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">';
+        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="' + stationnamefont + '" font-size="' + stationnamefontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">';
         let stationNames = currstn.name;
         for (let j = 0; j < stationNames.length; j += 1) {
             let stnNameDY = 16; // In the future, needs to be a factor of font size
