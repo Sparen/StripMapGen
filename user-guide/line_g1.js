@@ -438,3 +438,265 @@ var obj_line1_v5 = {
         }
     ]
 };
+
+var obj_line1_v6 = {
+    "linename": "Example 5 - xshift regions",
+    "iconID": ["ICON_LINEM1_ANK"],
+    "strokes": [
+        {
+            "color": "#DD0000",
+            "strokewidth": "8px"
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 0,
+            "endpoint": 0
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 1,
+            "endpoint": 1
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 2,
+            "endpoint": 2
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 3,
+            "endpoint": 3
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 4,
+            "endpoint": 4
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stnnodes": [
+                {
+                    "stationsvg": "<path d='M 20 0 L 0 20 L 20 40 L 40 20 z' stroke-width='4px' stroke='#DD0000' fill='white'></path>",
+                    "stationwidth": 40,
+                    "stationheight": 40,
+                    "scolor": "#DD0000",
+                    "componenttype": "CUSTOM"
+                },
+                {
+                    "stationsvg": "<text x='20' y='20' font-family='Verdana' font-size='18px' fill='#DD0000' text-anchor='middle' dominant-baseline='central'>M</text>",
+                    "stationwidth": 40,
+                    "stationheight": 40,
+                    "scolor": "#DD0000",
+                    "componenttype": "CUSTOM"
+                }
+            ]
+        }
+    ],
+    "stations": [
+        {
+            "name": ["Akköprü"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28,
+        },
+        {
+            "name": ["İvedik"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Yenimahalle"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Demetevler"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Hastane"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        }
+    ]
+};
+
+var obj_line1_v7 = {
+    "linename": "Example 7 - xshift applied",
+    "iconID": ["ICON_LINEM1_ANK"],
+    "strokes": [
+        {
+            "color": "#DD0000",
+            "strokewidth": "8px"
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 0,
+            "endpoint": 0
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 0.25,
+            "endpoint": 0.25
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 0.5,
+            "endpoint": 0.5
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 0.75,
+            "endpoint": 0.75
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 1,
+            "endpoint": 1
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 1.25,
+            "endpoint": 1.25
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 1.5,
+            "endpoint": 1.5
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 1.75,
+            "endpoint": 1.75
+        },
+        {
+            "color": "#AAAAFF",
+            "strokewidth": "4px",
+            "startlinkheight": 128,
+            "endlinkheight": -128,
+            "startpoint": 2,
+            "endpoint": 2
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stnnodes": [
+                {
+                    "stationsvg": "<path d='M 20 0 L 0 20 L 20 40 L 40 20 z' stroke-width='4px' stroke='#DD0000' fill='white'></path>",
+                    "stationwidth": 40,
+                    "stationheight": 40,
+                    "scolor": "#DD0000",
+                    "componenttype": "CUSTOM"
+                },
+                {
+                    "stationsvg": "<text x='20' y='20' font-family='Verdana' font-size='18px' fill='#DD0000' text-anchor='middle' dominant-baseline='central'>M</text>",
+                    "stationwidth": 40,
+                    "stationheight": 40,
+                    "scolor": "#DD0000",
+                    "componenttype": "CUSTOM"
+                }
+            ]
+        }
+    ],
+    "stations": [
+        {
+            "name": ["Akköprü"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28,
+            "xshift": 0.25
+        },
+        {
+            "name": ["İvedik"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Yenimahalle"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Demetevler"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28
+        },
+        {
+            "name": ["Hastane"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28,
+            "xshift": -0.25
+        }
+    ]
+};

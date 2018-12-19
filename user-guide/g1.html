@@ -16,7 +16,7 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="SMG_loadMap(obj_line1_v1, obj_iconAnkara, 'ank1-1'); SMG_loadMap(obj_line1_v2, obj_iconAnkara, 'ank1-2'); SMG_loadMap(obj_line1_v3, obj_iconAnkara, 'ank1-3'); SMG_loadMap(obj_line1_v4, obj_iconAnkara, 'ank1-4'); SMG_loadMap(obj_line1_v5, obj_iconAnkara, 'ank1-5'); docs_load('..')">
+<body onload="SMG_loadMap(obj_line1_v1, obj_iconAnkara, 'ank1-1'); SMG_loadMap(obj_line1_v2, obj_iconAnkara, 'ank1-2'); SMG_loadMap(obj_line1_v3, obj_iconAnkara, 'ank1-3'); SMG_loadMap(obj_line1_v4, obj_iconAnkara, 'ank1-4'); SMG_loadMap(obj_line1_v5, obj_iconAnkara, 'ank1-5'); SMG_loadMap(obj_line1_v6, obj_iconAnkara, 'ank1-6');  SMG_loadMap(obj_line1_v7, obj_iconAnkara, 'ank1-7'); docs_load('..')">
 <div id="top">
       <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Guide 1 - Stations</h1>
@@ -181,11 +181,34 @@
       <div id="ank1-5"></div>
       <p>Here we have created a custom station icon that is 40x40. Without the text and icon offsets, the text and icons would render on top of the icon itself. As this is undesirable, <code>textoffset</code> and <code>iconoffset</code> provide much needed offsets for a more pleasant map.</p>
       <h3 style="background-color:#AAAAAA;color:white">Optional Field: xshift</h3>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p><code>xshift</code> is one of the more unique attributes that can be applied to a station. Its primary use is with branching lines - see <a href="../test-helsinki/test-helsinki.html">Helsinki Example</a> for a working example.</p>
+      <p>For now, we will review what <code>xshift</code> does.</p>
+      <div id="ank1-6"></div>
+      <p><code>xshift</code>, along with the <code>startpoint</code> and <code>endpoint</code> attributes of the stroke object definitions, work in units of stations rather than pixels. The five lines in blue are drawn at positions 0, 1, 2, 3, and 4, respectively.</p>
+      <p>Let's say (for sake of example) that we want to shift the terminals in by a distance equivalent to a quarter of the distance between stations.</p>
+      <div id="ank1-7"></div>
+      <pre><code>        {
+            "name": ["Akköprü"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28,
+            "xshift": 0.25
+        },
+        ...
+        {
+            "name": ["Hastane"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ],
+            "textoffset": -28,
+            "iconoffset": 28,
+            "xshift": -0.25
+        }</code></pre>
+      <p>The blue lines here mark quarter segments of the standard distance between two stations as defined by the number of stations. As you can see, <code>xshift</code> has shifted the terminals by exactly one of these one quarter segments.</p>
+      <p>Of course <code>xshift</code> is not useful at all for this particular scenario, but it is quite useful for more complex lines.</p>
+      <p>Refer to Unit 2 of the User Guide for an example on how to utilize <code>xshift</code> with branching lines.</p>
 </div>
 
     <script type="text/javascript" src="../docs.js"></script>
