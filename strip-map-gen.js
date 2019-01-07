@@ -104,6 +104,14 @@ function SMG_drawLine(lineobj, numstations) {
 // Returns SVG for the stations and their names
 function SMG_drawStations(lineobj, numstations, iconobj) {
     let stationsvg = "";
+    let fonttype = "Arial";
+    if ("fonttype" in lineobj) {
+        fonttype = lineobj.fonttype;
+    }
+    let texticonfontsize = 20; // Default: 20 px for text icons
+    if ("texticonfontsize" in lineobj) {
+        texticonfontsize = lineobj.texticonfontsize;
+    }
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];
         // First, before drawing, determine station features
@@ -195,16 +203,24 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         for (let j = 0; j < stationIcons.length; j += 1) {
             let currmaxht = 0; // Max height for any icon on current line
             let currline = stationIcons[j];
+            let iconfound = false; // Whether or not the icon was found. If not found, defaults to printing the text.
             // First run, get the max height for this row
             for (let k = 0; k < currline.length; k += 1) {
                 let curricon = currline[k]; // Name of current icon in the line
                 // Search list of icons and retrieve the max height
                 for (let l = 0; l < iconobj.icons.length; l += 1) {
                     let lineIcon = iconobj.icons[l];
-                    if (curricon == lineIcon.iconID && lineIcon.height * lineIcon.scale[1] > currmaxht) {
-                        currmaxht = lineIcon.height * lineIcon.scale[1];
+                    if (curricon === lineIcon.iconID) {
+                        if (lineIcon.height * lineIcon.scale[1] > currmaxht) {
+                            currmaxht = lineIcon.height * lineIcon.scale[1];
+                        }
+                        iconfound = true;
                     }
                 }
+            }
+            // If icon not  found, default to a value for height. TODO: Height should depend on font size of text
+            if (!iconfound) {
+                currmaxht = texticonfontsize;
             }
             // Second run, render the icons
             // For each icon in the line, get necessary information for rendering
@@ -214,15 +230,21 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
                 let curriconwd = 0;
                 for (let l = 0; l < iconobj.icons.length; l += 1) {
                     let lineIcon = iconobj.icons[l];
-                    if (curricon == lineIcon.iconID) {
+                    if (curricon === lineIcon.iconID) {
                         curriconht = lineIcon.height * lineIcon.scale[1];
                         curriconwd = lineIcon.width * lineIcon.scale[1];
                     } 
                 }
-                // NOTE: Current x position rendering assumes icons in same line have same width
-                let iconoffset = curriconwd * k - curriconwd * (currline.length - 1)/2; // e.g. if two icons, they're centered around the main coord
-                let currx = (stationxpos - curriconwd/2 + iconoffset) // Station position, offset left to center rect. Then depends on number of elements in row
-                stationsvg += '<rect x="' + currx + '" y="' + (iconycoord + totalmaxht) + '" height="' + curriconht + '" width="' + curriconwd + '" fill="url(#PATTERN_' + curricon + '_SCALE2)" />';
+                // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
+                if (!iconfound) {
+                    let currx = stationxpos // Station position. Assumes centered in x dir around station
+                    stationsvg += '<text x="' + currx + '" y="' + (iconycoord + totalmaxht + texticonfontsize/2) + '" font-family="' + fonttype + '" font-size="' + texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + curricon + '</text>';
+                } else {
+                    // NOTE: Current x position rendering assumes icons in same line have same width
+                    let iconoffset = curriconwd * k - curriconwd * (currline.length - 1)/2; // e.g. if two icons, they're centered around the main coord
+                    let currx = (stationxpos - curriconwd/2 + iconoffset) // Station position, offset left to center rect. Then depends on number of elements in row
+                    stationsvg += '<rect x="' + currx + '" y="' + (iconycoord + totalmaxht) + '" height="' + curriconht + '" width="' + curriconwd + '" fill="url(#PATTERN_' + curricon + '_SCALE2)" />';
+                }
             }
             totalmaxht += currmaxht * (1.125); // 1.125 multiplier puts buffer space between rows vertically
         }
