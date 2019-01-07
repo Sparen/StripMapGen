@@ -2,7 +2,7 @@
 
 // This function takes a line object and icon object (required to include those scripts) and outputs to the specified target div
 function SMG_loadMap(lineobj, iconobj, targetdiv) {
-    let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 2000 480" version="1.1" xmlns="http://www.w3.org/2000/svg">';
+    let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 2000 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
     smsvg += '<rect width="2000" height="480" fill="white" stroke="#EEEEEE" stroke-width="2"/>';
 
     // Define def patterns for icons. Loading all of them.
