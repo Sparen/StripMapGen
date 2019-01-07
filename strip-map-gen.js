@@ -20,6 +20,12 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     }
     smsvg += '</defs>';
 
+    // Load other line-specific data
+    let fonttype = "Arial";
+    if ("fonttype" in lineobj) {
+        fonttype = lineobj.fonttype;
+    }
+
     // First, place the name of the line in the top left with its own icon
     let numicons = lineobj.iconID.length;
     let linenamexoffset = 0; // Offset (based on size of icons)
@@ -37,7 +43,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
         smsvg += '<rect x="' + (20 + linenamexoffset) + '" y="24" height="' + tgtheight + '" width="' + tgtwidth + '" fill="url(#PATTERN_' + lineobj.iconID[j] + '_SCALE1)" />';
         linenamexoffset += tgtwidth;
     }
-    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="48" font-family="Arial" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
+    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="48" font-family="' + fonttype +'" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
     // Number of stations. Used for spacing and placement
     const numstations = lineobj.stations.length;
