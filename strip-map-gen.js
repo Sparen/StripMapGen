@@ -118,15 +118,9 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             console.log("Error: Station type " + currstn.stationtype + " associated with station with name " + currstn.name + " was not found.");
             return;
         }
-        // Station Name fields
-        let stationnamefont = "Arial";
-        let stationnamefontsize = "16px";
-        if ("stnfonttype" in stntypeobj) {
-            stationnamefont = stntypeobj.stnfonttype;
-        }
-        if ("stnfontsize" in stntypeobj) {
-            stationnamefontsize = stntypeobj.stnfontsize;
-        }
+        // Set defaults for station name font/size/etc if they have not been set
+        SMG_stationTypeObjSetDefault(stntypeobj);
+
         // Handle offsets
         let ycoord = 240;
         let iconycoord = 240;
@@ -181,7 +175,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             }
         }
         // Station Name(s)
-        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="' + stationnamefont + '" font-size="' + stationnamefontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">';
+        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">';
         let stationNames = currstn.name;
         for (let j = 0; j < stationNames.length; j += 1) {
             let stnNameDY = 16; // In the future, needs to be a factor of font size
@@ -262,7 +256,17 @@ function SMG_lineObjSetDefault(lineobj) {
         lineobj.fonttype = "Arial"; // Default: Main font is Arial
     }
     if (!("texticonfontsize" in lineobj)) {
-        lineobj.texticonfontsize = 20; // Default: 20 px for text icons
+        lineobj.texticonfontsize = "20px"; // Default: 20 px for text icons
+    }
+}
+
+// If the station type object does not have certain fields, sets default values
+function SMG_stationTypeObjSetDefault(stntypeobj) {
+    if (!("stnfonttype" in stntypeobj)) {
+        stntypeobj.stnfonttype = "Arial"; // Default: Main font is Arial
+    }
+    if (!("stnfontsize" in stntypeobj)) {
+        stntypeobj.stnfontsize = "16px"; // Default: 16 px for text icons
     }
 }
 
