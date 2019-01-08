@@ -5,26 +5,11 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 2000 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
     smsvg += '<rect width="2000" height="480" fill="white" stroke="#EEEEEE" stroke-width="2"/>';
 
-    // Define def patterns for icons. Loading all of them.
-    // Make sure to load them for all scales (hardcoded to 2)
-    smsvg += '<defs>';
-    for (let i = 0; i < iconobj.icons.length; i += 1) {
-        let lineIcon = iconobj.icons[i];
-        let sc = lineIcon.scale;
-        smsvg += '<pattern id="PATTERN_' + lineIcon.iconID + '_SCALE1" x="0" y="0" width="100%" height="100%" patternUnits="objectBoundingBox">';
-        smsvg += "<g transform='scale(" + sc[0] + " " + sc[0] + ")'>" + lineIcon.iconSVG + "</g>";
-        smsvg += '</pattern>';
-        smsvg += '<pattern id="PATTERN_' + lineIcon.iconID + '_SCALE2" x="0" y="0" width="100%" height="100%" patternUnits="objectBoundingBox">';
-        smsvg += "<g transform='scale(" + sc[1] + " " + sc[1] + ")'>" + lineIcon.iconSVG + "</g>";
-        smsvg += '</pattern>';
-    }
-    smsvg += '</defs>';
+    // Load icon patterns into the SVG
+    smsvg += SMG_setPatternDefinitions(iconobj);
 
     // Load other line-specific data
-    let fonttype = "Arial";
-    if ("fonttype" in lineobj) {
-        fonttype = lineobj.fonttype;
-    }
+    SMG_lineObjSetDefault(lineobj);
 
     // First, place the name of the line in the top left with its own icon
     let numicons = lineobj.iconID.length;
@@ -43,7 +28,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
         smsvg += '<rect x="' + (20 + linenamexoffset) + '" y="24" height="' + tgtheight + '" width="' + tgtwidth + '" fill="url(#PATTERN_' + lineobj.iconID[j] + '_SCALE1)" />';
         linenamexoffset += tgtwidth;
     }
-    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="48" font-family="' + fonttype +'" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
+    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="48" font-family="' + lineobj.fonttype +'" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
     // Number of stations. Used for spacing and placement
     const numstations = lineobj.stations.length;
@@ -57,6 +42,24 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
 
     smsvg += '</svg>';
     document.getElementById(targetdiv).innerHTML = smsvg;
+}
+
+// Define def patterns for icons. Loading all of them.
+// Make sure to load them for all scales (hardcoded to 2)
+function SMG_setPatternDefinitions(iconobj) {
+    let pdefs = '<defs>';
+    for (let i = 0; i < iconobj.icons.length; i += 1) {
+        let lineIcon = iconobj.icons[i];
+        let sc = lineIcon.scale;
+        pdefs += '<pattern id="PATTERN_' + lineIcon.iconID + '_SCALE1" x="0" y="0" width="100%" height="100%" patternUnits="objectBoundingBox">';
+        pdefs += "<g transform='scale(" + sc[0] + " " + sc[0] + ")'>" + lineIcon.iconSVG + "</g>";
+        pdefs += '</pattern>';
+        pdefs += '<pattern id="PATTERN_' + lineIcon.iconID + '_SCALE2" x="0" y="0" width="100%" height="100%" patternUnits="objectBoundingBox">';
+        pdefs += "<g transform='scale(" + sc[1] + " " + sc[1] + ")'>" + lineIcon.iconSVG + "</g>";
+        pdefs += '</pattern>';
+    }
+    pdefs += '</defs>';
+    return pdefs;
 }
 
 // Returns SVG for the line paths
@@ -104,14 +107,6 @@ function SMG_drawLine(lineobj, numstations) {
 // Returns SVG for the stations and their names
 function SMG_drawStations(lineobj, numstations, iconobj) {
     let stationsvg = "";
-    let fonttype = "Arial";
-    if ("fonttype" in lineobj) {
-        fonttype = lineobj.fonttype;
-    }
-    let texticonfontsize = 20; // Default: 20 px for text icons
-    if ("texticonfontsize" in lineobj) {
-        texticonfontsize = lineobj.texticonfontsize;
-    }
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];
         // First, before drawing, determine station features
@@ -220,7 +215,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             }
             // If icon not  found, default to a value for height. TODO: Height should depend on font size of text
             if (!iconfound) {
-                currmaxht = texticonfontsize;
+                currmaxht = lineobj.texticonfontsize;
             }
             // Second run, render the icons
             // For each icon in the line, get necessary information for rendering
@@ -238,7 +233,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
                 // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
                 if (!iconfound) {
                     let currx = stationxpos // Station position. Assumes centered in x dir around station
-                    stationsvg += '<text x="' + currx + '" y="' + (iconycoord + totalmaxht + texticonfontsize/2) + '" font-family="' + fonttype + '" font-size="' + texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + curricon + '</text>';
+                    stationsvg += '<text x="' + currx + '" y="' + (iconycoord + totalmaxht + lineobj.texticonfontsize/2) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + curricon + '</text>';
                 } else {
                     // NOTE: Current x position rendering assumes icons in same line have same width
                     let iconoffset = curriconwd * k - curriconwd * (currline.length - 1)/2; // e.g. if two icons, they're centered around the main coord
@@ -251,3 +246,18 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
     }
     return stationsvg;
 }
+
+/* ---------------- Accessory Functions ---------------- */
+
+// If the line object does not have certain fields, sets default values
+function SMG_lineObjSetDefault(lineobj) {
+    if (!("fonttype" in lineobj)) {
+        lineobj.fonttype = "Arial"; // Default: Main font is Arial
+    }
+    if (!("texticonfontsize" in lineobj)) {
+        lineobj.texticonfontsize = 20; // Default: 20 px for text icons
+    }
+}
+
+
+
