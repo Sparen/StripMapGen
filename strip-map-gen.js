@@ -18,12 +18,10 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
         let tgtheight = 48;
         let tgtwidth = 48;
         // Search list of icons and retrieve the height + width
-        for (let i = 0; i < iconobj.icons.length; i += 1) {
-            let lineIcon = iconobj.icons[i];
-            if (lineIcon.iconID == lineobj.iconID[j]) {
-                tgtheight = lineIcon.height;
-                tgtwidth = lineIcon.width;
-            }
+        let lineIcon = SMG_getIconByID(iconobj, lineobj.iconID[j]);
+        if (!(lineIcon === null)) {
+            tgtheight = lineIcon.height;
+            tgtwidth = lineIcon.width;
         }
         smsvg += '<rect x="' + (20 + linenamexoffset) + '" y="24" height="' + tgtheight + '" width="' + tgtwidth + '" fill="url(#PATTERN_' + lineobj.iconID[j] + '_SCALE1)" />';
         linenamexoffset += tgtwidth;
@@ -195,6 +193,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         // Draw Icons
         let stationIcons = currstn.icons;
         let totalmaxht = 0;
+        // For every array (visually, horizontal line) of icons
         for (let j = 0; j < stationIcons.length; j += 1) {
             let currmaxht = 0; // Max height for any icon on current line
             let currline = stationIcons[j];
@@ -203,14 +202,12 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             for (let k = 0; k < currline.length; k += 1) {
                 let curricon = currline[k]; // Name of current icon in the line
                 // Search list of icons and retrieve the max height
-                for (let l = 0; l < iconobj.icons.length; l += 1) {
-                    let lineIcon = iconobj.icons[l];
-                    if (curricon === lineIcon.iconID) {
-                        if (lineIcon.height * lineIcon.scale[1] > currmaxht) {
-                            currmaxht = lineIcon.height * lineIcon.scale[1];
-                        }
-                        iconfound = true;
+                let lineIcon = SMG_getIconByID(iconobj, curricon);
+                if (!(lineIcon === null)) {
+                    if (lineIcon.height * lineIcon.scale[1] > currmaxht) {
+                        currmaxht = lineIcon.height * lineIcon.scale[1];
                     }
+                    iconfound = true;
                 }
             }
             // If icon not  found, default to a value for height. TODO: Height should depend on font size of text
@@ -223,12 +220,10 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
                 let curricon = currline[k];
                 let curriconht = 0;
                 let curriconwd = 0;
-                for (let l = 0; l < iconobj.icons.length; l += 1) {
-                    let lineIcon = iconobj.icons[l];
-                    if (curricon === lineIcon.iconID) {
-                        curriconht = lineIcon.height * lineIcon.scale[1];
-                        curriconwd = lineIcon.width * lineIcon.scale[1];
-                    } 
+                let lineIcon = SMG_getIconByID(iconobj, curricon);
+                if (!(lineIcon === null)) {
+                    curriconht = lineIcon.height * lineIcon.scale[1];
+                    curriconwd = lineIcon.width * lineIcon.scale[1];
                 }
                 // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
                 if (!iconfound) {
@@ -248,6 +243,18 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
 }
 
 /* ---------------- Accessory Functions ---------------- */
+
+// Returns the icon object associated with the provided ID, or null if DNE
+function SMG_getIconByID(iconobj, iconID) {
+    for (let i = 0; i < iconobj.icons.length; i += 1) {
+        let lineIcon = iconobj.icons[i];
+        if (lineIcon.iconID === iconID) {
+            return lineIcon;
+        }
+    }
+    console.log("Strip Map Generator - Warning: Attempted to find Icon with ID " + iconID + " but it was not found.");
+    return null;
+}
 
 // If the line object does not have certain fields, sets default values
 function SMG_lineObjSetDefault(lineobj) {
