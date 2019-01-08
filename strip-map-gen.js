@@ -133,10 +133,10 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             }
         }
         if ("iconoffset" in currstn) {
-                iconycoord += currstn.iconoffset;
-            } else {
-                iconycoord += 16; // Default is 16 pixels from path
-            }
+            iconycoord += currstn.iconoffset;
+        } else {
+            iconycoord += 16; // Default is 16 pixels from path
+        }
         if ("textoffset" in currstn) {
             textycoord += currstn.textoffset;
         } else {
@@ -148,32 +148,8 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         }
         // Draw Station components
         let stationxpos = 128 + xshift + 1472/(numstations - 1) * i; // x position of station icon(s)
-        for (let k = 0; k < stntypeobj.stnnodes.length; k += 1) {
-            const currstntype = stntypeobj.stnnodes[k];
-            let stationstrokewidth = '4px';
-            if ("stationstrokewidth" in currstntype) {
-                stationstrokewidth = currstntype.stationstrokewidth;
-            }
-            let nodefill = 'white';
-            if ("fcolor" in currstntype) {
-                nodefill = currstntype.fcolor;
-            }
-            let nodestroke = 'black';
-            if ("scolor" in currstntype) {
-                nodestroke = currstntype.scolor;
-            }
-            let yoffset = 0;
-            if ("dy" in currstntype) {
-                yoffset = currstntype.dy;
-            }
-            if ("componenttype" in currstntype && currstntype.componenttype === "RECT") {
-                stationsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2 + yoffset) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></rect>';
-            } else if ("componenttype" in currstntype && currstntype.componenttype === "CUSTOM") {
-                stationsvg += '<g transform="translate(' + (stationxpos - currstntype.stationwidth/2) + ' ' + (ycoord - currstntype.stationheight/2 + yoffset) + ')">' + currstntype.stationsvg + '</g>';
-            } else {
-                stationsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></circle>';
-            }
-        }
+        stationsvg += SMG_drawStationComponents(stntypeobj, stationxpos, ycoord);
+
         // Station Name(s)
         stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">';
         let stationNames = currstn.name;
@@ -184,56 +160,97 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
             stationsvg += '<tspan x="' + (stationxpos + stnNameDY * j) + '" dy="' + (stnNameDY) + '">' + stationNames[j] + '</tspan>';
         }
         stationsvg += '</text>';
+
         // Draw Icons
-        let stationIcons = currstn.icons;
-        let totalmaxht = 0;
-        // For every array (visually, horizontal line) of icons
-        for (let j = 0; j < stationIcons.length; j += 1) {
-            let currmaxht = 0; // Max height for any icon on current line
-            let currline = stationIcons[j];
-            let iconfound = false; // Whether or not the icon was found. If not found, defaults to printing the text.
-            // First run, get the max height for this row
-            for (let k = 0; k < currline.length; k += 1) {
-                let curricon = currline[k]; // Name of current icon in the line
-                // Search list of icons and retrieve the max height
-                let lineIcon = SMG_getIconByID(iconobj, curricon);
-                if (!(lineIcon === null)) {
-                    if (lineIcon.height * lineIcon.scale[1] > currmaxht) {
-                        currmaxht = lineIcon.height * lineIcon.scale[1];
-                    }
-                    iconfound = true;
-                }
-            }
-            // If icon not  found, default to a value for height. TODO: Height should depend on font size of text
-            if (!iconfound) {
-                currmaxht = lineobj.texticonfontsize;
-            }
-            // Second run, render the icons
-            // For each icon in the line, get necessary information for rendering
-            for (let k = 0; k < currline.length; k += 1) {
-                let curricon = currline[k];
-                let curriconht = 0;
-                let curriconwd = 0;
-                let lineIcon = SMG_getIconByID(iconobj, curricon);
-                if (!(lineIcon === null)) {
-                    curriconht = lineIcon.height * lineIcon.scale[1];
-                    curriconwd = lineIcon.width * lineIcon.scale[1];
-                }
-                // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
-                if (!iconfound) {
-                    let currx = stationxpos // Station position. Assumes centered in x dir around station
-                    stationsvg += '<text x="' + currx + '" y="' + (iconycoord + totalmaxht + lineobj.texticonfontsize/2) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + curricon + '</text>';
-                } else {
-                    // NOTE: Current x position rendering assumes icons in same line have same width
-                    let iconoffset = curriconwd * k - curriconwd * (currline.length - 1)/2; // e.g. if two icons, they're centered around the main coord
-                    let currx = (stationxpos - curriconwd/2 + iconoffset) // Station position, offset left to center rect. Then depends on number of elements in row
-                    stationsvg += '<rect x="' + currx + '" y="' + (iconycoord + totalmaxht) + '" height="' + curriconht + '" width="' + curriconwd + '" fill="url(#PATTERN_' + curricon + '_SCALE2)" />';
-                }
-            }
-            totalmaxht += currmaxht * (1.125); // 1.125 multiplier puts buffer space between rows vertically
-        }
+        stationsvg += SMG_drawStationIcons(currstn.icons, iconobj, stationxpos, iconycoord);
     }
     return stationsvg;
+}
+
+// Helper function for SMG_drawStations that handles station components
+// Takes a Station Type Object and x/y coordinates and returns SVG for a single station
+function SMG_drawStationComponents(stntypeobj, stationxpos, ycoord) {
+    let stnsvg = "";
+    for (let k = 0; k < stntypeobj.stnnodes.length; k += 1) {
+        const currstntype = stntypeobj.stnnodes[k];
+        let stationstrokewidth = '4px';
+        if ("stationstrokewidth" in currstntype) {
+            stationstrokewidth = currstntype.stationstrokewidth;
+        }
+        let nodefill = 'white';
+        if ("fcolor" in currstntype) {
+            nodefill = currstntype.fcolor;
+        }
+        let nodestroke = 'black';
+        if ("scolor" in currstntype) {
+            nodestroke = currstntype.scolor;
+        }
+        let yoffset = 0;
+        if ("dy" in currstntype) {
+            yoffset = currstntype.dy;
+        }
+        if ("componenttype" in currstntype && currstntype.componenttype === "RECT") {
+            stnsvg += '<rect x="' + (stationxpos - currstntype.stationwidth/2) + '" y="' + (ycoord - currstntype.stationheight/2 + yoffset) + '" height="' + currstntype.stationheight + '" width="' + currstntype.stationwidth + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></rect>';
+        } else if ("componenttype" in currstntype && currstntype.componenttype === "CUSTOM") {
+            stnsvg += '<g transform="translate(' + (stationxpos - currstntype.stationwidth/2) + ' ' + (ycoord - currstntype.stationheight/2 + yoffset) + ')">' + currstntype.stationsvg + '</g>';
+        } else {
+            stnsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></circle>';
+        }
+    }
+    return stnsvg;
+}
+
+// Helper function for SMG_drawStations that handles station icons
+// Takes a station's icon list, the master icon object, and station x/icon y coordinates. Returns SVG for a single station's icons
+function SMG_drawStationIcons(stationIcons, iconobj, stationxpos, iconycoord) {
+    let iconsvg = "";
+    let totalmaxht = 0;
+    // For every array (visually, horizontal line) of icons
+    for (let j = 0; j < stationIcons.length; j += 1) {
+        let currmaxht = 0; // Max height for any icon on current line
+        let currline = stationIcons[j];
+        let iconfound = false; // Whether or not the icon was found. If not found, defaults to printing the text.
+        // First run, get the max height for this row
+        for (let k = 0; k < currline.length; k += 1) {
+            let curricon = currline[k]; // Name of current icon in the line
+            // Search list of icons and retrieve the max height
+            let lineIcon = SMG_getIconByID(iconobj, curricon);
+            if (!(lineIcon === null)) {
+                if (lineIcon.height * lineIcon.scale[1] > currmaxht) {
+                    currmaxht = lineIcon.height * lineIcon.scale[1];
+                }
+                iconfound = true;
+            }
+        }
+        // If icon not  found, default to a value for height. TODO: Height should depend on font size of text
+        if (!iconfound) {
+            currmaxht = lineobj.texticonfontsize;
+        }
+        // Second run, render the icons
+        // For each icon in the line, get necessary information for rendering
+        for (let k = 0; k < currline.length; k += 1) {
+            let curricon = currline[k];
+            let curriconht = 0;
+            let curriconwd = 0;
+            let lineIcon = SMG_getIconByID(iconobj, curricon);
+            if (!(lineIcon === null)) {
+                curriconht = lineIcon.height * lineIcon.scale[1];
+                curriconwd = lineIcon.width * lineIcon.scale[1];
+            }
+            // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
+            if (!iconfound) {
+                let currx = stationxpos // Station position. Assumes centered in x dir around station
+                iconsvg += '<text x="' + currx + '" y="' + (iconycoord + totalmaxht + lineobj.texticonfontsize/2) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + curricon + '</text>';
+            } else {
+                // NOTE: Current x position rendering assumes icons in same line have same width
+                let iconoffset = curriconwd * k - curriconwd * (currline.length - 1)/2; // e.g. if two icons, they're centered around the main coord
+                let currx = (stationxpos - curriconwd/2 + iconoffset) // Station position, offset left to center rect. Then depends on number of elements in row
+                iconsvg += '<rect x="' + currx + '" y="' + (iconycoord + totalmaxht) + '" height="' + curriconht + '" width="' + curriconwd + '" fill="url(#PATTERN_' + curricon + '_SCALE2)" />';
+            }
+        }
+        totalmaxht += currmaxht * (1.125); // 1.125 multiplier puts buffer space between rows vertically
+    }
+    return iconsvg;
 }
 
 /* ---------------- Accessory Functions ---------------- */
@@ -249,6 +266,9 @@ function SMG_getIconByID(iconobj, iconID) {
     console.log("Strip Map Generator - Warning: Attempted to find Icon with ID " + iconID + " but it was not found.");
     return null;
 }
+
+// DEFAULTS: These functions set defaults as it the fields will be utilized multiple times in different locations.
+// Fields that are only utilized in one location will have their default set elsewhere.
 
 // If the line object does not have certain fields, sets default values
 function SMG_lineObjSetDefault(lineobj) {
