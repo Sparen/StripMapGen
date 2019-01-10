@@ -722,14 +722,7 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE_NONE",
             "icons": [
             ],
-            "textoffset": -28,
-            "customsvg": [
-                {
-                    "nodewidth": 32,
-                    "nodeheight": 40,
-                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>12</text>"
-                }
-            ]
+            "textoffset": -28
         },
         {
             "name": ["Aoyamakoen"],
@@ -746,7 +739,7 @@ var obj_lineC = {
                 {
                     "nodewidth": 32,
                     "nodeheight": 40,
-                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>13</text>"
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>12</text>"
                 }
             ]
         },
@@ -765,7 +758,7 @@ var obj_lineC = {
                 {
                     "nodewidth": 32,
                     "nodeheight": 40,
-                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>14</text>"
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>13</text>"
                 }
             ]
         },
@@ -784,7 +777,7 @@ var obj_lineC = {
                 {
                     "nodewidth": 32,
                     "nodeheight": 40,
-                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>15</text>"
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>14</text>"
                 }
             ]
         },
@@ -801,7 +794,7 @@ var obj_lineC = {
                 {
                     "nodewidth": 32,
                     "nodeheight": 40,
-                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>16</text>"
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>15</text>"
                 }
             ]
         },
@@ -819,7 +812,7 @@ var obj_lineC = {
                 {
                     "nodewidth": 32,
                     "nodeheight": 40,
-                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>17</text>"
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>16</text>"
                 }
             ]
         },
@@ -837,7 +830,7 @@ var obj_lineC = {
                 {
                     "nodewidth": 32,
                     "nodeheight": 40,
-                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>18</text>"
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>17</text>"
                 }
             ]
         },
@@ -854,7 +847,7 @@ var obj_lineC = {
                 {
                     "nodewidth": 32,
                     "nodeheight": 40,
-                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>19</text>"
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>18</text>"
                 }
             ]
         }
