@@ -60,7 +60,7 @@
 <li><code style="color:blue">stationstrokewidth</code> - The stroke width of the station icon components. Not used in CUSTOM.</li>
 <li><code style="color:blue">stationradius</code> - The radius of the circle station icon component. Only used in CIRCLE.</li>
 <li><code style="color:blue">stationwidth</code> - The width of the station icon component. Not used in CIRCLE.</li>
-<li><code style="color:blue">stationheight</code> - The width of the station icon component. Not used in CIRCLE.</li>
+<li><code style="color:blue">stationheight</code> - The height of the station icon component. Not used in CIRCLE.</li>
 <li><code style="color:blue">stationsvg</code> - The svg of the station icon component. Meant for usage when circles and rectangles are insufficient (e.g. text/custom paths). Only used in CUSTOM</li>
 <li><code style="color:blue">scolor</code> - The stroke color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Not used in CUSTOM. Defaults to black.</li>
 <li><code style="color:blue">fcolor</code> - The fill color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Not used in CUSTOM. Defaults to white.</li>
@@ -78,10 +78,19 @@
 <li><code style="color:blue">textoffset</code> - Sets y offset for text (distance between center of station icon and text). Defaults to -16px. Stacks with dy.</li>
 <li><code style="color:blue">iconoffset</code> - Sets y offset for icon (distance between center of station icon and text). Defaults to 16px. Stacks with dy + iconshift.</li>
 <li><code style="color:blue">xshift</code> - Offsets the station position using the distance between stations. Refer to <a href="./test-helsinki/test-helsinki.html">Helsinki example</a> for usage.</li>
+<li><code style="color:blue">customsvg</code> - Array of custom station SVG objects.</li>
 </ul>
+
+<p>The optional <code>customsvg</code> field of the station object is an array of objects that has the following options. This is optional and is primarily utilized for station numbers/elements that are different between stations. If used, width, height, and svg must all be provided. For a working example, refer to Test 3 in the <a href="./test-internal/test-internal.html">Internal Test Suite</a>.</p>
+<ul>
+<li><code style="color:red">nodewidth</code> - The width of the extra node.</li>
+<li><code style="color:red">nodeheight</code> - The height of the extra node.</li>
+<li><code style="color:red">nodesvg</code> - The svg of the extra node.</li>
+</ul>
+
     </div>
       <h1 style="background-color:#AAAAAA;color:white">Icons</h1>
-      <div>The SVG Strip Map Generator also uses reusable icon defintions.</div>
+      <div>The SVG Strip Map Generator also uses reusable icon definitions.</div>
     <div>
 <p>Each icon object has a single <code>icons</code> field which is an array of objects with the following specification:</p>
 <ul>

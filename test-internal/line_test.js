@@ -520,7 +520,7 @@ var obj_lineC = {
                     "componenttype": "CUSTOM"
                 },
                 {
-                    "stationsvg": "<text x='16' y='12' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>14</text>",
+                    "stationsvg": "<text x='16' y='12' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>N</text>",
                     "stationwidth": 32,
                     "stationheight": 40,
                     "scolor": "#FFAAAA",
@@ -546,7 +546,7 @@ var obj_lineC = {
                     "componenttype": "CUSTOM"
                 },
                 {
-                    "stationsvg": "<text x='16' y='12' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>14</text>",
+                    "stationsvg": "<text x='16' y='12' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>N</text>",
                     "stationwidth": 32,
                     "stationheight": 40,
                     "scolor": "#FFAAAA",
@@ -563,49 +563,98 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>01</text>"
+                }
+            ]
         },
         {
             "name": ["Maple Road"],
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>02</text>"
+                }
+            ]
         },
         {
             "name": ["Evergreen Lane"],
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>03</text>"
+                }
+            ]
         },
         {
             "name": ["Vine Avenue"],
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>04</text>"
+                }
+            ]
         },
         {
             "name": ["Cherrygrove Parkway"],
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>05</text>"
+                }
+            ]
         },
         {
             "name": ["Ivy Road"],
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>06</text>"
+                }
+            ]
         },
         {
             "name": ["Route 32"],
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>07</text>"
+                }
+            ]
         },
         {
             "name": ["Broad Street East"],
@@ -614,14 +663,28 @@ var obj_lineC = {
                 ["ICON_LINE16"],
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>08</text>"
+                }
+            ]
         },
         {
             "name": ["Museum"],
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>09</text>"
+                }
+            ]
         },
         {
             "name": ["Central Plaza"],
@@ -631,21 +694,42 @@ var obj_lineC = {
                 ["Bus Terminal"]
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>10</text>"
+                }
+            ]
         },
         {
             "name": ["Southriver", "Park"],
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>11</text>"
+                }
+            ]
         },
         {
             "name": [""],
             "stationtype": "STATION_TYPE_NONE",
             "icons": [
             ],
-            "textoffset": -28
+            "textoffset": -28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>12</text>"
+                }
+            ]
         },
         {
             "name": ["Aoyamakoen"],
@@ -657,7 +741,14 @@ var obj_lineC = {
                 ["園"]
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>13</text>"
+                }
+            ]
         },
         {
             "name": ["City University"],
@@ -669,7 +760,14 @@ var obj_lineC = {
                 ["学"]
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>14</text>"
+                }
+            ]
         },
         {
             "name": ["Kaigandori"],
@@ -681,7 +779,14 @@ var obj_lineC = {
                 ["り"]
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>15</text>"
+                }
+            ]
         },
         {
             "name": ["Yamato"],
@@ -691,7 +796,14 @@ var obj_lineC = {
                 ["和"]
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>16</text>"
+                }
+            ]
         },
         {
             "name": ["Suizenji"],
@@ -702,7 +814,14 @@ var obj_lineC = {
                 ["寺"]
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>17</text>"
+                }
+            ]
         },
         {
             "name": ["Odairamachi"],
@@ -713,7 +832,14 @@ var obj_lineC = {
                 ["町"]
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>18</text>"
+                }
+            ]
         },
         {
             "name": ["Nagareyama"],
@@ -723,7 +849,14 @@ var obj_lineC = {
                 ["山"]
             ],
             "textoffset": -28,
-            "iconoffset": 28
+            "iconoffset": 28,
+            "customsvg": [
+                {
+                    "nodewidth": 32,
+                    "nodeheight": 40,
+                    "nodesvg": "<text x='16' y='28' font-family='Futura' font-size='16px' fill='#FF8888' text-anchor='middle' dominant-baseline='central'>19</text>"
+                }
+            ]
         }
     ]
 };

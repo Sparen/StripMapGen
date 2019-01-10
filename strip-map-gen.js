@@ -148,7 +148,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         }
         // Draw Station components
         let stationxpos = 128 + xshift + 1472/(numstations - 1) * i; // x position of station icon(s)
-        stationsvg += SMG_drawStationComponents(stntypeobj, stationxpos, ycoord);
+        stationsvg += SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord);
 
         // Station Name(s)
         stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">';
@@ -169,7 +169,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
 
 // Helper function for SMG_drawStations that handles station components
 // Takes a Station Type Object and x/y coordinates and returns SVG for a single station
-function SMG_drawStationComponents(stntypeobj, stationxpos, ycoord) {
+function SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord) {
     let stnsvg = "";
     for (let k = 0; k < stntypeobj.stnnodes.length; k += 1) {
         const currstntype = stntypeobj.stnnodes[k];
@@ -195,6 +195,14 @@ function SMG_drawStationComponents(stntypeobj, stationxpos, ycoord) {
             stnsvg += '<g transform="translate(' + (stationxpos - currstntype.stationwidth/2) + ' ' + (ycoord - currstntype.stationheight/2 + yoffset) + ')">' + currstntype.stationsvg + '</g>';
         } else {
             stnsvg += '<circle cx="' + (stationxpos) + '" cy="' + (ycoord + yoffset) + '" r="' + currstntype.stationradius + '" stroke="' + nodestroke + '" stroke-width="' + stationstrokewidth + '" fill="' + nodefill + '"></circle>';
+        }
+
+        // Draw extra components
+        if ("customsvg" in currstn) {
+            for (let l = 0; l < currstn.customsvg.length; l += 1) {
+                let stnextranode = currstn.customsvg[l];
+                stnsvg += '<g transform="translate(' + (stationxpos - stnextranode.nodewidth/2) + ' ' + (ycoord - stnextranode.nodeheight/2 + yoffset) + ')">' + stnextranode.nodesvg + '</g>';
+            }
         }
     }
     return stnsvg;
