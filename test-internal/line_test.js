@@ -2,6 +2,7 @@ var obj_lineA = {
     "linename": "Lines 11 & 12",
     "iconID": ["ICON_LINE11", "ICON_LINE12"],
     "fonttype": "DIN Alternate",
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
             "color": "#FFAA00",
@@ -315,6 +316,7 @@ var obj_lineB = {
     "linename": "13号线",
     "iconID": ["ICON_LINE13"],
     "fonttype": "'DIN Alternate', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'",
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
             "color": "#AACCFF",
@@ -494,6 +496,7 @@ var obj_lineC = {
     "linename": "14 - 流山線",
     "iconID": ["ICON_LINE14"],
     "fonttype": "'DIN Alternate', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
             "color": "#AACCFF",

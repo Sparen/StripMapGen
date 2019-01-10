@@ -1,6 +1,7 @@
 var obj_lineHel = {
     "linename": "Metrolinja",
     "iconID": ["ICON_LINEM"],
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>12/2018</text>",
     "strokes": [
         {
             "endpoint": 18.5,
@@ -222,6 +223,7 @@ var obj_lineHel = {
 var obj_lineHel2 = {
     "linename": "Metrolinja",
     "iconID": ["ICON_LINEM"],
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>12/2018</text>",
     "strokes": [
         {
             "startpoint": 3,

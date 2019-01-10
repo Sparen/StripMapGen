@@ -1,6 +1,7 @@
 var obj_line1_v1 = {
     "linename": "M1 - Batıkent Metrosu",
     "iconID": ["ICON_LINEM1_ANK"],
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>12/2018</text>",
     "strokes": [
         {
             "color": "#DD0000",

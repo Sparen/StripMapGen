@@ -11,6 +11,11 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     // Load other line-specific data
     SMG_lineObjSetDefault(lineobj);
 
+    // Background Custom SVG
+    if ("maincustomsvgbg" in lineobj) {
+        smsvg += lineobj.maincustomsvgbg;
+    }
+
     // First, place the name of the line in the top left with its own icon
     let numicons = lineobj.iconID.length;
     let linenamexoffset = 0; // Offset (based on size of icons)
@@ -37,6 +42,11 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     // Next, add the stations, their icons, and their names, rotated 45 degrees
     // Note that station information must be retrieved
     smsvg += SMG_drawStations(lineobj, numstations, iconobj);
+
+    // Foreground Custom SVG
+    if ("maincustomsvgfg" in lineobj) {
+        smsvg += lineobj.maincustomsvgfg;
+    }
 
     smsvg += '</svg>';
     document.getElementById(targetdiv).innerHTML = smsvg;
