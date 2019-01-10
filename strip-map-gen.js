@@ -162,7 +162,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         stationsvg += '</text>';
 
         // Draw Icons
-        stationsvg += SMG_drawStationIcons(currstn.icons, iconobj, stationxpos, iconycoord);
+        stationsvg += SMG_drawStationIcons(currstn.icons, lineobj, iconobj, stationxpos, iconycoord);
     }
     return stationsvg;
 }
@@ -201,8 +201,8 @@ function SMG_drawStationComponents(stntypeobj, stationxpos, ycoord) {
 }
 
 // Helper function for SMG_drawStations that handles station icons
-// Takes a station's icon list, the master icon object, and station x/icon y coordinates. Returns SVG for a single station's icons
-function SMG_drawStationIcons(stationIcons, iconobj, stationxpos, iconycoord) {
+// Takes a station's icon list, the line object, the master icon object, and station x/icon y coordinates. Returns SVG for a single station's icons
+function SMG_drawStationIcons(stationIcons, lineobj, iconobj, stationxpos, iconycoord) {
     let iconsvg = "";
     let totalmaxht = 0;
     // For every array (visually, horizontal line) of icons
@@ -239,12 +239,12 @@ function SMG_drawStationIcons(stationIcons, iconobj, stationxpos, iconycoord) {
             }
             // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
             if (!iconfound) {
-                let currx = stationxpos // Station position. Assumes centered in x dir around station
+                let currx = stationxpos; // Station position. Assumes centered in x dir around station
                 iconsvg += '<text x="' + currx + '" y="' + (iconycoord + totalmaxht + lineobj.texticonfontsize/2) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + curricon + '</text>';
             } else {
                 // NOTE: Current x position rendering assumes icons in same line have same width
                 let iconoffset = curriconwd * k - curriconwd * (currline.length - 1)/2; // e.g. if two icons, they're centered around the main coord
-                let currx = (stationxpos - curriconwd/2 + iconoffset) // Station position, offset left to center rect. Then depends on number of elements in row
+                let currx = (stationxpos - curriconwd/2 + iconoffset); // Station position, offset left to center rect. Then depends on number of elements in row
                 iconsvg += '<rect x="' + currx + '" y="' + (iconycoord + totalmaxht) + '" height="' + curriconht + '" width="' + curriconwd + '" fill="url(#PATTERN_' + curricon + '_SCALE2)" />';
             }
         }
@@ -263,7 +263,7 @@ function SMG_getIconByID(iconobj, iconID) {
             return lineIcon;
         }
     }
-    console.log("Strip Map Generator - Warning: Attempted to find Icon with ID " + iconID + " but it was not found.");
+    console.log("Strip Map Generator - Note: Attempted to find Icon with ID " + iconID + " but it was not found. Assuming it is a Text Icon");
     return null;
 }
 
@@ -276,7 +276,7 @@ function SMG_lineObjSetDefault(lineobj) {
         lineobj.fonttype = "Arial"; // Default: Main font is Arial
     }
     if (!("texticonfontsize" in lineobj)) {
-        lineobj.texticonfontsize = "20px"; // Default: 20 px for text icons
+        lineobj.texticonfontsize = 20; // Default: 20 px for text icons. Must use integer 20, not "20px", since math is performed.
     }
 }
 
@@ -286,7 +286,7 @@ function SMG_stationTypeObjSetDefault(stntypeobj) {
         stntypeobj.stnfonttype = "Arial"; // Default: Main font is Arial
     }
     if (!("stnfontsize" in stntypeobj)) {
-        stntypeobj.stnfontsize = "16px"; // Default: 16 px for text icons
+        stntypeobj.stnfontsize = 16; // Default: 16 px for text icons. Must use integer 16, not "16px", since math is performed.
     }
 }
 
