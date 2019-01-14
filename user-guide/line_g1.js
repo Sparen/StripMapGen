@@ -171,7 +171,7 @@ var obj_line1_v2 = {
 };
 
 var obj_line1_v3 = {
-    "linename": "Example 2 - dy with iconshift",
+    "linename": "Example 2 - dy with iconshift set to false",
     "iconID": ["ICON_LINEM1_ANK"],
     "strokes": [
         {
@@ -206,7 +206,7 @@ var obj_line1_v3 = {
                 ["ICON_LINEAKR_ANK"]
             ],
             "dy": 64,
-            "iconshift": true
+            "iconshift": false
         },
         {
             "name": ["Sıhhiye"],
@@ -215,7 +215,7 @@ var obj_line1_v3 = {
                 ["ICON_LINEBKR_ANK"]
             ],
             "dy": 32,
-            "iconshift": true
+            "iconshift": false
         },
         {
             "name": ["Ulus"],
@@ -230,7 +230,7 @@ var obj_line1_v3 = {
                 ["ICON_LINEM4_ANK"]
             ],
             "dy": -32,
-            "iconshift": true
+            "iconshift": false
         },
         {
             "name": ["Akköprü"],

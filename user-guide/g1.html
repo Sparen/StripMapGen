@@ -101,8 +101,8 @@
             "dy": -64
         }
     ]</code></pre>
-      <p>As you can observe, by adding a value for <code>dy</code>, we offset both the station and its name, but NOT the icons. Adding a negative value makes them shift up. Adding a positive value makes them shift down. Values are in pixels.</p>
-      <p>Now, let's observe the change that occurs when adding <code>iconshift</code>.</p>
+      <p>As you can observe, by adding a value for <code>dy</code>, we offset both the station and its name as well as the icons. Setting a negative value for dy makes them shift up. Setting a positive value makes them shift down. Values are in pixels.</p>
+      <p>Now, let's observe the change that occurs when adding <code>iconshift</code> and setting <code>iconshift</code> to false (<code>iconshift</code> is set to true by default).</p>
       <div id="ank1-3"></div>
       <pre><code>        {
             "name": ["Kızılay"],
@@ -112,7 +112,7 @@
                 ["ICON_LINEAKR_ANK"]
             ],
             "dy": 64,
-            "iconshift": true
+            "iconshift": false
         },
         {
             "name": ["Sıhhiye"],
@@ -121,7 +121,7 @@
                 ["ICON_LINEBKR_ANK"]
             ],
             "dy": 32,
-            "iconshift": true
+            "iconshift": false
         }
         ...
         {
@@ -131,10 +131,10 @@
                 ["ICON_LINEM4_ANK"]
             ],
             "dy": -32,
-            "iconshift": true
+            "iconshift": false
         }</code></pre>
-      <p>As seen in the example above, setting <code>iconshift</code> to <code>true</code> allows the icons to shift with the station and station name.</p>
-      <p><code>dy</code> and <code>iconshift</code> are commonly used fields due to the prevalence of branching lines, where there may be a need to move stations, station names, and perhaps icons.</p>
+      <p>As seen in the example above, setting <code>iconshift</code> to <code>false</code> prevents the icons from shifting with the station and station name.</p>
+      <p><code>dy</code> is a commonly used field due to the prevalence of branching lines, where there may be a need to move stations, station names, and perhaps icons. <code>iconshift</code> may have niche uses where moving the icon is undesirable (due to visibility concerns - especially where there are branches too close together, etc).</p>
       <h3 style="background-color:#AAAAAA;color:white">Optional Field: textoffset and iconoffset</h3>
       <p>Next we will cover text and icon offsets. These are the distance between the center of the station icon and the text/icons themselves, and default to -16px and 16px respectively. In contrast to <code>dy</code>, which moves the icon AND the text, <code>textoffset</code> and <code>iconoffset</code> only move the text/icons themselves. This is particularly useful if your station icons are particularly large or if they are variable sized. In the next guide, we will cover cases where this text offset is necessary for readability.</p>
       <div id="ank1-4"></div>

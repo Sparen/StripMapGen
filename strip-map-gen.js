@@ -138,7 +138,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         if ("dy" in currstn) {
             ycoord += currstn.dy;
             textycoord += currstn.dy;
-            if ("iconshift" in currstn && currstn.iconshift) {
+            if (!("iconshift" in currstn) || ("iconshift" in currstn && currstn.iconshift)) { // Iconshift is true by default.
                 iconycoord += currstn.dy;
             }
         }
