@@ -327,15 +327,26 @@ var obj_lineB = {
             "startpoint": 8,
             "endpoint": 8,
             "startlinkheight": -128,
-            "endlinkheight": 128
+            "endlinkheight": 128,
+            "linecap": "round"
         },
         {
             "color": "#AACCFF",
             "strokewidth": "20px",
             "startpoint": 16,
             "endpoint": 16,
+            "startlinkheight": -32,
+            "endlinkheight": 128,
+            "linecap": "round"
+        },
+        {
+            "color": "#AACCFF",
+            "strokewidth": "20px",
+            "startpoint": 17.2,
+            "endpoint": 16,
             "startlinkheight": -128,
-            "endlinkheight": 128
+            "endlinkheight": -32,
+            "linecap": "round"
         },
         {
             "color": "#FF00AA",
@@ -432,43 +443,43 @@ var obj_lineB = {
             ]
         },
         {
-            "name": ["天山北路"],
+            "name": ["天山北路", "Tianshan North Road"],
             "stationtype": "STATION_TYPE13",
             "icons": [
             ]
         },
         {
-            "name": ["平安大路"],
+            "name": ["平安大路", "Ping'an Avenue"],
             "stationtype": "STATION_TYPE13",
             "icons": [
             ]
         },
         {
-            "name": ["鲜花广场"],
+            "name": ["鲜花广场", "Flower Square"],
             "stationtype": "STATION_TYPE13",
             "icons": [
             ]
         },
         {
-            "name": ["大叔路"],
+            "name": ["大树路", "Dashu Road"],
             "stationtype": "STATION_TYPE13",
             "icons": [
             ]
         },
         {
-            "name": ["文化广场"],
+            "name": ["文化广场", "Cultural Square"],
             "stationtype": "STATION_TYPE13",
             "icons": [
             ]
         },
         {
-            "name": ["体育门"],
+            "name": ["体育门", "Sports Gate"],
             "stationtype": "STATION_TYPE13",
             "icons": [
             ]
         },
         {
-            "name": ["地铁大学"],
+            "name": ["地铁大学", "University of Metro Engineering"],
             "stationtype": "STATION_TYPE13",
             "icons": [
             ]
