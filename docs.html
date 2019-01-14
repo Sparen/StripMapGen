@@ -34,7 +34,8 @@
 <li><code style="color:blue">canvaswidth</code> - Canvas Width. Defaults to <code>480</code> pixels.</li>
 <li><code style="color:blue">lineheight</code> - Line Height. Controls how far down vertically the main line is. Defaults to <code>240</code> pixels.</li>
 <li><code style="color:blue">linestart</code> - Line Start x coordinate. Controls where the main line starts. Defaults to <code>128</code>.</li>
-<li><code style="color:blue">lineend</code> - Line End x coordinate. Controls where the main line ends. Defaults to <code>1600</code>.</li>
+<li><code style="color:blue">lineend</code> - Line End x coordinate. Controls where the main line ends and is used in determining the spacing between stations. Defaults to <code>1600</code>.</li>
+<li><code style="color:blue">stationspacing</code> - If set, locks the distance between stations to the specified value (in pixels). This completely disables the built-in automatic spacing. When using this option, the line strokes will also be scaled as their positions are based on the station spacing. In addition, the value of <code>lineend</code>, if set, is unused.</li>
 <li><code style="color:blue">fonttype</code> - Font type to use for general text (e.g. title). Defaults to Arial.</li>
 <li><code style="color:blue">texticonfontsize</code> - Font size to use for text icons. Defaults to <code>20</code>.</li>
 <li><code style="color:blue">maincustomsvgbg</code> - Custom SVG (renders in the background).</li>

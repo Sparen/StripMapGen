@@ -79,14 +79,18 @@ function SMG_drawLine(lineobj, numstations) {
         const LINE_RIGHT = lineobj.lineend;
         const LINE_HEIGHT = lineobj.lineheight;
         const LINE_WIDTH = lineobj.lineend - lineobj.linestart;
+        let LINE_STATION_SPACING = LINE_WIDTH/(numstations - 1); // Defaults to line width divided up evenly
+        if ("stationspacing" in lineobj) { // Change mode to override
+            LINE_STATION_SPACING = lineobj.stationspacing;
+        }
         let strokeStart = LINE_LEFT;
         let strokeEnd = LINE_RIGHT;
         // Note: It is possible to extend the line beyond the set bounds of 128 and 1600
         if ("startpoint" in lineStroke) {
-            strokeStart = LINE_LEFT + lineStroke.startpoint * LINE_WIDTH/(numstations - 1);
+            strokeStart = LINE_LEFT + lineStroke.startpoint * LINE_STATION_SPACING;
         }
         if ("endpoint" in lineStroke) {
-            strokeEnd = LINE_LEFT + lineStroke.endpoint * LINE_WIDTH/(numstations - 1);
+            strokeEnd = LINE_LEFT + lineStroke.endpoint * LINE_STATION_SPACING;
         }
         let ycoord = LINE_HEIGHT;
         if ("dy" in lineStroke) {
@@ -120,6 +124,10 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
     const LINE_RIGHT = lineobj.lineend;
     const LINE_HEIGHT = lineobj.lineheight;
     const LINE_WIDTH = lineobj.lineend - lineobj.linestart;
+    let LINE_STATION_SPACING = LINE_WIDTH/(numstations - 1); // Defaults to line width divided up evenly
+    if ("stationspacing" in lineobj) { // Change mode to override
+        LINE_STATION_SPACING = lineobj.stationspacing;
+    }
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];
         // First, before drawing, determine station features
@@ -159,10 +167,10 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         }
         let xshift = 0;
         if ("xshift" in currstn) { // Shifts are relative to station positions rather than absolute
-            xshift += LINE_WIDTH/(numstations - 1) * currstn.xshift;
+            xshift += LINE_STATION_SPACING * currstn.xshift;
         }
         // Draw Station components
-        let stationxpos = LINE_LEFT + xshift + LINE_WIDTH/(numstations - 1) * i; // x position of station icon(s)
+        let stationxpos = LINE_LEFT + xshift + LINE_STATION_SPACING * i; // x position of station icon(s)
         stationsvg += SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord);
 
         // Station Name(s)
