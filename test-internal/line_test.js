@@ -170,7 +170,7 @@ var obj_lineA = {
                 }
             ],
             "stnfonttype": "Source Sans Pro",
-            "stnfontsize": "18px",
+            "stnfontsize": 18,
             "stnfontangle": 55
         }
     ],
@@ -381,7 +381,7 @@ var obj_lineB = {
                 },
             ],
             "stnfonttype": "'Source Sans Pro', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'",
-            "stnfontsize": "18px"
+            "stnfontsize": 18
         }
     ],
     "stations": [
@@ -573,7 +573,7 @@ var obj_lineC = {
                 }
             ],
             "stnfonttype": "'Source Sans Pro', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
-            "stnfontsize": "18px",
+            "stnfontsize": 18,
             "stntextoffset": 28,
             "stniconoffset": 28
         }
@@ -984,7 +984,7 @@ var obj_lineD = {
                 }
             ],
             "stnfonttype": "Source Sans Pro",
-            "stnfontsize": "18px",
+            "stnfontsize": 18,
             "stnfontangle": 30
         }
     ],

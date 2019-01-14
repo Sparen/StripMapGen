@@ -178,13 +178,17 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         stationsvg += SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord);
 
         // Station Name(s)
-        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-' + stntypeobj.stnfontangle + ' ' + (stationxpos) + ' ' + (textycoord) + ')">';
         let stationNames = currstn.name;
-        for (let j = 0; j < stationNames.length; j += 1) {
-            let stnNameDY = 16; // In the future, needs to be a factor of font size
+        let numStationNames = stationNames.length;
+        let stnfontsize = stntypeobj.stnfontsize; // Station Text font size. Used for y padding.
+        // Typically, each additional line is rendered below the first. Therefore, we will shift the text up, and rotate around the last one.
+        let stnnametransform = 'transform="rotate(-' + stntypeobj.stnfontangle + ' ' + (stationxpos) + ' ' + (textycoord) + ')"';
+        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord - (numStationNames - 1) * stnfontsize) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" ' + stnnametransform + '>';
+        for (let j = 0; j < numStationNames; j += 1) {
+            let stnNameDY = stnfontsize; // In the future, needs to be a factor of font size
             if (j === 0) {stnNameDY = 0;} // Prevent the first name from shifting downwards - dy should only be applied to non-first elements
             // Note that x position shifted using stnNameDY: This forces alignment on the bottom 
-            stationsvg += '<tspan x="' + (stationxpos + stnNameDY * j) + '" dy="' + (stnNameDY) + '">' + stationNames[j] + '</tspan>';
+            stationsvg += '<tspan x="' + (stationxpos) + '" dy="' + (stnNameDY) + '">' + stationNames[j] + '</tspan>';
         }
         stationsvg += '</text>';
 
