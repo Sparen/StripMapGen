@@ -2,14 +2,13 @@
 
 // This function takes a line object and icon object (required to include those scripts) and outputs to the specified target div
 function SMG_loadMap(lineobj, iconobj, targetdiv) {
-    let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 2000 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
-    smsvg += '<rect width="2000" height="480" fill="white" stroke="#EEEEEE" stroke-width="2"/>';
+    // Load line-specific data
+    SMG_lineObjSetDefault(lineobj);
+    let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 ' + lineobj.canvaswidth + ' ' + lineobj.canvasheight + '" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
+    smsvg += '<rect width="' + lineobj.canvaswidth + '" height="' + lineobj.canvasheight + '" fill="white" stroke="#EEEEEE" stroke-width="2"/>';
 
     // Load icon patterns into the SVG
     smsvg += SMG_setPatternDefinitions(iconobj);
-
-    // Load other line-specific data
-    SMG_lineObjSetDefault(lineobj);
 
     // Background Custom SVG
     if ("maincustomsvgbg" in lineobj) {
@@ -290,6 +289,12 @@ function SMG_getIconByID(iconobj, iconID) {
 
 // If the line object does not have certain fields, sets default values
 function SMG_lineObjSetDefault(lineobj) {
+    if (!("canvaswidth" in lineobj)) {
+        lineobj.canvaswidth = 2000; // Default: 2000px
+    }
+    if (!("canvasheight" in lineobj)) {
+        lineobj.canvasheight = 480; // Default: 480px
+    }
     if (!("fonttype" in lineobj)) {
         lineobj.fonttype = "Arial"; // Default: Main font is Arial
     }
