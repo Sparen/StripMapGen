@@ -284,7 +284,13 @@ function SMG_drawStationIcons(stationIcons, lineobj, iconobj, stationxpos, icony
                 // NOTE: Current x position rendering assumes icons in same line have same width
                 let iconoffset = curriconwd * k - curriconwd * (currline.length - 1)/2; // e.g. if two icons, they're centered around the main coord
                 let currx = (stationxpos - curriconwd/2 + iconoffset); // Station position, offset left to center rect. Then depends on number of elements in row
+                if ("iconlink" in lineIcon) {
+                    iconsvg += '<a xlink:href="' + lineIcon.iconlink + '"><g>';
+                }
                 iconsvg += '<rect x="' + currx + '" y="' + (iconycoord + totalmaxht) + '" height="' + curriconht + '" width="' + curriconwd + '" fill="url(#PATTERN_' + curricon + '_SCALE2)" />';
+                if ("iconlink" in lineIcon) {
+                    iconsvg += '</g></a>';
+                }
             }
         }
         totalmaxht += currmaxht * (1.125); // 1.125 multiplier puts buffer space between rows vertically
