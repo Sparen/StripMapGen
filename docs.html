@@ -15,6 +15,9 @@
     ga('create', 'UA-58194930-1', 'auto');
     ga('send', 'pageview');
   </script>
+  <style>
+    code {background-color: #F0F0F0;}
+  </style>
 
 <body onload="docs_load('.')">
 <div id="top">
@@ -26,6 +29,7 @@
       <div>
 <p>Each line object has the following fields. <span style="color:red">Required fields are in red</span>, <span style="color:blue">Optional fields are in blue</span>.</p>
 <p>X and Y transforms require special note, as while Y transforms are all in pixels, most X transforms are in terms of stations and the distance between stations (which is calculated automatically based on the number of stations).</p>
+<p><strong>All fields that take pixel values must be numbers and NOT Strings. While <code>"16px"</code> may be fine in some cases, the values are often used as numbers in calculations.</strong></p>
 
 <ul>
 <li><code style="color:red">linename</code> - Name of the line. Displayed on each generated strip map in the top left.</li>
@@ -40,7 +44,7 @@
 <li><code style="color:blue">lineend</code> - Line End x coordinate. Controls where the main line ends and is used in determining the spacing between stations. Defaults to <code>1600</code>.</li>
 <li><code style="color:blue">stationspacing</code> - If set, locks the distance between stations to the specified value (in pixels). This completely disables the built-in automatic spacing. When using this option, the line strokes will also be scaled as their positions are based on the station spacing. In addition, the value of <code>lineend</code>, if set, is unused. Use this for left-aligned constant spaced maps.</li>
 <li><code style="color:blue">locknumstations</code> - If set, locks the spacing of stations to the generated default but with the number of stations specified here rather than the number of stations in the <code>stations</code> field of this line object. When using this options, the line strokes will NOT be scaled - their start and end positions will utilize the number of stations in the <code>stations</code> array. Use this for loop lines/non-straight maps. Does not work in conjunction with <code>stationspacing</code>.</li>
-<li><code style="color:blue">fonttype</code> - Font type to use for general text (e.g. title). Defaults to Arial.</li>
+<li><code style="color:blue">fonttype</code> - Font type to use for general text (e.g. title). Defaults to <code>"Arial"</code>.</li>
 <li><code style="color:blue">texticonfontsize</code> - Font size to use for text icons. Defaults to <code>20</code>.</li>
 <li><code style="color:blue">maincustomsvgbg</code> - Custom SVG (renders in the background).</li>
 <li><code style="color:blue">maincustomsvgfg</code> - Custom SVG (renders in the foreground).</li>
@@ -63,7 +67,7 @@
 <ul>
 <li><code style="color:red">stypeID</code> - The ID for the specified station, for cross referencing later.</li>
 <li><code style="color:red">stnnodes</code> - Array of nodes that are part of the station. See below for specification.</li>
-<li><code style="color:blue">stnfonttype</code> - Font Type to use for station names (for this type of station). Default is <code>"Arial">.</li>
+<li><code style="color:blue">stnfonttype</code> - Font Type to use for station names (for this type of station). Default is <code>"Arial"</code>.</li>
 <li><code style="color:blue">stnfontsize</code> - Font Type to use for station names (for this type of station). Default is <code>16</code>px.</li>
 <li><code style="color:blue">stnfontangle</code> - Angle offset at which to render station names (for this type of station). Default is <code>45</code> (degrees).</li>
 <li><code style="color:blue">stntextoffset</code> - Sets y offset for text (distance between center of station icon and text). Defaults to <code>16</code>px, with positive values going upwards. Stacks with an individual station object's <code>dy</code> and <code>textoffset</code>.</li>
@@ -77,10 +81,10 @@
 <li><code style="color:blue">stationwidth</code> - The width of the station icon component. Not used in CIRCLE.</li>
 <li><code style="color:blue">stationheight</code> - The height of the station icon component. Not used in CIRCLE.</li>
 <li><code style="color:blue">stationsvg</code> - The svg of the station icon component. Meant for usage when circles and rectangles are insufficient (e.g. text/custom paths). Only used in CUSTOM</li>
-<li><code style="color:blue">scolor</code> - The stroke color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Not used in CUSTOM. Defaults to black.</li>
-<li><code style="color:blue">fcolor</code> - The fill color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Not used in CUSTOM. Defaults to white.</li>
+<li><code style="color:blue">scolor</code> - The stroke color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Not used in CUSTOM. Defaults to <code>"black"</code>.</li>
+<li><code style="color:blue">fcolor</code> - The fill color of the station icon component. Supports Hex, RGB, and HTML/CSS standard colors. Not used in CUSTOM. Defaults to <code>"white"</code>.</li>
 <li><code style="color:blue">dy</code> - The vertical offset of the station icon component. Additive effect with same named field on the station objects.</li>
-<li><code style="color:blue">componenttype</code> - The component type of the station icon component - possible values include "RECT" for rectangle and "CUSTOM" for custom station icons. If this field is not present, the component defaults to a circle.</li>
+<li><code style="color:blue">componenttype</code> - The component type of the station icon component - possible values include <code>"RECT"</code> for rectangle and <code>"CUSTOM"</code> for custom station icons. If this field is not present, the component defaults to a circle.</li>
 </ul>
 
 <p>The required <code>stations</code> field of the line object is an array of objects that has the following options. Note that stations go from left to right on the strip map.</p>
@@ -90,8 +94,8 @@
 <li><code style="color:red">icons</code> - 2D Array of strings referring to icon IDs to attach to the station. These are rendered below the station icon, in order. First dimension is rows, second is columns.</li>
 <li><code style="color:blue">dy</code> - The vertical offset of the station and station text. Does not affect rendering of icons. Additive effect with same named field on the stnnodes objects.</li>
 <li><code style="color:blue">iconshift</code> - If set to false, will not apply dy shift to icons.</li>
-<li><code style="color:blue">textoffset</code> - Sets additional y offset for text (distance between center of station icon and text). Defaults to 0, with positive values going upwards. Stacks with dy and station type object's <code>stntextoffset</code>.</li>
-<li><code style="color:blue">iconoffset</code> - Sets additional y offset for icon (distance between center of station icon and text). Defaults to 0, with positive values going downwards. Stacks with dy + iconshift and station type object's <code>stniconoffset</code>.</li>
+<li><code style="color:blue">textoffset</code> - Sets additional y offset for text (distance between center of station icon and text). Defaults to <code>0</code>, with positive values going upwards. Stacks with dy and station type object's <code>stntextoffset</code>.</li>
+<li><code style="color:blue">iconoffset</code> - Sets additional y offset for icon (distance between center of station icon and text). Defaults to <code>0</code>, with positive values going downwards. Stacks with dy + iconshift and station type object's <code>stniconoffset</code>.</li>
 <li><code style="color:blue">xshift</code> - Offsets the station position using the distance between stations. Refer to <a href="./test-helsinki/test-helsinki.html">Helsinki example</a> for usage.</li>
 <li><code style="color:blue">customsvg</code> - Array of custom station SVG objects.</li>
 </ul>
@@ -110,9 +114,9 @@
 <p>Each icon object has a single <code>icons</code> field which is an array of objects with the following specification:</p>
 <ul>
 <li><code style="color:red">iconID</code> - ID of the icon. This ID is used to cross reference specific icons. Naturally, each ID must be unique.</li>
-<li><code style="color:red">height</code> - Height of this icon (Recommended: 48)</li>
-<li><code style="color:red">width</code> - Width of this icon (Recommended: 48)</li>
-<li><code style="color:red">scale</code> - Scalings of this icon. First is the large icon (Displayed to the left of the line's name, Recommended: 1). Second is the small icon (Displayed under stations, Recommended: 0.67)</li>
+<li><code style="color:red">height</code> - Height of this icon (Recommended: <code>48</code>)</li>
+<li><code style="color:red">width</code> - Width of this icon (Recommended: <code>48</code>)</li>
+<li><code style="color:red">scale</code> - Scalings of this icon. First is the large icon (Displayed to the left of the line's name, Recommended: <code>1</code>). Second is the small icon (Displayed under stations, Recommended: <code>0.67</code>)</li>
 <li><code style="color:red">iconSVG</code> - SVG of the icon. The provided SVG should fit within the stated height and width.</li>
 </ul>
     </div>
