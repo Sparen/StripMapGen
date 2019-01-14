@@ -75,18 +75,20 @@ function SMG_drawLine(lineobj, numstations) {
     for (let i = 0; i < lineobj.strokes.length; i += 1) {
         let lineStroke = lineobj.strokes[i];
         // Defaults
-        const LINE_LEFT = 128;
-        const LINE_RIGHT = 1600;
+        const LINE_LEFT = lineobj.linestart;
+        const LINE_RIGHT = lineobj.lineend;
+        const LINE_HEIGHT = lineobj.lineheight;
+        const LINE_WIDTH = lineobj.lineend - lineobj.linestart;
         let strokeStart = LINE_LEFT;
         let strokeEnd = LINE_RIGHT;
         // Note: It is possible to extend the line beyond the set bounds of 128 and 1600
         if ("startpoint" in lineStroke) {
-            strokeStart = LINE_LEFT + lineStroke.startpoint * 1472/(numstations - 1);
+            strokeStart = LINE_LEFT + lineStroke.startpoint * LINE_WIDTH/(numstations - 1);
         }
         if ("endpoint" in lineStroke) {
-            strokeEnd = LINE_LEFT + lineStroke.endpoint * 1472/(numstations - 1);
+            strokeEnd = LINE_LEFT + lineStroke.endpoint * LINE_WIDTH/(numstations - 1);
         }
-        let ycoord = 240;
+        let ycoord = LINE_HEIGHT;
         if ("dy" in lineStroke) {
             ycoord += lineStroke.dy;
         }
@@ -114,6 +116,10 @@ function SMG_drawLine(lineobj, numstations) {
 // Returns SVG for the stations and their names
 function SMG_drawStations(lineobj, numstations, iconobj) {
     let stationsvg = "";
+    const LINE_LEFT = lineobj.linestart;
+    const LINE_RIGHT = lineobj.lineend;
+    const LINE_HEIGHT = lineobj.lineheight;
+    const LINE_WIDTH = lineobj.lineend - lineobj.linestart;
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];
         // First, before drawing, determine station features
@@ -131,9 +137,9 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         SMG_stationTypeObjSetDefault(stntypeobj);
 
         // Handle offsets
-        let ycoord = 240;
-        let iconycoord = 240;
-        let textycoord = 240;
+        let ycoord = LINE_HEIGHT;
+        let iconycoord = LINE_HEIGHT;
+        let textycoord = LINE_HEIGHT;
         // Station type offsets
         iconycoord += stntypeobj.stniconoffset;
         textycoord -= stntypeobj.stntextoffset;
@@ -153,10 +159,10 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         }
         let xshift = 0;
         if ("xshift" in currstn) { // Shifts are relative to station positions rather than absolute
-            xshift += 1472/(numstations - 1) * currstn.xshift;
+            xshift += LINE_WIDTH/(numstations - 1) * currstn.xshift;
         }
         // Draw Station components
-        let stationxpos = 128 + xshift + 1472/(numstations - 1) * i; // x position of station icon(s)
+        let stationxpos = LINE_LEFT + xshift + LINE_WIDTH/(numstations - 1) * i; // x position of station icon(s)
         stationsvg += SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord);
 
         // Station Name(s)
@@ -294,6 +300,15 @@ function SMG_lineObjSetDefault(lineobj) {
     }
     if (!("canvasheight" in lineobj)) {
         lineobj.canvasheight = 480; // Default: 480px
+    }
+    if (!("lineheight" in lineobj)) {
+        lineobj.lineheight = 240; // Default: 240px
+    }
+    if (!("linestart" in lineobj)) {
+        lineobj.linestart = 128; // Default: 128px
+    }
+    if (!("lineend" in lineobj)) {
+        lineobj.lineend = 1600; // Default: 1600px
     }
     if (!("fonttype" in lineobj)) {
         lineobj.fonttype = "Arial"; // Default: Main font is Arial
