@@ -78,11 +78,12 @@ function SMG_drawLine(lineobj, numstations) {
         const LINE_LEFT = lineobj.linestart;
         const LINE_RIGHT = lineobj.lineend;
         const LINE_HEIGHT = lineobj.lineheight;
-        const LINE_WIDTH = lineobj.lineend - lineobj.linestart;
+        let LINE_WIDTH = lineobj.lineend - lineobj.linestart;
         let LINE_STATION_SPACING = LINE_WIDTH/(numstations - 1); // Defaults to line width divided up evenly
         if ("stationspacing" in lineobj) { // Change mode to override
             LINE_STATION_SPACING = lineobj.stationspacing;
         }
+        // NOTE: If station number is locked, the width change does NOT apply to the line itself.
         let strokeStart = LINE_LEFT;
         let strokeEnd = LINE_RIGHT;
         // Note: It is possible to extend the line beyond the set bounds of 128 and 1600
@@ -127,6 +128,9 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
     let LINE_STATION_SPACING = LINE_WIDTH/(numstations - 1); // Defaults to line width divided up evenly
     if ("stationspacing" in lineobj) { // Change mode to override
         LINE_STATION_SPACING = lineobj.stationspacing;
+    }
+    if ("locknumstations" in lineobj) { // Change width to override
+        LINE_STATION_SPACING = LINE_WIDTH/(lineobj.locknumstations - 1); // Defaults to line width divided up evenly
     }
     for(let i = 0; i < numstations; i += 1) {
         let currstn = lineobj.stations[i];

@@ -835,3 +835,283 @@ var obj_lineC = {
         }
     ]
 };
+
+var obj_lineD = {
+    "linename": "Line 15",
+    "iconID": ["ICON_LINE15"],
+    "fonttype": "DIN Alternate",
+    "locknumstations": 9,
+    "linestart": 256,
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
+    "strokes": [
+        {
+            "color": "#EEEEEE",
+            "strokewidth": "2px",
+            "linecap": "round",
+            "startpoint": 3.75,
+            "endpoint": 11.25,
+            "startlinkheight": -128,
+            "endlinkheight": 128
+        },
+        {
+            "color": "#EEEEEE",
+            "strokewidth": "2px",
+            "linecap": "round",
+            "startpoint": 3.75,
+            "endpoint": 11.25,
+            "startlinkheight": 128,
+            "endlinkheight": -128
+        },
+        {
+            "color": "#EEEEEE",
+            "strokewidth": "2px",
+            "linecap": "round",
+            "startpoint": 7.5,
+            "endpoint": 7.5,
+            "startlinkheight": 128,
+            "endlinkheight": -128
+        },
+        {
+            "color": "#AA00FF",
+            "strokewidth": "8px",
+            "linecap": "round",
+            "startpoint": 1,
+            "endpoint": 14,
+            "startlinkheight": 128,
+            "endlinkheight": 128
+        },
+        {
+            "color": "#AA00FF",
+            "strokewidth": "8px",
+            "linecap": "round",
+            "startpoint": 1,
+            "endpoint": 14,
+            "startlinkheight": -128,
+            "endlinkheight": -128
+        },
+        {
+            "color": "#AA00FF",
+            "strokewidth": "8px",
+            "linecap": "round",
+            "startpoint": 0,
+            "endpoint": 1,
+            "startlinkheight": 64,
+            "endlinkheight": 128
+        },
+        {
+            "color": "#AA00FF",
+            "strokewidth": "8px",
+            "linecap": "round",
+            "startpoint": 0,
+            "endpoint": 1,
+            "startlinkheight": -64,
+            "endlinkheight": -128
+        },
+        {
+            "color": "#AA00FF",
+            "strokewidth": "8px",
+            "linecap": "round",
+            "startpoint": 14,
+            "endpoint": 15,
+            "startlinkheight": 128,
+            "endlinkheight": 64
+        },
+        {
+            "color": "#AA00FF",
+            "strokewidth": "8px",
+            "linecap": "round",
+            "startpoint": 14,
+            "endpoint": 15,
+            "startlinkheight": -128,
+            "endlinkheight": -64
+        },
+        {
+            "color": "#AA00FF",
+            "strokewidth": "8px",
+            "linecap": "round",
+            "startpoint": 0,
+            "endpoint": 0,
+            "startlinkheight": -64,
+            "endlinkheight": 64
+        },
+        {
+            "color": "#AA00FF",
+            "strokewidth": "8px",
+            "linecap": "round",
+            "startpoint": 15,
+            "endpoint": 15,
+            "startlinkheight": -64,
+            "endlinkheight": 64
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPE15",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 8,
+                    "scolor": "#AA00FF"
+                }
+            ],
+            "stnfonttype": "Source Sans Pro",
+            "stnfontangle": 30
+        },
+        {
+            "stypeID": "STATION_TYPE_NONE",
+            "stnnodes": [
+            ],
+            "stnfonttype": "Source Sans Pro"
+        },
+        {
+            "stypeID": "STATION_TYPE_TRANSFER",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 8,
+                    "scolor": "#000000"
+                }
+            ],
+            "stnfonttype": "Source Sans Pro",
+            "stnfontsize": "18px",
+            "stnfontangle": 30
+        }
+    ],
+    "stations": [
+        {
+            "name": [""],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "customsvg": [
+                {
+                    "nodewidth": 128,
+                    "nodeheight": 32,
+                    "nodesvg": "<text x='48' y='16' dominant-baseline='middle' font-family='Source Sans Pro' font-size='16px' fill='black' font-weight='bold' text-anchor='end'>Tech Center</text>"
+                }
+            ]
+        },
+        {
+            "name": ["Basin Street"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": 128
+        },
+        {
+            "name": ["Cross Street SW"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": 128
+        },
+        {
+            "name": ["Lilac Street"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": 128
+        },
+        {
+            "name": ["East Railway Station"],
+            "stationtype": "STATION_TYPE_TRANSFER",
+            "icons": [
+                ["ICON_LINE11", "ICON_LINE12"],
+                ["National Rail"]
+            ],
+            "dy": 128
+        },
+        {
+            "name": ["Mangrove Avenue"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": 128
+        },
+        {
+            "name": ["Cross Street SE"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": 128
+        },
+        {
+            "name": ["Crysanthenum Road"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": 128
+        },
+        {
+            "name": [""],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "customsvg": [
+                {
+                    "nodewidth": 128,
+                    "nodeheight": 32,
+                    "nodesvg": "<text x='80' y='16' dominant-baseline='middle' font-family='Source Sans Pro' font-size='16px' fill='black' font-weight='bold' text-anchor='start'>Woodberry</text>"
+                }
+            ]
+        },
+        {
+            "name": ["Bark Street"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": -128,
+            "xshift": -2
+        },
+        {
+            "name": ["Cross Street NE"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": -128,
+            "xshift": -4
+        },
+        {
+            "name": ["Music Hall"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": -128,
+            "xshift": -6
+        },
+        {
+            "name": ["Botanic Garden"],
+            "stationtype": "STATION_TYPE_TRANSFER",
+            "icons": [
+                ["ICON_LINE16"],
+                ["National Rail"]
+            ],
+            "dy": -128,
+            "xshift": -8
+        },
+        {
+            "name": ["Stone Road"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": -128,
+            "xshift": -10
+        },
+        {
+            "name": ["Cross Street NW"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": -128,
+            "xshift": -12
+        },
+        {
+            "name": ["Basin Street"],
+            "stationtype": "STATION_TYPE15",
+            "icons": [
+            ],
+            "dy": -128,
+            "xshift": -14
+        }
+    ]
+};
