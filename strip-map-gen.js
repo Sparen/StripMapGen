@@ -161,7 +161,7 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         stationsvg += SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord);
 
         // Station Name(s)
-        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-45 ' + (stationxpos) + ' ' + (textycoord) + ')">';
+        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-' + stntypeobj.stnfontangle + ' ' + (stationxpos) + ' ' + (textycoord) + ')">';
         let stationNames = currstn.name;
         for (let j = 0; j < stationNames.length; j += 1) {
             let stnNameDY = 16; // In the future, needs to be a factor of font size
@@ -305,6 +305,9 @@ function SMG_stationTypeObjSetDefault(stntypeobj) {
     }
     if (!("stnfontsize" in stntypeobj)) {
         stntypeobj.stnfontsize = 16; // Default: 16 px for text icons. Must use integer 16, not "16px", since math is performed.
+    }
+    if (!("stnfontangle" in stntypeobj)) {
+        stntypeobj.stnfontangle = 45; // Default: 45 degrees for station names.
     }
 }
 

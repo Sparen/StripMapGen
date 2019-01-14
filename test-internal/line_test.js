@@ -145,7 +145,8 @@ var obj_lineA = {
                     "scolor": "#FF0000"
                 }
             ],
-            "stnfonttype": "Source Sans Pro"
+            "stnfonttype": "Source Sans Pro",
+            "stnfontangle": 55
         },
         {
             "stypeID": "STATION_TYPE12",
@@ -156,7 +157,8 @@ var obj_lineA = {
                     "scolor": "#FFAA00"
                 }
             ],
-            "stnfonttype": "Source Sans Pro"
+            "stnfonttype": "Source Sans Pro",
+            "stnfontangle": 55
         },
         {
             "stypeID": "STATION_TYPE_TRANSFER",
@@ -168,7 +170,8 @@ var obj_lineA = {
                 }
             ],
             "stnfonttype": "Source Sans Pro",
-            "stnfontsize": "18px"
+            "stnfontsize": "18px",
+            "stnfontangle": 55
         }
     ],
     "stations": [
