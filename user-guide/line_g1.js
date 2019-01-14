@@ -332,7 +332,9 @@ var obj_line1_v5 = {
                     "scolor": "#DD0000",
                     "componenttype": "CUSTOM"
                 }
-            ]
+            ],
+            "stntextoffset": 28,
+            "stniconoffset": 28
         }
     ],
     "stations": [
@@ -342,100 +344,76 @@ var obj_line1_v5 = {
             "icons": [
                 ["ICON_LINEM2_ANK"],
                 ["ICON_LINEAKR_ANK"]
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Sıhhiye"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 ["ICON_LINEBKR_ANK"]
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Ulus"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Atatürk Kültür Merkezi"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 ["ICON_LINEM4_ANK"]
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Akköprü"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["İvedik"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Yenimahalle"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Demetevler"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Hastane"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Macunköy"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Ostim"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Batıkent"],
             "stationtype": "STATION_TYPEA",
             "icons": [
                 ["ICON_LINEM3_ANK"]
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         }
     ]
 };
@@ -507,7 +485,9 @@ var obj_line1_v6 = {
                     "scolor": "#DD0000",
                     "componenttype": "CUSTOM"
                 }
-            ]
+            ],
+            "stntextoffset": 28,
+            "stniconoffset": 28
         }
     ],
     "stations": [
@@ -515,41 +495,31 @@ var obj_line1_v6 = {
             "name": ["Akköprü"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28,
+            ]
         },
         {
             "name": ["İvedik"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Yenimahalle"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Demetevler"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Hastane"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         }
     ]
 };
@@ -653,7 +623,9 @@ var obj_line1_v7 = {
                     "scolor": "#DD0000",
                     "componenttype": "CUSTOM"
                 }
-            ]
+            ],
+            "stntextoffset": 28,
+            "stniconoffset": 28
         }
     ],
     "stations": [
@@ -662,41 +634,31 @@ var obj_line1_v7 = {
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "xshift": 0.25
         },
         {
             "name": ["İvedik"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Yenimahalle"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Demetevler"],
             "stationtype": "STATION_TYPEA",
             "icons": [
-            ],
-            "textoffset": -28,
-            "iconoffset": 28
+            ]
         },
         {
             "name": ["Hastane"],
             "stationtype": "STATION_TYPEA",
             "icons": [
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "xshift": -0.25
         }
     ]

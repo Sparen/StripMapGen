@@ -56,6 +56,8 @@
 <li><code style="color:blue">stnfonttype</code> - Font Type to use for station names (for this type of station). Default is Arial.</li>
 <li><code style="color:blue">stnfontsize</code> - Font Type to use for station names (for this type of station). Default is 16px.</li>
 <li><code style="color:blue">stnfontangle</code> - Angle offset at which to render station names (for this type of station). Default is <code>45</code> (degrees).</li>
+<li><code style="color:blue">stntextoffset</code> - Sets y offset for text (distance between center of station icon and text). Defaults to <code>16</code>px, with positive values going upwards. Stacks with an individual station object's <code>dy</code> and <code>textoffset</code>.</li>
+<li><code style="color:blue">stniconoffset</code> - Sets y offset for icon (distance between center of station icon and text). Defaults to <code>16</code>px, with positive values going downwards. Stacks with an individual station object's <code>dy + iconshift</code> and <code>textoffset</code>.</li>
 </ul>
 
 <p>Each object in <code>stnnodes</code> contains the following options.</p>
@@ -78,8 +80,8 @@
 <li><code style="color:red">icons</code> - 2D Array of strings referring to icon IDs to attach to the station. These are rendered below the station icon, in order. First dimension is rows, second is columns.</li>
 <li><code style="color:blue">dy</code> - The vertical offset of the station and station text. Does not affect rendering of icons. Additive effect with same named field on the stnnodes objects.</li>
 <li><code style="color:blue">iconshift</code> - If set to false, will not apply dy shift to icons.</li>
-<li><code style="color:blue">textoffset</code> - Sets y offset for text (distance between center of station icon and text). Defaults to -16px. Stacks with dy.</li>
-<li><code style="color:blue">iconoffset</code> - Sets y offset for icon (distance between center of station icon and text). Defaults to 16px. Stacks with dy + iconshift.</li>
+<li><code style="color:blue">textoffset</code> - Sets additional y offset for text (distance between center of station icon and text). Defaults to 0, with positive values going upwards. Stacks with dy and station type object's <code>stntextoffset</code>.</li>
+<li><code style="color:blue">iconoffset</code> - Sets additional y offset for icon (distance between center of station icon and text). Defaults to 0, with positive values going downwards. Stacks with dy + iconshift and station type object's <code>stniconoffset</code>.</li>
 <li><code style="color:blue">xshift</code> - Offsets the station position using the distance between stations. Refer to <a href="./test-helsinki/test-helsinki.html">Helsinki example</a> for usage.</li>
 <li><code style="color:blue">customsvg</code> - Array of custom station SVG objects.</li>
 </ul>

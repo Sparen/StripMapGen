@@ -135,6 +135,10 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         let ycoord = 240;
         let iconycoord = 240;
         let textycoord = 240;
+        // Station type offsets
+        iconycoord += stntypeobj.stniconoffset;
+        textycoord -= stntypeobj.stntextoffset;
+        // Station specific offsets
         if ("dy" in currstn) {
             ycoord += currstn.dy;
             textycoord += currstn.dy;
@@ -144,13 +148,9 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
         }
         if ("iconoffset" in currstn) {
             iconycoord += currstn.iconoffset;
-        } else {
-            iconycoord += 16; // Default is 16 pixels from path
         }
         if ("textoffset" in currstn) {
-            textycoord += currstn.textoffset;
-        } else {
-            textycoord -= 16; // Default is 16 pixels from path
+            textycoord -= currstn.textoffset;
         }
         let xshift = 0;
         if ("xshift" in currstn) { // Shifts are relative to station positions rather than absolute
@@ -308,6 +308,12 @@ function SMG_stationTypeObjSetDefault(stntypeobj) {
     }
     if (!("stnfontangle" in stntypeobj)) {
         stntypeobj.stnfontangle = 45; // Default: 45 degrees for station names.
+    }
+    if (!("stntextoffset" in stntypeobj)) {
+        stntypeobj.stntextoffset = 16; // Default: 16 px. Must use integer 16, not "16px", since math is performed.
+    }
+    if (!("stniconoffset" in stntypeobj)) {
+        stntypeobj.stniconoffset = 16; // Default: 16 px. Must use integer 16, not "16px", since math is performed.
     }
 }
 

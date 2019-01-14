@@ -32,6 +32,11 @@
 <li><code style="color:blue">iconoffset</code></li>
 <li><code style="color:blue">xshift</code></li>
 </ul>
+      <p>The following fields in the <code>stationtypes</code> field of the line object will be covered:</p>
+<ul>
+<li><code style="color:blue">stntextoffset</code></li>
+<li><code style="color:blue">stniconoffset</code></li>
+</ul>
       <div id="ank1-1"></div>
       <p>Our unfortunate victim will be Ankara Metro Line 1 (map as of Dec 2018). <strong>Disclaimer: Please note that some of the changes that we will make will be done solely for the sake of explaining the features that come with the Strip Map Generator. Some of the things we will be doing are NOT recommended when it comes to this particular strip map. Some of the changes will NOT result in an accurate portrayal of the real world metro line.</strong></p>
       <p>For now, let us observe the code used to generate Kızılay.</p>
@@ -135,8 +140,9 @@
         }</code></pre>
       <p>As seen in the example above, setting <code>iconshift</code> to <code>false</code> prevents the icons from shifting with the station and station name.</p>
       <p><code>dy</code> is a commonly used field due to the prevalence of branching lines, where there may be a need to move stations, station names, and perhaps icons. <code>iconshift</code> may have niche uses where moving the icon is undesirable (due to visibility concerns - especially where there are branches too close together, etc).</p>
-      <h3 style="background-color:#AAAAAA;color:white">Optional Field: textoffset and iconoffset</h3>
-      <p>Next we will cover text and icon offsets. These are the distance between the center of the station icon and the text/icons themselves, and default to -16px and 16px respectively. In contrast to <code>dy</code>, which moves the icon AND the text, <code>textoffset</code> and <code>iconoffset</code> only move the text/icons themselves. This is particularly useful if your station icons are particularly large or if they are variable sized. In the next guide, we will cover cases where this text offset is necessary for readability.</p>
+      <h3 style="background-color:#AAAAAA;color:white">Optional Field: textoffset and iconoffset (as well as stntextoffset and stniconoffset)</h3>
+      <p>Next we will cover text and icon offsets. These are the distance between the center of the station icon and the text/icons themselves. <code>textoffset</code> and <code>iconoffset</code> default to 0 on individual stations, but their corresponding values for station type objects (<code>stntextoffset/stniconoffset</code>) default to 16. Positive values for the text offsets move the text up, while positive values for the icon offsetsmove the icons down. In contrast to <code>dy</code>, which moves the icon AND the text, <code>textoffset</code> and <code>iconoffset</code> and the corresponding values for station type objects only move the text/icons themselves. <code>dy</code> as well as <code>stn****offset</code> and <code>****offset</code> all stack, though <code>dy</code> is added on as an absolute translation downwards. This is particularly useful if your station icons are particularly large or if they are variable sized.</p>
+      <p>In the next guide, we will cover cases where this text offset is necessary for readability.</p>
       <div id="ank1-4"></div>
       <pre><code>        {
             "name": ["Kızılay"],
@@ -177,9 +183,32 @@
             "textoffset": -64
         }</code></pre>
       <p>As can be observed, there is still an initial offset maintained. when no <code>textoffset</code> is specified and it is additive with the specified text offsets (in pixels).</p>
-      <p>Let's see <code>textoffset</code> used in a more realistic scenario. Here we also use <code>iconoffset</code>.</p>
+      <p>Let's see <code>stntextoffset</code> used in a realistic scenario. Here we also use <code>stniconoffset</code>. Since we are applying the same offsets on a station type basis, we make the changes to the station type versions (<code>stntextoffset</code>/<code>stniconoffset</code>) rather than the station object versions (<code>textoffset</code>/<code>iconoffset</code>).</p>
       <div id="ank1-5"></div>
-      <p>Here we have created a custom station icon that is 40x40. Without the text and icon offsets, the text and icons would render on top of the icon itself. As this is undesirable, <code>textoffset</code> and <code>iconoffset</code> provide much needed offsets for a more pleasant map.</p>
+      <pre><code>    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stnnodes": [
+                {
+                    "stationsvg": "<path d='M 20 0 L 0 20 L 20 40 L 40 20 z' stroke-width='4px' stroke='#DD0000' fill='white'></path>",
+                    "stationwidth": 40,
+                    "stationheight": 40,
+                    "scolor": "#DD0000",
+                    "componenttype": "CUSTOM"
+                },
+                {
+                    "stationsvg": "<text x='20' y='20' font-family='Verdana' font-size='18px' fill='#DD0000' text-anchor='middle' dominant-baseline='central'>M</text>",
+                    "stationwidth": 40,
+                    "stationheight": 40,
+                    "scolor": "#DD0000",
+                    "componenttype": "CUSTOM"
+                }
+            ],
+            "stntextoffset": 28,
+            "stniconoffset": 28
+        }
+    ],</code></pre>
+      <p>Here we have created a custom station icon that is 40x40. Without the text and icon offsets, the text and icons would render on top of the icon itself. As this is undesirable, <code>stntextoffset</code> and <code>stniconoffset</code> provide much needed offsets for a more pleasant map.</p>
       <h3 style="background-color:#AAAAAA;color:white">Optional Field: xshift</h3>
       <p><code>xshift</code> is one of the more unique attributes that can be applied to a station. Its primary use is with branching lines - see <a href="../test-helsinki/test-helsinki.html">Helsinki Example</a> for a working example.</p>
       <p>For now, we will review what <code>xshift</code> does.</p>

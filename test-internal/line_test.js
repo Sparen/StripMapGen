@@ -534,12 +534,14 @@ var obj_lineC = {
                 }
             ],
             "stnfonttype": "'Source Sans Pro', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
+            "stntextoffset": 28,
+            "stniconoffset": 28
         },
         {
             "stypeID": "STATION_TYPE_NONE",
             "stnnodes": [
             ],
-            "stnfonttype": "'Source Sans Pro', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
+            "stnfonttype": "'Source Sans Pro', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'"
         },
         {
             "stypeID": "STATION_TYPE_TRANSFER",
@@ -560,7 +562,9 @@ var obj_lineC = {
                 }
             ],
             "stnfonttype": "'Source Sans Pro', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
-            "stnfontsize": "18px"
+            "stnfontsize": "18px",
+            "stntextoffset": 28,
+            "stniconoffset": 28
         }
     ],
     "stations": [
@@ -569,7 +573,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -583,7 +586,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -597,7 +599,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -611,7 +612,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -625,7 +625,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -639,7 +638,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -653,7 +651,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -668,8 +665,6 @@ var obj_lineC = {
             "icons": [
                 ["ICON_LINE16"],
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -683,7 +678,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -699,8 +693,6 @@ var obj_lineC = {
                 ["ICON_LINE11", "ICON_LINE12", "ICON_LINE13"],
                 ["Bus Terminal"]
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -714,7 +706,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE14",
             "icons": [
             ],
-            "textoffset": -28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -728,7 +719,6 @@ var obj_lineC = {
             "stationtype": "STATION_TYPE_NONE",
             "icons": [
             ],
-            "textoffset": -28
         },
         {
             "name": ["Aoyamakoen"],
@@ -739,8 +729,6 @@ var obj_lineC = {
                 ["公"],
                 ["園"]
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -758,8 +746,6 @@ var obj_lineC = {
                 ["大"],
                 ["学"]
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -777,8 +763,6 @@ var obj_lineC = {
                 ["通"],
                 ["り"]
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -794,8 +778,6 @@ var obj_lineC = {
                 ["大"],
                 ["和"]
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -812,8 +794,6 @@ var obj_lineC = {
                 ["前"],
                 ["寺"]
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -830,8 +810,6 @@ var obj_lineC = {
                 ["平"],
                 ["町"]
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
@@ -847,8 +825,6 @@ var obj_lineC = {
                 ["流"],
                 ["山"]
             ],
-            "textoffset": -28,
-            "iconoffset": 28,
             "customsvg": [
                 {
                     "nodewidth": 32,
