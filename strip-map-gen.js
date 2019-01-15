@@ -18,6 +18,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     // First, place the name of the line in the top left with its own icon
     let numicons = lineobj.iconID.length;
     let linenamexoffset = 0; // Offset (based on size of icons)
+    let maxmainiconheight = 0; // Maximum height of an icon
     for (let j = 0; j < numicons; j += 1) {
         let tgtheight = 48;
         let tgtwidth = 48;
@@ -26,11 +27,17 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
         if (!(lineIcon === null)) {
             tgtheight = lineIcon.height;
             tgtwidth = lineIcon.width;
+            if (tgtheight > maxmainiconheight) {
+                maxmainiconheight = tgtheight;
+            }
         }
-        smsvg += '<rect x="' + (20 + linenamexoffset) + '" y="24" height="' + tgtheight + '" width="' + tgtwidth + '" fill="url(#PATTERN_' + lineobj.iconID[j] + '_SCALE1)" />';
+        smsvg += '<rect x="' + (20 + linenamexoffset) + '" y="' + (tgtheight/2) + '" height="' + tgtheight + '" width="' + tgtwidth + '" fill="url(#PATTERN_' + lineobj.iconID[j] + '_SCALE1)" />';
         linenamexoffset += tgtwidth;
     }
-    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="48" font-family="' + lineobj.fonttype +'" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
+    if (maxmainiconheight === 0) { // Provide a default
+        maxmainiconheight = 48;
+    }
+    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="' + (maxmainiconheight) + '" font-family="' + lineobj.fonttype +'" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
     // Number of stations. Used for spacing and placement
     const numstations = lineobj.stations.length;
