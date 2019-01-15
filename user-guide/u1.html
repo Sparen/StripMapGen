@@ -16,22 +16,387 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="SMG_loadMap(obj_line1_v1, obj_iconLondon, 'u1-1'); docs_load('..')">
+<body onload="SMG_loadMap(obj_line1_v1, obj_iconLondon, 'u1-1'); SMG_loadMap(obj_line1_v2, obj_iconLondon, 'u1-2'); SMG_loadMap(obj_line1_v3, obj_iconLondon, 'u1-3'); SMG_loadMap(obj_line1_v4, obj_iconLondon, 'u1-4'); SMG_loadMap(obj_line1_v5, obj_iconLondon, 'u1-5'); SMG_loadMap(obj_line1_v1, obj_iconLondon, 'u1-6'); docs_load('..')">
 <div id="top">
       <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Unit 1 - Standalone Line</h1>
       <p>Welcome to the SVG Strip Map Generator! In this guide, we will discuss setting up this software and building a basic strip map for a simple line - in this case, the London Underground Jubilee Line. The completed map will be the one below.</p>
       <div id="u1-1"></div>
       <h3 style="background-color:#AAAAAA;color:white">Getting Started</h3>
-      <p></p>
+      <p>Let's get started.</p>
+      <p>The SVG Strip Map Generator is a JavaScript library with one primary function to be called - <code>SMG_loadMap</code>. This function takes three parameters - a line object, an icon object, and a target <code>div</code> to render the map to.</p>
+      <p>You can refer to the <a href="../docs.html">Documentation</a> for a detailed specification of the line objects and icon objects. For now, we will be providing an icon object located <a target="_blank" href="./../icon-common/icon_london.js">here</a>.</p>
+      <p>The line object and icon object must be in scope for the SVG Strip Map Generator to be able to access them. Therefore, the JavaScript files that they are located in must be included in your HTML document BEFORE the main <code>strip-map-gen.js</code>. The Strip Map Generator source code can be found at <a target="_blank" href="https://github.com/Sparen/StripMapGen/blob/master/strip-map-gen.js">GitHub</a>.</p>
+      <p>For sake of example, set up a blank HTML page like so:</p>
+      <pre>
+&lt;!DOCTYPE html&gt;
+&lt;body onload="SMG_loadMap(obj_line1, obj_iconLondon, 'target');"&gt;
+    &lt;div id="target"&gt;&lt;/div&gt;
+    &lt;script type="text/javascript" src="icon_london.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="line_londonjubilee.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="strip-map-gen.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+      <p>We will be putting our line object <code>obj_line1</code> within <code>line_londonjubilee.js</code>.</p>
       <h3 style="background-color:#AAAAAA;color:white">Initial Line</h3>
-      <p></p>
+      <p>Let's begin setting up the line itself.</p>
+      <div id="u1-2"></div>
+      <p>In this basic example, note that two stations have been placed. The Strip Map Generator will not function if you provide zero or one stations (it wouldn't be much of a route, wouldn't it?).</p>
+      <pre>
+var obj_line1 = {
+    "linename": "London Underground Jubilee Line",
+    "iconID": ["ICON_LONDON_JUBILEE"],
+    "strokes": [
+        {
+            "color": "#a1a5a7",
+            "strokewidth": "8px"
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stnnodes": [
+                {
+                    "stationradius": 8,
+                    "stationstrokewidth": 3,
+                    "fcolor": "white",
+                    "scolor": "#a1a5a7",
+                }
+            ]
+        }
+    ],
+    "stations": [
+        {
+            "name": ["Stanmore"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Stratford"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        }
+    ]
+};
+</pre>
+      <p><code>linename</code> is the name of the line that appears at the top left of the map. <code>iconID</code> refers to the icon to render next to the name of the line. The name will render at a different height depending on the height of the icon so that they are centered.</p>
+      <p>In <code>strokes</code>, we have a JavaScript object containing two fields - <code>color</code> and <code>strokewidth</code>. Colors supported are all the standard HTML colors - names such as <code>"white"</code> and <code>"cadetblue"</code>, RGB values, hex values, etc.</p>
+      <p>Under <code>stationtypes</code> we have one JavaScript object with ID <code>"STATION_TYPEA"</code> that is later referenced in the individual station objects. Each station type object is made up of various components or 'nodes'. This station type object only has a circle with radius 8, stroke radius 3, stroke color #a1a5a7, and a white fill. Note that the color used matches the line color. Station type objects can be greatly extended, but that will be covered in more advanced guides.</p>
+      <p>For now we only have the two <code>stations</code>. Each station has an array of names (if there are multiple names, they will render with a line break), their type (which sets what actually renders at the station location), and a list of icons to render below. These can be used for text as well as transfers, etc.</p>
       <h3 style="background-color:#AAAAAA;color:white">Station Types and Stations</h3>
-      <p></p>
+      <p>Now we want to get the signature 'tick' style for the stations. We will therefore want to add in our other stations and then adjust/create station types to handle the tick as well as the more general transfer icon. Note that in this guide we will be doing a rough example - these don't follow the specific design guidelines set forth by TFL.</p>
+      <div id="u1-3"></div>
+      <p>The Strip Map Generator will automatically handle the spacing between stations based on how many stations there are. This can be disabled, but that is a topic for a more advanced guide.</p>
+      <p>As for the tick and transfer icons, let's see how they are generated.</p>
+      <pre>
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stnnodes": [
+                {
+                    "componenttype": "RECT",
+                    "stationwidth": 3,
+                    "stationheight": 10,
+                    "scolor": "#a1a5a7",
+                    "dy": -3
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPETRANSFER",
+            "stnnodes": [
+                {
+                    "stationradius": 8,
+                    "stationstrokewidth": 3,
+                    "fcolor": "white",
+                    "scolor": "black",
+                }
+            ]
+        }
+    ],
+      </pre>
+      <p>The transfer icon is similar to the icon we were using previously - just with a different color. As for the tick, we are now using <code>"RECT"</code> for the component type. By default, station nodes are assumed to be circles, as that is quite typical of strip maps.</p>
+      <p>The tick itself has a height, a width, and a color like before. However, there is a <code>dy</code> field. This is because by default the component will be centered at the location of the station. However, we want our tick to not pop out at the other end, so we use <code>dy</code> to shift the tick up by a few pixels.</p>
+      <p>It is also possible to have custom components, though this will be discussed in a more advanced guide.</p>
+      <p>Note that we have changed some of the stations so that their type is <code>STATION_TYPETRANSFER</code> instead of <code>STATION_TYPEA</code>.</p>
       <h3 style="background-color:#AAAAAA;color:white">Icons</h3>
-      <p></p>
+      <p>Now it is time to add the icons. As a general note, I have excluded the Emirates Air Line from the system, in case you are wondering why it is missing.</p>
+      <p>Each icon is uniquely identified by its ID. Each icon object has an ID, a height and width, a scale (array with two fields), and SVG defining the icon. There are additional optional fields. The scale field's two values refer to full size and icon size, respectively. The full size icon is used for the line name, while the icon size is used as, well, icons underneath stations. Typically 2/3 (0.67) is a good size for an icon, but for London, with its full text line names, 0.5 works better.</p>
+      <p>It's simple to add icons to a station - in the <code>icons</code> field, add arrays. Each array you add represents a line of icons (so you can have multiple icons on the same line next to each other). If you provide a string that does not correspond to an icon in the provided icon object, the string will be rendered as a text icon. Text icons cannot be rendered next to one another.</p>
+      <p>In addition, London's full name icons also do not work well when rendered next to one another due to their size. In fact, even with half scaling, our map's icons are covering one another - sometimes illegibly as is the case for the poor H&C at West Ham.</p>
+      <div id="u1-4"></div>
+      <pre>
+        {
+            "name": ["West Ham"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_DISTRICT"],
+                ["ICON_LONDON_H&C"],
+                ["ICON_LONDON_DLR"]
+            ]
+        },
+        {
+            "name": ["Stratford"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_CENTRAL"],
+                ["ICON_LONDON_DLR"],
+                ["ICON_LONDON_OVERGROUND"],
+                ["ICON_LONDON_TFLRAIL"]
+            ]
+        }
+      </pre>
       <h3 style="background-color:#AAAAAA;color:white">Extras</h3>
-      <p></p>
+      <p>In the final part of this guide, we will discuss how to remedy the icon issue above (it's a rare issue due to the small width of most icons) as well as some extra features that may be useful.</p>
+      <p>First, the icon issue. We will remedy this by overwriting the defaults for the start and end of the line. This will add extra space, move the stations further apart, and prevent overlapping of icons.</p>
+      <p>To do this, we can add <code>linestart</code> and <code>lineend</code> to our line object.</p>
+      <pre>
+var obj_line1 = {
+    "linename": "London Underground Jubilee Line",
+    "iconID": ["ICON_LONDON_JUBILEE"],
+    "linestart": 64,
+    "lineend": 1920,
+    ...
+      </pre>
+      <p>The defaults are 128 and 1600.</p>
+      <div id="u1-5"></div>
+      <p>With this, our line looks much better.</p>
+      <p>Finally, you may have noticed the date in the bottom left hand corner of the complete example near the top of the page. This is done via custom SVG. Essentially, using <code>maincustomsvgbg</code> and <code>maincustomsvgfg</code>, arbitrary SVG can be put on to the strip map. The former (bg for background) renders before anything else, while the latter (fg for foreground) renders after the rest of the map.</p>
+      <p>In this case, we simply add text. Our final map and the code used to generate it are pasted below.</p>
+      <div id="u1-6"></div>
+      <pre>
+var obj_line1 = {
+    "linename": "London Underground Jubilee Line",
+    "iconID": ["ICON_LONDON_JUBILEE"],
+    "linestart": 64,
+    "lineend": 1920,
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
+    "strokes": [
+        {
+            "color": "#a1a5a7",
+            "strokewidth": "8px"
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEA",
+            "stnnodes": [
+                {
+                    "componenttype": "RECT",
+                    "stationwidth": 3,
+                    "stationheight": 10,
+                    "scolor": "#a1a5a7",
+                    "dy": -3
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPETRANSFER",
+            "stnnodes": [
+                {
+                    "stationradius": 8,
+                    "stationstrokewidth": 3,
+                    "fcolor": "white",
+                    "scolor": "black",
+                }
+            ]
+        }
+    ],
+    "stations": [
+        {
+            "name": ["Stanmore"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Canons Park"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Queensbury"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Kingsbury"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Wembley Park"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_METROPOLITAN"]
+            ]
+        },
+        {
+            "name": ["Neasden"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Dollis Hill"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Willesden Green"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Kilburn"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["West Hampstead"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_OVERGROUND"]
+            ]
+        },
+        {
+            "name": ["FInchley Road"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_METROPOLITAN"]
+            ]
+        },
+        {
+            "name": ["Swiss Cottage"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["St John's Wood"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Baker Street"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_BAKERLOO"],
+                ["ICON_LONDON_CIRCLE"],
+                ["ICON_LONDON_H&C"],
+                ["ICON_LONDON_METROPOLITAN"]
+            ]
+        },
+        {
+            "name": ["Bond Street"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_CENTRAL"]
+            ]
+        },
+        {
+            "name": ["Green Park"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_PICCADILLY"],
+                ["ICON_LONDON_VICTORIA"]
+            ]
+        },
+        {
+            "name": ["Westminster"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_CIRCLE"],
+                ["ICON_LONDON_DISTRICT"]
+            ]
+        },
+        {
+            "name": ["Waterloo"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_BAKERLOO"],
+                ["ICON_LONDON_NORTHERN"],
+                ["ICON_LONDON_W&C"]
+            ]
+        },
+        {
+            "name": ["Southwark"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["London Bridge"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_NORTHERN"]
+            ]
+        },
+        {
+            "name": ["Bermondsey"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Canada Water"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_OVERGROUND"]
+            ]
+        },
+        {
+            "name": ["Canary Wharf"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_DLR"]
+            ]
+        },
+        {
+            "name": ["North Greenwich"],
+            "stationtype": "STATION_TYPEA",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Canning Town"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_DLR"]
+            ]
+        },
+        {
+            "name": ["West Ham"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_DISTRICT"],
+                ["ICON_LONDON_H&C"],
+                ["ICON_LONDON_DLR"]
+            ]
+        },
+        {
+            "name": ["Stratford"],
+            "stationtype": "STATION_TYPETRANSFER",
+            "icons": [
+                ["ICON_LONDON_CENTRAL"],
+                ["ICON_LONDON_DLR"],
+                ["ICON_LONDON_OVERGROUND"],
+                ["ICON_LONDON_TFLRAIL"]
+            ]
+        }
+    ]
+};
+      </pre>
 </div>
 
     <script type="text/javascript" src="../docs.js"></script>
