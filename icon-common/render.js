@@ -7,6 +7,7 @@ function render() {
     render_block(obj_iconAnkara, "div_ankara");
     render_block(obj_iconTokyoSubway, "div_tokyo_subway");
     render_block(obj_iconToeiSubway, "div_toei_subway");
+    render_block(obj_iconLondon, "div_london");
 }
 
 function render_block(icon, targetdiv) {
