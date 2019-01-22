@@ -16,7 +16,7 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="SMG_loadMap(obj_line2_v1, obj_iconCopenhagen, 'u2-1'); docs_load('..')">
+<body onload="SMG_loadMap(obj_line2_v1, obj_iconCopenhagen, 'u2-1'); SMG_loadMap(obj_line2_v2, obj_iconCopenhagen, 'u2-2'); SMG_loadMap(obj_line2_v3, obj_iconCopenhagen, 'u2-3'); SMG_loadMap(obj_line2_v1, obj_iconCopenhagen, 'u2-4'); docs_load('..')">
 <div id="top">
       <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Unit 2 - Branching Line</h1>
@@ -24,14 +24,527 @@
       <p>Please note that we are using text icons for this particular strip map in order to highlight their usage. It may be preferable to use the proper icons if available. In addition, connections to the Danish State Railways (Danske Statsbaner) are labelled with DSB for short.</p>
       <div id="u2-1"></div>
       <h3 style="background-color:#AAAAAA;color:white">Initial Setup</h3>
-      <p></p>
+      <p>We will begin by placing two parallel lines - one for each of the two services (M1 and M2). We will place M2 on the base line and shift M1 over by 16 pixels, so that it is not necessary to move the stations or their names.</p>
+      <p>In regards to the stations, we will define three station types - one for M1 alone, one for M2 alone, and one for both of them combined.</p>
+      <p>For now, we will not have the actual shifting of the lines and will simply have the two lines as-is, with the station icons being used to denote which service stops where.</p>
+      <div id="u2-2"></div>
+      <pre>    "linename": "Copenhagen Metro",
+    "iconID": ["ICON_M1", "ICON_M2"],
+    "lineend": 1800,
+    "maincustomsvgbg": "&lt;text x='16' y='460' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'&gt;01/2019&lt;/text&gt;",
+    "strokes": [
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "dy": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "endpoint": 15
+        }
+    ],</pre>
+      <p>Above we utilize the <code>endpoint</code> field to truncate M2 to its terminus. As an aside, note the usage of the <code>"iconID"</code> array for displaying both icons side by side.</p>
+      <p>For now we have relatively simple stations. Those for M1 have their circle component shifted by 16 pixels. The combined station shares this feature as it combines both nodes from the M1 and M2 stations. Since we've placed our M1 line 16 pixels below, we also move the icon offsets by 32 (default is 16) to prevent the icons from rendering on top of our M1 line.</p>
+    <pre>    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEM1",
+            "stnnodes": [
+                {
+                    "stationradius": 4,
+                    "stationstrokewidth": 0,
+                    "fcolor": "white",
+                    "scolor": "none",
+                    "dy": 16
+                }
+            ],
+            "stniconoffset": 32
+        },
+        {
+            "stypeID": "STATION_TYPEM2",
+            "stnnodes": [
+                {
+                    "stationradius": 4,
+                    "stationstrokewidth": 0,
+                    "fcolor": "black",
+                    "scolor": "none"
+                }
+            ],
+            "stniconoffset": 32
+        },
+        {
+            "stypeID": "STATION_TYPE_COMBINED",
+            "stnnodes": [
+                {
+                    "stationradius": 4,
+                    "stationstrokewidth": 0,
+                    "fcolor": "black",
+                    "scolor": "none"
+                },
+                {
+                    "stationradius": 4,
+                    "stationstrokewidth": 0,
+                    "fcolor": "white",
+                    "scolor": "none",
+                    "dy": 16
+                }
+            ],
+            "stniconoffset": 32
+        }
+    ],</pre>
+      <p>Now, while this current strip map isn't bad by any means, it can result in confusion for those who may assume that M1 runs along with M2 but simply does not stop past Lufthavnen/Airport Station. For this reason, we will split the lines physically on the map after the station.</p>
       <h3 style="background-color:#AAAAAA;color:white">Splitting the Lines</h3>
-      <p></p>
-      <h3 style="background-color:#AAAAAA;color:white">Moving the Stations</h3>
-      <p></p>
-      <h3 style="background-color:#AAAAAA;color:white">Extra</h3>
-      <p></p>
-
+      <p>We will split in two parts. First, we will break the lines between Christianshavn and Amagerbro using <code>startpoint</code> and <code>endpoint</code>, and move the stations and their icons.</p>
+      <div id="u2-3"></div>
+      <pre>    "linename": "Copenhagen Metro",
+    "iconID": ["ICON_M1", "ICON_M2"],
+    "lineend": 1800,
+    "maincustomsvgbg": "&lt;text x='16' y='460' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'&gt;01/2019&lt;/text&gt;",
+    "strokes": [
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "dy": 16,
+            "endpoint": 8.25
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "endpoint": 8.25
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "dy": 16,
+            "startpoint": 8.25,
+            "endpoint": 8.75,
+            "endlinkheight": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "startpoint": 8.25,
+            "endpoint": 8.75,
+            "endlinkheight": -16
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "dy": 16,
+            "startpoint": 8.75,
+            "startlinkheight": 16,
+            "endlinkheight": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "startpoint": 8.75,
+            "endpoint": 15,
+            "startlinkheight": -16,
+            "endlinkheight": -16
+        }
+    ],</pre>
+      <p>We took the original lines and cut them off at 8.25, then added connecting segments with an endlinkheight, and finally the 'lone' segments. These have a <code>"startlinkheight"</code> field set, as it would default to 0 otherwise.</p>
+      <p>As for the stations, we have applied <code>"dy"</code> shifts like so:</p>
+      <pre>    {
+            "name": ["Lufthavnen"],
+            "stationtype": "STATION_TYPEM2",
+            "icons": [
+                ["DSB"]
+            ],
+            "dy": -16
+        },
+        {
+            "name": ["Islands Brygge"],
+            "stationtype": "STATION_TYPEM1",
+            "icons": [
+            ],
+            "dy": 32
+        },</pre>
+      <p>In total, we shifted M1 down by 16px and M2 up by 16px. Thus M2's stations have been shifted up accordingly, and M1s have been shifted down.</p>
+      <h3 style="background-color:#AAAAAA;color:white">Aesthetic Improvements</h3>
+      <p>Now, one thing to keep in mind is that for this map, we are using a "square" linecap on the paths that comprise the main lines. If you join two "butt" or "square" paths at an angle, you end up with an ugly transition, as can be seen above. We will address this using intermediate paths with a "round" linecap.</p>
+      <div id="u2-4"></div>
+      <pre>    "strokes": [
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "dy": 16,
+            "endpoint": 8
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "endpoint": 8
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "dy": 16,
+            "startpoint": 8,
+            "endpoint": 8.25
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "startpoint": 8,
+            "endpoint": 8.25
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "dy": 16,
+            "startpoint": 8.25,
+            "endpoint": 8.75,
+            "endlinkheight": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "startpoint": 8.25,
+            "endpoint": 8.75,
+            "endlinkheight": -16
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "dy": 16,
+            "startpoint": 8.75,
+            "endpoint": 9,
+            "startlinkheight": 16,
+            "endlinkheight": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "startpoint": 8.75,
+            "endpoint": 9,
+            "startlinkheight": -16,
+            "endlinkheight": -16
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "dy": 16,
+            "startpoint": 9,
+            "startlinkheight": 16,
+            "endlinkheight": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "startpoint": 9,
+            "endpoint": 15,
+            "startlinkheight": -16,
+            "endlinkheight": -16
+        }
+    ],</pre>
+      <p>While this contains many more paths (10 total - 5 per line), it makes the transition smoother. </p>
+      <p>The code used to generate this final map is provided below (with the same brevity notes as before for the <code>"maincustomsvgbg"</code> field).</p>
+      <pre>var obj_line2 = {
+    "linename": "Copenhagen Metro",
+    "iconID": ["ICON_M1", "ICON_M2"],
+    "lineend": 1800,
+    "maincustomsvgbg": "<text x='16' y='460' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
+    "strokes": [
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "dy": 16,
+            "endpoint": 8
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "endpoint": 8
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "dy": 16,
+            "startpoint": 8,
+            "endpoint": 8.25
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "startpoint": 8,
+            "endpoint": 8.25
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "dy": 16,
+            "startpoint": 8.25,
+            "endpoint": 8.75,
+            "endlinkheight": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "startpoint": 8.25,
+            "endpoint": 8.75,
+            "endlinkheight": -16
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "dy": 16,
+            "startpoint": 8.75,
+            "endpoint": 9,
+            "startlinkheight": 16,
+            "endlinkheight": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "round",
+            "startpoint": 8.75,
+            "endpoint": 9,
+            "startlinkheight": -16,
+            "endlinkheight": -16
+        },
+        {
+            "color": "#397c5d",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "dy": 16,
+            "startpoint": 9,
+            "startlinkheight": 16,
+            "endlinkheight": 16
+        },
+        {
+            "color": "#ebd043",
+            "strokewidth": "12px",
+            "linecap": "square",
+            "startpoint": 9,
+            "endpoint": 15,
+            "startlinkheight": -16,
+            "endlinkheight": -16
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPEM1",
+            "stnnodes": [
+                {
+                    "stationradius": 4,
+                    "stationstrokewidth": 0,
+                    "fcolor": "white",
+                    "scolor": "none"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPEM2",
+            "stnnodes": [
+                {
+                    "stationradius": 4,
+                    "stationstrokewidth": 0,
+                    "fcolor": "black",
+                    "scolor": "none"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE_COMBINED",
+            "stnnodes": [
+                {
+                    "stationradius": 4,
+                    "stationstrokewidth": 0,
+                    "fcolor": "black",
+                    "scolor": "none"
+                },
+                {
+                    "stationradius": 4,
+                    "stationstrokewidth": 0,
+                    "fcolor": "white",
+                    "scolor": "none",
+                    "dy": 16
+                }
+            ],
+            "stniconoffset": 32
+        }
+    ],
+    "stations": [
+        {
+            "name": ["Vanløse"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+                ["S-tog"]
+            ]
+        },
+        {
+            "name": ["Flintholm"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+                ["S-tog"]
+            ]
+        },
+        {
+            "name": ["Lindevang"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Fasanvej"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Frederiksberg"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Forum"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Nørreport"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+                ["S-tog"],
+                ["DSB"]
+            ]
+        },
+        {
+            "name": ["Kongens Nytorv"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Christianshavn"],
+            "stationtype": "STATION_TYPE_COMBINED",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Amagerbro"],
+            "stationtype": "STATION_TYPEM2",
+            "icons": [
+            ],
+            "dy": -16
+        },
+        {
+            "name": ["Lergravsparken"],
+            "stationtype": "STATION_TYPEM2",
+            "icons": [
+            ],
+            "dy": -16
+        },
+        {
+            "name": ["Øresund"],
+            "stationtype": "STATION_TYPEM2",
+            "icons": [
+            ],
+            "dy": -16
+        },
+        {
+            "name": ["Amager Strand"],
+            "stationtype": "STATION_TYPEM2",
+            "icons": [
+            ],
+            "dy": -16
+        },
+        {
+            "name": ["Femøren"],
+            "stationtype": "STATION_TYPEM2",
+            "icons": [
+            ],
+            "dy": -16
+        },
+        {
+            "name": ["Kastrup"],
+            "stationtype": "STATION_TYPEM2",
+            "icons": [
+            ],
+            "dy": -16
+        },
+        {
+            "name": ["Lufthavnen"],
+            "stationtype": "STATION_TYPEM2",
+            "icons": [
+                ["DSB"]
+            ],
+            "dy": -16
+        },
+        {
+            "name": ["Islands Brygge"],
+            "stationtype": "STATION_TYPEM1",
+            "icons": [
+            ],
+            "dy": 32
+        },
+        {
+            "name": ["DR Byen"],
+            "stationtype": "STATION_TYPEM1",
+            "icons": [
+            ],
+            "dy": 32
+        },
+        {
+            "name": ["Sundby"],
+            "stationtype": "STATION_TYPEM1",
+            "icons": [
+            ],
+            "dy": 32
+        },
+        {
+            "name": ["Bella Center"],
+            "stationtype": "STATION_TYPEM1",
+            "icons": [
+            ],
+            "dy": 32
+        },
+        {
+            "name": ["Ørestad"],
+            "stationtype": "STATION_TYPEM1",
+            "icons": [
+                ["DSB"]
+            ],
+            "dy": 32
+        },
+        {
+            "name": ["Vestamager"],
+            "stationtype": "STATION_TYPEM1",
+            "icons": [
+            ],
+            "dy": 32
+        }
+    ]
+};</pre>
 </div>
 
     <script type="text/javascript" src="../docs.js"></script>

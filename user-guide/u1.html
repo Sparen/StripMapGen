@@ -165,7 +165,7 @@ var obj_line1 = {
       <div id="u1-5"></div>
       <p>With this, our line looks much better.</p>
       <p>Finally, you may have noticed the date in the bottom left hand corner of the complete example near the top of the page. This is done via custom SVG. Essentially, using <code>maincustomsvgbg</code> and <code>maincustomsvgfg</code>, arbitrary SVG can be put on to the strip map. The former (bg for background) renders before anything else, while the latter (fg for foreground) renders after the rest of the map.</p>
-      <p>In this case, we simply add text. Our final map and the code used to generate it are pasted below.</p>
+      <p>In this case, we simply add text. Our final map and the code used to generate it are pasted below (note, however, that for brevity we've truncated some of the fields in <code>maincustomsvgbg</code> - namely, <code>font-family</code> and <code>font-size</code>).</p>
       <div id="u1-6"></div>
       <pre>
 var obj_line1 = {
@@ -173,7 +173,7 @@ var obj_line1 = {
     "iconID": ["ICON_LONDON_JUBILEE"],
     "linestart": 64,
     "lineend": 1920,
-    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
+    "maincustomsvgbg": "&lt;text x='16' y='460' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'&gt;01/2019&lt;/text&gt;",
     "strokes": [
         {
             "color": "#a1a5a7",
