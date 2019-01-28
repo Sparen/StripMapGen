@@ -126,7 +126,7 @@ var obj_line1 = {
       <p>Now it is time to add the icons. As a general note, I have excluded the Emirates Air Line from the system, in case you are wondering why it is missing.</p>
       <p>Each icon is uniquely identified by its ID. Each icon object has an ID, a height and width, a scale (array with two fields), and SVG defining the icon. There are additional optional fields. The scale field's two values refer to full size and icon size, respectively. The full size icon is used for the line name, while the icon size is used as, well, icons underneath stations. Typically 2/3 (0.67) is a good size for an icon, but for London, with its full text line names, 0.5 works better.</p>
       <p>It's simple to add icons to a station - in the <code>icons</code> field, add arrays. Each array you add represents a line of icons (so you can have multiple icons on the same line next to each other). If you provide a string that does not correspond to an icon in the provided icon object, the string will be rendered as a text icon. Text icons cannot be rendered next to one another.</p>
-      <p>In addition, London's full name icons also do not work well when rendered next to one another due to their size. In fact, even with half scaling, our map's icons are covering one another - sometimes illegibly as is the case for the poor H&C at West Ham.</p>
+      <p>In addition, London's full name icons also do not work well when rendered next to one another due to their size. In fact, even with half scaling, our map's icons are covering one another - sometimes with noticeable effect - as is the case for the poor H&C at West Ham.</p>
       <div id="u1-4"></div>
       <pre>
         {
@@ -161,7 +161,7 @@ var obj_line1 = {
     "lineend": 1920,
     ...
       </pre>
-      <p>The defaults are 128 and 1600.</p>
+      <p>The defaults are 128 and 1800.</p>
       <div id="u1-5"></div>
       <p>With this, our line looks much better.</p>
       <p>Finally, you may have noticed the date in the bottom left hand corner of the complete example near the top of the page. This is done via custom SVG. Essentially, using <code>maincustomsvgbg</code> and <code>maincustomsvgfg</code>, arbitrary SVG can be put on to the strip map. The former (bg for background) renders before anything else, while the latter (fg for foreground) renders after the rest of the map.</p>

@@ -337,7 +337,7 @@ function SMG_lineObjSetDefault(lineobj) {
         lineobj.linestart = 128; // Default: 128px
     }
     if (!("lineend" in lineobj)) {
-        lineobj.lineend = 1600; // Default: 1600px
+        lineobj.lineend = 1800; // Default: 1800px
     }
     if (!("fonttype" in lineobj)) {
         lineobj.fonttype = "Arial"; // Default: Main font is Arial

@@ -1,7 +1,6 @@
 var obj_line2_v1 = {
     "linename": "Copenhagen Metro",
     "iconID": ["ICON_M1", "ICON_M2"],
-    "lineend": 1800,
     "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
@@ -288,7 +287,6 @@ var obj_line2_v1 = {
 var obj_line2_v2 = {
     "linename": "Copenhagen Metro",
     "iconID": ["ICON_M1", "ICON_M2"],
-    "lineend": 1800,
     "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
@@ -495,7 +493,6 @@ var obj_line2_v2 = {
 var obj_line2_v3 = {
     "linename": "Copenhagen Metro",
     "iconID": ["ICON_M1", "ICON_M2"],
-    "lineend": 1800,
     "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
