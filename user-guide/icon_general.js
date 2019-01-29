@@ -16,3 +16,43 @@ var obj_iconCopenhagen = {
         }
     ]
 };
+
+var obj_iconUTA = {
+    "icons": [
+        {
+            "iconID": "ICON_BLUE",
+            "height": 48,
+            "width": 64,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<rect x='4' y='4' height='40' width='56' stroke-width='2px' stroke='white' fill='#0055A4' rx='6' ry='6'></rect><text x='32' y='24' font-family='Verdana' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>701</text>"
+        },
+        {
+            "iconID": "ICON_RED",
+            "height": 48,
+            "width": 64,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<rect x='4' y='4' height='40' width='56' stroke-width='2px' stroke='white' fill='#EC1C24' rx='6' ry='6'></rect><text x='32' y='24' font-family='Verdana' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>703</text>"
+        },
+        {
+            "iconID": "ICON_GREEN",
+            "height": 48,
+            "width": 64,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<rect x='4' y='4' height='40' width='56' stroke-width='2px' stroke='white' fill='#00A076' rx='6' ry='6'></rect><text x='32' y='24' font-family='Verdana' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>704</text>"
+        },
+        {
+            "iconID": "ICON_SLINE",
+            "height": 48,
+            "width": 64,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<rect x='4' y='4' height='40' width='56' stroke-width='2px' stroke='white' fill='#808080' rx='6' ry='6'></rect><text x='32' y='24' font-family='Verdana' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>720</text>"
+        },
+        {
+            "iconID": "ICON_FRONTRUNNER",
+            "height": 48,
+            "width": 64,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<rect x='4' y='4' height='40' width='56' stroke-width='2px' stroke='white' fill='#9622B2' rx='6' ry='6'></rect><text x='32' y='24' font-family='Verdana' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>750</text>"
+        }
+    ]
+};
