@@ -16,7 +16,7 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="docs_load('..')">
+<body onload="SMG_loadMap(obj_line2_v1, obj_iconGeneral, 'g2-1'); SMG_loadMap(obj_line2_v2, obj_iconGeneral, 'g2-2'); docs_load('..')">
 <div id="top">
       <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Guide 2 - Station Type Definitions</h1>
@@ -47,14 +47,145 @@
       <h3 style="background-color:#AAAAAA;color:white">Station Type Object fields</h3>
       <p>To begin this guide, we will cover Station Type Object fields - the ones that control fonts and offsets. These received coverage in the other guides, but will be revisited here. Below is a selection of different permutations of these fields.</p>
       <div id="g2-1"></div>
+      <pre>    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPE1",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE2",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                }
+            ],
+            "stnfonttype": "'Times New Roman', 'serif'"
+        },
+        {
+            "stypeID": "STATION_TYPE3",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                }
+            ],
+            "stnfonttype": "'Times New Roman', 'serif'",
+            "stnfontsize": 20
+        },
+        {
+            "stypeID": "STATION_TYPE4",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                }
+            ],
+            "stnfonttype": "'Times New Roman', 'serif'",
+            "stnfontsize": 20,
+            "stnfontangle": 20
+        },
+        {
+            "stypeID": "STATION_TYPE5",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                }
+            ],
+            "stniconoffset": 32,
+            "stntextoffset": 32
+        }
+    ],</pre>
+      <p>Station Type 1 contains a simple circle (the default for a station node is a circle). 2, 3, and 4 add font type, size, and angle respectively. The final station showcases the text and icon offsets described in Guide 1.</p>
+      <p>Now we move onto the core part of this guide - the component nodes of station type objects.</p>
+      <h3 style="background-color:#AAAAAA;color:white">Station Type Object component nodes</h3>
+      <p>The component nodes, defined in <code>stnnodes</code>, are the individual components that make up the station's graphical presentation. There are three types - <code>CIRCLE</code>, <code>RECT</code>, and <code>CUSTOM</code>. The default is <code>CIRCLE</code> - the other two must be manually specified by setting the value of <code>componenttype</code> to <code>"RECT"</code> or <code>"CUSTOM"</code>.</p>
+      <p>We will start by discussing the basic circle fields. These include <code>stationstrokewidth</code>, <code>stationradius</code>, <code>scolor</code>, and <code>fcolor</code>, as well as <code>dy</code>.</p>
+      <div id="g2-2"></div>
+      <pre>    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPE1",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE2",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 12,
+                    "scolor": "#66AA66"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE3",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 6,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE4",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "black"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE5",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "white",
+                    "fcolor": "#66AA66"
+                }
+            ]
+        },
+    ],</pre>
+      <p>With the circle, nothing too special goes on - the fields only serve to allow access to standard SVG fields such as stroke width, stroke color, and fill color.</p>
+      <p>Next, we will cover basic <code>RECT</code> nodes. These have similar fields to that of the circle, but radius is swapped for height and width.</p>
+      <div id="g2-3"></div>
       <pre></pre>
       <p></p>
-
+      <h3 style="background-color:#AAAAAA;color:white">Station Type Object component nodes - Custom</h3>
+      <p>Now we will discuss <code>CUSTOM</code> nodes. These use <code>stationsvg</code> to hold the SVG that makes up the component, <code>stationwidth</code> and <code>stationheight</code> to properly place the custom component, and <code>dy</code> for further positioning. The height and width are necessary since the Strip Map Generator does not know the dimensions of your custom SVG otherwise. You can utilize text, paths, etc.</p>
+      <div id="g2-4"></div>
+      <pre></pre>
+      <p></p>
+      <h3 style="background-color:#AAAAAA;color:white">Station Type Object component nodes - Combined</h3>
+      <p>Finally we will cover combinations of different node components. Note that they are rendered in the order in which they appear - IE the first one defined will be below the later ones.</p>
+      <div id="g2-5"></div>
+      <pre></pre>
+      <p></p>
 </div>
 
     <script type="text/javascript" src="../docs.js"></script>
-    <script type="text/javascript" src="../icon-common/icon_ankara.js"></script>
-    <script type="text/javascript" src="line_g1.js"></script>
+    <script type="text/javascript" src="./icon_general.js"></script>
+    <script type="text/javascript" src="line_g2.js"></script>
     <script type="text/javascript" src="../strip-map-gen.js"></script>
 
 </body>

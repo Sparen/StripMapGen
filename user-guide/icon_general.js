@@ -1,3 +1,29 @@
+var obj_iconGeneral = {
+    "icons": [
+        {
+            "iconID": "ICON_BLUE",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#0000FF'></circle>"
+        },
+        {
+            "iconID": "ICON_RED",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#FF0000'></circle>"
+        },
+        {
+            "iconID": "ICON_GREEN",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#66AA66'></circle>"
+        }
+    ]
+};
+
 var obj_iconCopenhagen = {
     "icons": [
         {
