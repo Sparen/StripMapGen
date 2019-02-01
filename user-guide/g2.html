@@ -16,7 +16,7 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="SMG_loadMap(obj_line2_v1, obj_iconGeneral, 'g2-1'); SMG_loadMap(obj_line2_v2, obj_iconGeneral, 'g2-2'); docs_load('..')">
+<body onload="SMG_loadMap(obj_line2_v1, obj_iconGeneral, 'g2-1'); SMG_loadMap(obj_line2_v2, obj_iconGeneral, 'g2-2'); SMG_loadMap(obj_line2_v3, obj_iconGeneral, 'g2-3'); SMG_loadMap(obj_line2_v4, obj_iconGeneral, 'g2-4'); SMG_loadMap(obj_line2_v5, obj_iconGeneral, 'g2-5'); docs_load('..')">
 <div id="top">
       <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Guide 2 - Station Type Definitions</h1>
@@ -169,18 +169,259 @@
       <p>With the circle, nothing too special goes on - the fields only serve to allow access to standard SVG fields such as stroke width, stroke color, and fill color.</p>
       <p>Next, we will cover basic <code>RECT</code> nodes. These have similar fields to that of the circle, but radius is swapped for height and width.</p>
       <div id="g2-3"></div>
-      <pre></pre>
-      <p></p>
-      <h3 style="background-color:#AAAAAA;color:white">Station Type Object component nodes - Custom</h3>
-      <p>Now we will discuss <code>CUSTOM</code> nodes. These use <code>stationsvg</code> to hold the SVG that makes up the component, <code>stationwidth</code> and <code>stationheight</code> to properly place the custom component, and <code>dy</code> for further positioning. The height and width are necessary since the Strip Map Generator does not know the dimensions of your custom SVG otherwise. You can utilize text, paths, etc.</p>
-      <div id="g2-4"></div>
-      <pre></pre>
-      <p></p>
+      <pre>    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPE1",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationheight": 12,
+                    "stationwidth": 12,
+                    "scolor": "#66AA66",
+                    "componenttype": "RECT"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE2",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationheight": 16,
+                    "stationwidth": 12,
+                    "scolor": "#66AA66",
+                    "componenttype": "RECT"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE3",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 6,
+                    "stationheight": 12,
+                    "stationwidth": 12,
+                    "scolor": "#66AA66",
+                    "componenttype": "RECT"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE4",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationheight": 10,
+                    "stationwidth": 3,
+                    "scolor": "#66AA66",
+                    "componenttype": "RECT",
+                    "dy": -3
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE5",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationheight": 12,
+                    "stationwidth": 12,
+                    "scolor": "#66AA66",
+                    "componenttype": "RECT",
+                    "dy": -10
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE_NONE",
+            "stnnodes": [
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE6",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 0,
+                    "stationheight": 8,
+                    "stationwidth": 8,
+                    "scolor": "#66AA66",
+                    "componenttype": "RECT"
+                }
+            ]
+        }
+    ],</pre>
+      <p>The usage of parameters for <code>RECT</code> nodes is relatively self-explanatory. Refer to <a href="./u1.html">Unit 1</a> for instructions on the tick style.</p>
+      <p>For most purposes, circles will outperform square station icons, as the usage of square icons is more situational.</p>
       <h3 style="background-color:#AAAAAA;color:white">Station Type Object component nodes - Combined</h3>
-      <p>Finally we will cover combinations of different node components. Note that they are rendered in the order in which they appear - IE the first one defined will be below the later ones.</p>
+      <p>Now we will cover combinations of different node components. Note that they are rendered in the order in which they appear - IE the first one defined will be below the later ones.</p>
+      <div id="g2-4"></div>
+      <pre>    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPE1",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 4,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE2",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                },
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 6,
+                    "scolor": "#0000FF",
+                    "dy": 8
+                },
+                {
+                    "stationstrokewidth": 2,
+                    "stationheight": 4,
+                    "stationwidth": 8,
+                    "scolor": "#FFFFFF",
+                    "dy": 4,
+                    "componenttype": "RECT"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE3",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 6,
+                    "scolor": "#66AA66"
+                },
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 6,
+                    "scolor": "#0000FF",
+                    "dy": 8
+                },
+                {
+                    "stationstrokewidth": 2,
+                    "stationheight": 4,
+                    "stationwidth": 8,
+                    "scolor": "#FFFFFF",
+                    "dy": 4,
+                    "componenttype": "RECT"
+                },
+                {
+                    "stationstrokewidth": 0,
+                    "stationradius": 3,
+                    "fcolor": "#66AA66"
+                },
+                {
+                    "stationstrokewidth": 0,
+                    "stationradius": 3,
+                    "fcolor": "#0000FF",
+                    "dy": 8
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE4",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationheight": 16,
+                    "stationwidth": 16,
+                    "scolor": "#66AA66",
+                    "componenttype": "RECT"
+                },
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 4,
+                    "scolor": "#66AA66"
+                }
+            ]
+        }
+    ],</pre>
+      <p>Here we have two examples of transfer stations and an example where a circle is rendered on top of a square. For transfer stations, <code>dy</code> can be used to offset components and allow for good combinations. However, it may be necessary to cover unwanted parts of prior nodes.</p>
+      <p>Good references for combinations of nodes include our Helsinki example as well as the Salt Lake City example in <a href="./u3.html">Unit 3</a>.</p>
+      <h3 style="background-color:#AAAAAA;color:white">Station Type Object component nodes - Custom</h3>
+      <p>Finally we will discuss <code>CUSTOM</code> nodes. These use <code>stationsvg</code> to hold the SVG that makes up the component, <code>stationwidth</code> and <code>stationheight</code> to properly place the custom component, and <code>dy</code> for further positioning. The height and width are necessary since the Strip Map Generator does not know the dimensions of your custom SVG otherwise. You can utilize text, paths, etc.</p>
+      <p>Generally speaking, multiple components are utilized when doing custom SVG - for example, a letter or symbol on a circle/square, etc.</p>
       <div id="g2-5"></div>
-      <pre></pre>
-      <p></p>
+      <pre>"stationtypes": [
+        {
+            "stypeID": "STATION_TYPE1",
+            "stnnodes": [
+                {
+                    "stationsvg": "<rect x='0' y='0' height='24' width='24' stroke-width='4px' rx='6px' stroke='#66AA66' fill='white'></rect>",
+                    "stationwidth": 24,
+                    "stationheight": 24,
+                    "componenttype": "CUSTOM"
+                },
+                {
+                    "stationsvg": "<text x='12' y='12' font-family='Helvetica' font-size='16px' fill='#226622' text-anchor='middle' dominant-baseline='central'>M</text>",
+                    "stationwidth": 24,
+                    "stationheight": 24,
+                    "componenttype": "CUSTOM"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE2",
+            "stnnodes": [
+                {
+                    "stationsvg": "<polygon points='30,15 22.5,28 7.5,28 0,15 7.5,2 22.5,2' fill='#66AA66' stroke='white' stroke-width='1px'></polygon>",
+                    "stationwidth": 30,
+                    "stationheight": 30,
+                    "componenttype": "CUSTOM"
+                },
+                {
+                    "stationsvg": "<text x='12' y='12' font-family='Helvetica' font-size='16px' fill='white' text-anchor='middle' dominant-baseline='central'>M</text>",
+                    "stationwidth": 24,
+                    "stationheight": 24,
+                    "componenttype": "CUSTOM"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE3",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 12,
+                    "scolor": "#66AA66",
+                    "fcolor": "white"
+                },
+                {
+                    "stationsvg": "<text x='12' y='12' font-family='Helvetica' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>🚈</text>",
+                    "stationwidth": 24,
+                    "stationheight": 24,
+                    "componenttype": "CUSTOM"
+                }
+            ]
+        },
+        {
+            "stypeID": "STATION_TYPE4",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationwidth": 24,
+                    "stationheight": 24,
+                    "scolor": "#66AA66",
+                    "fcolor": "white",
+                    "componenttype": "RECT"
+                },
+                {
+                    "stationsvg": "<text x='12' y='13.5' font-family='Helvetica' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>♿</text>",
+                    "stationwidth": 24,
+                    "stationheight": 24,
+                    "componenttype": "CUSTOM"
+                }
+            ]
+        }
+    ],</pre>
+      <p>For further examples, see our examples in <a href="./g1.html">Guide 1</a> and <a href="./../test-internal/test-internal.html">Internal Tests</a>.</p>
 </div>
 
     <script type="text/javascript" src="../docs.js"></script>

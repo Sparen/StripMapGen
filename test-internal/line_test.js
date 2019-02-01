@@ -530,7 +530,7 @@ var obj_lineC = {
             "stypeID": "STATION_TYPE14",
             "stnnodes": [
                 {
-                    "stationsvg": "<rect x='0' y='0' height='40' width='32' stroke-width='4px' rx='6px' stroke='#FFAAAA' fill='white'></path>",
+                    "stationsvg": "<rect x='0' y='0' height='40' width='32' stroke-width='4px' rx='6px' stroke='#FFAAAA' fill='white'></rect>",
                     "stationwidth": 32,
                     "stationheight": 40,
                     "scolor": "#FFAAAA",
@@ -558,7 +558,7 @@ var obj_lineC = {
             "stypeID": "STATION_TYPE_TRANSFER",
             "stnnodes": [
                 {
-                    "stationsvg": "<rect x='0' y='0' height='40' width='32' stroke-width='4px' rx='6px' stroke='#FFAAAA' fill='white'></path>",
+                    "stationsvg": "<rect x='0' y='0' height='40' width='32' stroke-width='4px' rx='6px' stroke='#FFAAAA' fill='white'></rect>",
                     "stationwidth": 32,
                     "stationheight": 40,
                     "scolor": "#FFAAAA",
