@@ -41,6 +41,16 @@
 <priority>0.3</priority>
 </url>
 <url>
+<loc>https://sparen.github.io/StripMapGen/user-guide/g2.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://sparen.github.io/StripMapGen/user-guide/g3.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
 <loc>https://sparen.github.io/StripMapGen/user-guide/u1.html</loc>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
