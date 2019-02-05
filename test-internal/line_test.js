@@ -1,7 +1,7 @@
 var obj_lineA = {
     "linename": "Lines 11 & 12",
     "iconID": ["ICON_LINE11", "ICON_LINE12"],
-    "fonttype": "DIN Alternate",
+    "fonttype": "'DIN Alternate', Helvetica",
     "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
@@ -145,7 +145,7 @@ var obj_lineA = {
                     "scolor": "#FF0000"
                 }
             ],
-            "stnfonttype": "Source Sans Pro",
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'",
             "stnfontangle": 55
         },
         {
@@ -157,7 +157,7 @@ var obj_lineA = {
                     "scolor": "#FFAA00"
                 }
             ],
-            "stnfonttype": "Source Sans Pro",
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'",
             "stnfontangle": 55
         },
         {
@@ -169,7 +169,7 @@ var obj_lineA = {
                     "scolor": "#000000"
                 }
             ],
-            "stnfonttype": "Source Sans Pro",
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'",
             "stnfontsize": 18,
             "stnfontangle": 55
         }
@@ -318,7 +318,7 @@ var obj_lineA = {
 var obj_lineB = {
     "linename": "13号线",
     "iconID": ["ICON_LINE13"],
-    "fonttype": "'DIN Alternate', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'",
+    "fonttype": "'DIN Alternate', 'Helvetica', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'",
     "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
@@ -363,13 +363,13 @@ var obj_lineB = {
                     "scolor": "#FF00AA"
                 }
             ],
-            "stnfonttype": "'Source Sans Pro', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'"
+            "stnfonttype": "'Source Sans Pro', 'Helvetica', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'"
         },
         {
             "stypeID": "STATION_TYPE_NONE",
             "stnnodes": [
             ],
-            "stnfonttype": "'Source Sans Pro', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'"
+            "stnfonttype": "'Source Sans Pro', 'Helvetica', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'"
         },
         {
             "stypeID": "STATION_TYPE_TRANSFER",
@@ -380,7 +380,7 @@ var obj_lineB = {
                     "scolor": "#000000"
                 },
             ],
-            "stnfonttype": "'Source Sans Pro', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'",
+            "stnfonttype": "'Source Sans Pro', 'Helvetica', 'Microsoft Yahei', '微软雅黑', STXihei, '华文细黑'",
             "stnfontsize": 18
         }
     ],
@@ -509,7 +509,7 @@ var obj_lineB = {
 var obj_lineC = {
     "linename": "14 - 流山線",
     "iconID": ["ICON_LINE14"],
-    "fonttype": "'DIN Alternate', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
+    "fonttype": "'DIN Alternate', 'Helvetica', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
     "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
     "strokes": [
         {
@@ -544,7 +544,7 @@ var obj_lineC = {
                     "componenttype": "CUSTOM"
                 }
             ],
-            "stnfonttype": "'Source Sans Pro', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
+            "stnfonttype": "'Source Sans Pro', 'Helvetica', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
             "stntextoffset": 28,
             "stniconoffset": 28
         },
@@ -572,7 +572,7 @@ var obj_lineC = {
                     "componenttype": "CUSTOM"
                 }
             ],
-            "stnfonttype": "'Source Sans Pro', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
+            "stnfonttype": "'Source Sans Pro', 'Helvetica', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
             "stnfontsize": 18,
             "stntextoffset": 28,
             "stniconoffset": 28
@@ -850,7 +850,7 @@ var obj_lineC = {
 var obj_lineD = {
     "linename": "Line 15",
     "iconID": ["ICON_LINE15"],
-    "fonttype": "DIN Alternate",
+    "fonttype": "'DIN Alternate', 'Helvetica'",
     "locknumstations": 9,
     "linestart": 256,
     "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
@@ -965,14 +965,14 @@ var obj_lineD = {
                     "scolor": "#AA00FF"
                 }
             ],
-            "stnfonttype": "Source Sans Pro",
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'",
             "stnfontangle": 30
         },
         {
             "stypeID": "STATION_TYPE_NONE",
             "stnnodes": [
             ],
-            "stnfonttype": "Source Sans Pro"
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'"
         },
         {
             "stypeID": "STATION_TYPE_TRANSFER",
@@ -983,7 +983,7 @@ var obj_lineD = {
                     "scolor": "#000000"
                 }
             ],
-            "stnfonttype": "Source Sans Pro",
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'",
             "stnfontsize": 18,
             "stnfontangle": 30
         }
