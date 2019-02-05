@@ -16,7 +16,7 @@
     ga('send', 'pageview');
   </script>
 
-<body onload="docs_load('..')">
+<body onload="SMG_loadMap(obj_line3_v1, obj_iconGeneral, 'g3-1'); SMG_loadMap(obj_line3_v2, obj_iconGeneral, 'g3-2'); docs_load('..')">
 <div id="top">
       <div class="sm-navbar-container" id="navbar"></div>
       <h1 style="background-color:#AAAAAA;color:white">Guide 3 - Icon Definitions and Usage</h1>
@@ -33,24 +33,102 @@
       <p>In this guide, we will showcase a variety of icon types, as well as how to handle scaling/centering as well as usage of more advanced icon features.</p>
       <h3 style="background-color:#AAAAAA;color:white">Required Icon Object fields</h3>
       <p>To begin this guide, we will cover the basic required fields.</p>
-      <div id="g3-1"></div>
-      <pre></pre>
-      <p></p>
+      <pre>        {
+            "iconID": "ICON_BLUE",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#0000FF'></circle>"
+        }</pre>
+      <pre>Every icon must have an Icon ID - this is the ID used to refer to the icon in the <code>icons</code> field of the station objects. In addition, each icon has a <code>height</code> and <code>width</code>. This is because whatever you place in the SVG itself may have arbitrary size, and it is necessary to be able to center the icon appropriately when rendering on the Strip Map.</pre>
+      <p>Currently, <code>scale</code> contains two values. The height and width are multiplied against these, with the first one referring to the size for the main line icon at the top left of the map next to the line name, and the second one referring to the size of the icons rendering under the stations.</p>
+      <p>Finally, the <code>iconSVG</code> field contains the actual SVG for the icon. Pretty much anything can go in here, but keep in mind that the (0, 0) point is the top left as far as rendering is concerned. You will need to center the icon appropriately, or adjust the height and width to render the icon as intended.</p>
       <h3 style="background-color:#AAAAAA;color:white">Optional Icon Object fields</h3>
-      <p></p>
-      <div id="g3-2"></div>
-      <pre></pre>
-      <p></p>
+      <p>Currently, the only optional field for icon objects is <code>iconlink</code>, which allows for an icon to function as a link to another webpage or location on the same page.</p>
+      <pre>"iconlink": "./test-internal.html#line1112"</pre>
+      <p>Usage is quite simple. Place the relative or absolute url for the target to link to.</p>
       <h3 style="background-color:#AAAAAA;color:white">Icon Usage</h3>
-      <p></p>
-      <div id="g3-3"></div>
-      <pre></pre>
-      <p></p>
+      <p>Now we will go over some basic usage of icons. </p>
+      <div id="g3-1"></div>
+      <pre>    "stations": [
+        {
+            "name": ["Single Icon"],
+            "stationtype": "STATION_TYPE1",
+            "icons": [
+                ["ICON_TURQUOISE"]
+            ]
+        },
+        {
+            "name": ["Vertical"],
+            "stationtype": "STATION_TYPE1",
+            "icons": [
+                ["ICON_RED"],
+                ["ICON_BLUE"],
+                ["ICON_ORANGE"]
+            ]
+        },
+        {
+            "name": ["Side by Side"],
+            "stationtype": "STATION_TYPE1",
+            "icons": [
+                ["ICON_AQUA", "ICON_AQUAMARINE", "ICON_TURQUOISE"],
+                ["ICON_RED", "ICON_PINK", "ICON_HOTPINK"]
+            ]
+        },
+        {
+            "name": ["Combination"],
+            "stationtype": "STATION_TYPE1",
+            "icons": [
+                ["ICON_AQUA", "ICON_AQUAMARINE", "ICON_TURQUOISE"],
+                ["ICON_PINK", "ICON_HOTPINK"],
+                ["ICON_PURPLE"]
+            ]
+        },
+        {
+            "name": ["Icon as Station Type"],
+            "stationtype": "STATION_TYPE1",
+            "icons": [
+                ["ICON_OTHER"]
+            ],
+            "iconoffset": -32
+        }
+    ]</pre>
+      <p>In the <code>icons</code> field, which is an array of lists, each list represents a single 'row'. Multiple icons can be placed in each row, as seen in the Side by Side example. Multiple rows can be applied as well.</p>
+      <p>Fields that influence icon placement such as the various offsets will offset all icons. Some niche uses of this include utilizing an icon as the station icon by covering the existing station with the icon, but this is discouraged unless the situation calls for it.</p>
       <h3 style="background-color:#AAAAAA;color:white">Text Icons</h3>
-      <p></p>
-      <div id="g3-4"></div>
-      <pre></pre>
-      <p></p>
+      <p>Finally, a brief note about Text Icons. Text Icons are partially a way to inform the map creator of errors with their Icon IDs, and partially a way to allow arbitrary text. Text Icons settings are controlled via <code>fonttype</code> and <code>texticonfontsize</code> fields on the main line object.</p>
+      <div id="g3-2"></div>
+      <pre>    "stations": [
+        {
+            "name": ["Basic Text Icons"],
+            "stationtype": "STATION_TYPE1",
+            "icons": [
+                ["Bus Terminal"]
+            ]
+        },
+        {
+            "name": ["Combined Icons + Text Icons"],
+            "stationtype": "STATION_TYPE1",
+            "icons": [
+                ["ICON_PURPLE"],
+                ["National Rail"],
+                ["Airport"]
+            ]
+        },
+        {
+            "name": ["Text Icons for Vertical Text"],
+            "stationtype": "STATION_TYPE2",
+            "icons": [
+                ["平"],
+                ["和"],
+                ["通"],
+                ["り"],
+                ["ICON_AQUA"]
+            ]
+        }
+    ]</pre>
+      <p>Limitations and creative uses of Text Icons both exist. One limitation is that text icons must be the only icon in their respective row - text icons combined with other text icons and regular icons on the same row are not supported and may render poorly. Creative uses include using Text Icons for vertical text such as Chinese and Japanese.</p>
+      <p>For further examples, refer to the internal tests and other guides.</p>
 </div>
 
     <script type="text/javascript" src="../docs.js"></script>

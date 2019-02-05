@@ -20,6 +20,62 @@ var obj_iconGeneral = {
             "width": 48,
             "scale": [1.0, 0.67],
             "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#66AA66'></circle>"
+        },
+        {
+            "iconID": "ICON_ORANGE",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#FFA500'></circle>"
+        },
+        {
+            "iconID": "ICON_PURPLE",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#FF00FF'></circle>"
+        },
+        {
+            "iconID": "ICON_AQUA",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#00FFFF'></circle>"
+        },
+        {
+            "iconID": "ICON_AQUAMARINE",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#7FFFD4'></circle>"
+        },
+        {
+            "iconID": "ICON_TURQUOISE",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#40E0D0'></circle>"
+        },
+        {
+            "iconID": "ICON_PINK",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#FFC0CB'></circle>"
+        },
+        {
+            "iconID": "ICON_HOTPINK",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#FF69B4'></circle>"
+        },
+        {
+            "iconID": "ICON_OTHER",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='2px' stroke='white' fill='#4444FF'></circle><text x='24' y='24' font-family='Verdana' font-size='20px' fill='white' text-anchor='middle' dominant-baseline='central'>U</text>"
         }
     ]
 };
