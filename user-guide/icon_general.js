@@ -99,6 +99,18 @@ var obj_iconCopenhagen = {
     ]
 };
 
+var obj_iconGlasgow = {
+    "icons": [
+        {
+            "iconID": "ICON_GLASGOW",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='rgb(255, 102, 0)'></circle><circle cx='24' cy='24' r='12' stroke-width='4px' stroke='none' fill='rgb(85, 85, 86)'></circle><circle cx='24' cy='24' r='6' stroke-width='4px' stroke='none' fill='white'></circle><text x='24' y='24' font-family='Helvetica' font-size='10px' fill='rgb(255, 102, 0)' text-anchor='middle' dominant-baseline='central'>S</text>"
+        }
+    ]
+};
+
 var obj_iconUTA = {
     "icons": [
         {
