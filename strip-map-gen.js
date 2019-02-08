@@ -1,6 +1,7 @@
 "use strict"
 
 // This function takes a line object and icon object (required to include those scripts) and outputs to the specified target div
+// Also returns the SVG
 function SMG_loadMap(lineobj, iconobj, targetdiv) {
     // Load line-specific data
     SMG_lineObjSetDefault(lineobj);
@@ -56,6 +57,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
 
     smsvg += '</svg>';
     document.getElementById(targetdiv).innerHTML = smsvg;
+    return smsvg;
 }
 
 // Define def patterns for icons. Loading all of them.

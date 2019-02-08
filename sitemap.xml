@@ -10,6 +10,11 @@
 <priority>0.5</priority>
 </url>
 <url>
+<loc>https://sparen.github.io/StripMapGen/demo.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+<url>
 <loc>https://sparen.github.io/StripMapGen/icon-common/index.html</loc>
 <changefreq>monthly</changefreq>
 <priority>0.1</priority>

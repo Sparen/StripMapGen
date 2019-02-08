@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <meta charset="utf-8">
+    <title>SVG Strip Map Generator - Demo</title>
+    <link rel="stylesheet" type="text/css" href="./test.css">
+    <meta content="SVG Strip Map Generator - Live demo" name="description">
+    <meta name="keywords" content="SVG, Strip, Map, Generator, Demo">
+    <meta name="viewport" content="initial-scale=1">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-58194930-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+<body onload="docs_load('.'); demo_setup();">
+<div id="top">
+      <div class="sm-navbar-container" id="navbar"></div>
+      <h1 style="background-color:#AAAAAA;color:white">SVG Strip Map Generator - Demo</h1>
+      <div>This is the demo for the Strip Map Generator.<br>Paste in your JSON and hit 'Generate Map'. Make sure to not have a variable declaration (i.e. <code>var line_name = ...</code>) or a trailing <code>;</code> in the JSON below or it will not work on certain browsers.</div>
+      <div>If there are issues (for example, one of the sample maps doesn't render when you hit 'Generate Map'), please post an issue on <a target="_blank" href="https://github.com/Sparen/StripMapGen/issues">GitHub</a>. This may be due to an oversight, as the syntax parsing for this demo is stricter than the parsing when the library is hooked into normally.</div>
+      <hr>
+      <div id="demo_map"></div>
+      <button id="submit" onclick="mapgen()">Generate Map</button>
+      <span>&nbsp;| </span>
+      <button id="submit" onclick="saveLS()">Save to Local Storage</button>
+      <button id="submit" onclick="loadLS()">Load from Local Storage</button>
+      <span>&nbsp;| </span>
+      <button id="submit" onclick="resetPrefab()">Reset Map</button> (does not clear local storage)
+      <span>&nbsp;| </span>
+      <button id="clipsave">Save SVG to Clipboard</button> (may not work)
+      <div><textarea class="jsonbox" id="json1" wrap="hard"></textarea><textarea class="jsonbox" id="json2" wrap="hard"></textarea></div>
+      <textarea id="outputSVG" style="display:none;"></textarea>
+</div>
+
+    <script type="text/javascript" src="docs.js"></script>
+    <script type="text/javascript" src="strip-map-gen.js"></script>
+    <script type="text/javascript" src="demo.js"></script>
+
+</body>
+</html>

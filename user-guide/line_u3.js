@@ -222,7 +222,7 @@ var obj_line3_v1 = {
                     "stationstrokewidth": 0,
                     "stationwidth": 10,
                     "stationheight": 28,
-                    "scolor": "#FFFFFF",
+                    "scolor": "#FFFFFF"
                 }
             ],
             "stnfontangle": 58

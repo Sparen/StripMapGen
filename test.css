@@ -35,3 +35,9 @@ h3 {
 .sm-navbar a {
     text-decoration: none;
 }
+
+.jsonbox {
+    font-family:'Andale Mono', monospace;
+    width: 49%; 
+    height: 600px; 
+}
