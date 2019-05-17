@@ -55,6 +55,11 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
         smsvg += lineobj.maincustomsvgfg;
     }
 
+    // Extra Icons
+    if ("extraicons" in lineobj) {
+        smsvg += SMG_drawExtraIcons(lineobj.extraicons, lineobj, iconobj);
+    }
+
     smsvg += '</svg>';
     document.getElementById(targetdiv).innerHTML = smsvg;
     return smsvg;
@@ -312,6 +317,50 @@ function SMG_drawStationIcons(stationIcons, lineobj, iconobj, stationxpos, icony
             }
         }
         totalmaxht += currmaxht * (1.125); // 1.125 multiplier puts buffer space between rows vertically
+    }
+    return iconsvg;
+}
+
+// Helper function for SMG_loadMap that handles extra icons
+// Takes the array of extra icons, the line object, and the master icon object
+function SMG_drawExtraIcons(extraIcons, lineobj, iconobj) {
+    let iconsvg = "";
+    // For every extra icon
+    for (let j = 0; j < extraIcons.length; j += 1) {
+        let iconfound = false; // Whether or not the icon was found. If not found, defaults to printing the text.
+        // For each icon in the line, get necessary information for rendering
+        let currobj = extraIcons[j];
+        let curriconht = 0;
+        let curriconwd = 0;
+        let lineIcon = SMG_getIconByID(iconobj, currobj.iconID);
+        if (!(lineIcon === null)) {
+             iconfound = true;
+        }
+        if (iconfound) {
+            curriconht = lineIcon.height * lineIcon.scale[1];
+            curriconwd = lineIcon.width * lineIcon.scale[1];
+        }
+
+        let iconx = currobj.iconx;
+        let icony = currobj.icony;
+
+        // Don't crash
+        if (iconx === undefined) {iconx = 0; console.log("Note: X coordinate not found for icon. Defaulting to 0");}
+        if (icony === undefined) {icony = 0; console.log("Note: Y coordinate not found for icon. Defaulting to 0");}
+
+        // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
+        if (!iconfound) {
+            iconsvg += '<text x="' + iconx + '" y="' + icony + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + currobj.iconID + '</text>';
+        } else {
+            let currx = (iconx - curriconwd/2); // Station position, offset left to center rect.
+            if ("iconlink" in lineIcon) {
+                iconsvg += '<a xlink:href="' + lineIcon.iconlink + '"><g>';
+            }
+            iconsvg += '<rect x="' + currx + '" y="' + (icony - curriconht/2) + '" height="' + curriconht + '" width="' + curriconwd + '" fill="url(#PATTERN_' + currobj.iconID + '_SCALE2)" />';
+            if ("iconlink" in lineIcon) {
+                iconsvg += '</g></a>';
+            }
+        }
     }
     return iconsvg;
 }

@@ -37,8 +37,8 @@
 <li><code style="color:red">strokes</code> - Array of line stroke objects. See below for specification.</li>
 <li><code style="color:red">stationtypes</code> - Array of station type objects. See below for specification.</li>
 <li><code style="color:red">stations</code> - Array of station objects. See below for specification.</li>
-<li><code style="color:blue">canvasheight</code> - Canvas Height. Defaults to <code>2000</code> pixels.</li>
-<li><code style="color:blue">canvaswidth</code> - Canvas Width. Defaults to <code>480</code> pixels.</li>
+<li><code style="color:blue">canvasheight</code> - Canvas Height. Defaults to <code>480</code> pixels.</li>
+<li><code style="color:blue">canvaswidth</code> - Canvas Width. Defaults to <code>2000</code> pixels.</li>
 <li><code style="color:blue">lineheight</code> - Line Height. Controls how far down vertically the main line is. Defaults to <code>240</code> pixels.</li>
 <li><code style="color:blue">linestart</code> - Line Start x coordinate. Controls where the main line starts. Defaults to <code>128</code>.</li>
 <li><code style="color:blue">lineend</code> - Line End x coordinate. Controls where the main line ends and is used in determining the spacing between stations. Defaults to <code>1800</code>.</li>
@@ -48,6 +48,7 @@
 <li><code style="color:blue">texticonfontsize</code> - Font size to use for text icons. Defaults to <code>20</code>.</li>
 <li><code style="color:blue">maincustomsvgbg</code> - Custom SVG (renders in the background).</li>
 <li><code style="color:blue">maincustomsvgfg</code> - Custom SVG (renders in the foreground).</li>
+<li><code style="color:blue">extraicons</code> - Array of extra icons (standard + text) rendered on map. See Icons section for specification</li>
 </ul>
 
 <p>The required <code>strokes</code> field of the line object is an array of objects that has the following options.</p>
@@ -121,6 +122,14 @@
 <li><code style="color:red">scale</code> - Scalings of this icon. First is the large icon (Displayed to the left of the line's name, Recommended: <code>1</code>). Second is the small icon (Displayed under stations, Recommended: <code>0.67</code>)</li>
 <li><code style="color:red">iconSVG</code> - SVG of the icon. The provided SVG should fit within the stated height and width.</li>
 <li><code style="color:blue">iconlink</code> - URL that is traveled to when clicking the icon as a transfer icon.</li>
+</ul>
+
+<p>The optional <code>extraicons</code> field of the line object object is an array of objects that has the following options. This is optional and is primarily utilized for through-running connections or where multiple lines share track. For a working example, refer to Test 3 in the <a href="./test-internal/test-internal.html">Internal Test Suite</a>.</p>
+<p>As a convenience, text icons are supported by this method for the placement of arbitrary text on the map.</p>
+<ul>
+<li><code style="color:red">iconID</code> - The Icon ID of the extra icon.</li>
+<li><code style="color:red">iconx</code> - The x coordinate (in pixels) of the extra icon.</li>
+<li><code style="color:red">icony</code> - The y coordinate (in pixels) of the extra icon. Note that the line height defaults to 240, so use 240 in order to align the icon to the base line.</li>
 </ul>
     </div>
 </div>

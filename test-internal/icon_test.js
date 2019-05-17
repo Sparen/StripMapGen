@@ -45,7 +45,16 @@ var obj_iconTest = {
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
-            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='8px' stroke='#AAFF00' fill='#FFFFFF'></circle><text x='24' y='24' font-family='Arial' font-size='18px' fill='black' font-weight='bold' text-anchor='middle' dominant-baseline='central'>16</text>"
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='8px' stroke='#AAFF00' fill='#FFFFFF'></circle><text x='24' y='24' font-family='Arial' font-size='18px' fill='black' font-weight='bold' text-anchor='middle' dominant-baseline='central'>16</text>",
+            "iconlink": "./test-internal.html#line16"
+        },
+        {
+            "iconID": "ICON_LINE17",
+            "height": 48,
+            "width": 48,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='8px' stroke='#00AAFF' fill='#FFFFFF'></circle><text x='24' y='24' font-family='Arial' font-size='18px' fill='black' font-weight='bold' text-anchor='middle' dominant-baseline='central'>17</text>",
+            "iconlink": "./test-internal.html#line17"
         }
     ]
 };

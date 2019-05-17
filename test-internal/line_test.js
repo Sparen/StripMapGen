@@ -511,6 +511,23 @@ var obj_lineC = {
     "iconID": ["ICON_LINE14"],
     "fonttype": "'DIN Alternate', 'Helvetica', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', 'Meiryo'",
     "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
+    "extraicons": [
+        {
+            "iconID": "ICON_LINE17",
+            "iconx": 64,
+            "icony": 240
+        },
+        {
+            "iconID": "Through",
+            "iconx": 64,
+            "icony": 272
+        },
+        {
+            "iconID": "Service",
+            "iconx": 64,
+            "icony": 292
+        }
+    ],
     "strokes": [
         {
             "color": "#AACCFF",
@@ -523,6 +540,12 @@ var obj_lineC = {
         {
             "color": "#FFAAAA",
             "strokewidth": "8px"
+        },
+        {
+            "color": "#00AAFF",
+            "strokewidth": "8px",
+            "startpoint": -0.5,
+            "endpoint": 0
         }
     ],
     "stationtypes": [
