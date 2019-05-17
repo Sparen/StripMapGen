@@ -39,109 +39,125 @@ var obj_line4_v1 = {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.75,
-            "endpoint": -0.75,
+            "startpoint": -0.7,
+            "endpoint": -0.7,
             "startlinkheight": 0 - 7,
-            "endlinkheight": 64 + 7
+            "endlinkheight": 64 + 7,
+            "startdx": -7,
+            "enddx": -7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.75,
+            "startpoint": -0.7,
             "endpoint": -0.25,
             "startlinkheight": 0 - 7,
-            "endlinkheight": -64 - 7
+            "endlinkheight": -64 - 7,
+            "startdx": -7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.75,
+            "startpoint": -0.7,
             "endpoint": -0.25,
             "startlinkheight": 64 + 7,
-            "endlinkheight": 128 + 7
+            "endlinkheight": 128 + 7,
+            "startdx": -7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.65,
-            "endpoint": -0.65,
-            "startlinkheight": 0,
-            "endlinkheight": 64
+            "startpoint": -0.7,
+            "endpoint": -0.7,
+            "startlinkheight": 0 - 2,
+            "endlinkheight": 64 + 2,
+            "startdx": 7,
+            "enddx": 7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.65,
+            "startpoint": -0.7,
             "endpoint": -0.20,
-            "startlinkheight": 0,
-            "endlinkheight": -64 + 7
+            "startlinkheight": 0 - 2,
+            "endlinkheight": -64 + 7,
+            "startdx": 7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.65,
+            "startpoint": -0.7,
             "endpoint": -0.20,
-            "startlinkheight": 64,
-            "endlinkheight": 128 - 7
+            "startlinkheight": 64 + 2,
+            "endlinkheight": 128 - 7,
+            "startdx": 7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": 14.75,
-            "endpoint": 14.75,
+            "startpoint": 14.7,
+            "endpoint": 14.7,
             "startlinkheight": 0 - 7,
-            "endlinkheight": 64 + 7
+            "endlinkheight": 64 + 7,
+            "startdx": 7,
+            "enddx": 7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
             "startpoint": 14.25,
-            "endpoint": 14.75,
+            "endpoint": 14.7,
             "startlinkheight": -64 - 7,
-            "endlinkheight": 0 - 7
+            "endlinkheight": 0 - 7,
+            "enddx": 7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
             "startpoint": 14.25,
-            "endpoint": 14.75,
+            "endpoint": 14.7,
             "startlinkheight": 128 + 7,
-            "endlinkheight": 64 + 7
+            "endlinkheight": 64 + 7,
+            "enddx": 7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": 14.65,
-            "endpoint": 14.65,
-            "startlinkheight": 0,
-            "endlinkheight": 64
+            "startpoint": 14.7,
+            "endpoint": 14.7,
+            "startlinkheight": 0 - 2,
+            "endlinkheight": 64 + 2,
+            "startdx": -7,
+            "enddx": -7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": 14.65,
+            "startpoint": 14.7,
             "endpoint": 14.20,
-            "startlinkheight": 0,
-            "endlinkheight": -64 + 7
+            "startlinkheight": 0 - 2,
+            "endlinkheight": -64 + 7,
+            "startdx": -7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": 14.65,
+            "startpoint": 14.7,
             "endpoint": 14.20,
-            "startlinkheight": 64,
-            "endlinkheight": 128 - 7
+            "startlinkheight": 64 + 2,
+            "endlinkheight": 128 - 7,
+            "startdx": -7
         }
     ],
     "stationtypes": [

@@ -163,7 +163,8 @@
       <p>There are then three strokes per side. First, the vertical stroke. Note that we MUST specify both the start and end points to be the same as well as provide our start and end link heights. This ensures that the stroke renders as a vertical line segment. After the vertical, we link up the points with another stroke.</p>
       <p>Below is our final map.</p>
       <div id="u4-6"></div>
-      <p>Source is below. Note that we took some liberties when adding the dual lines for the edges, so the lines are overlapping slightly. However, the end product is quite acceptable.</p>
+      <p>To allow for the dual lines to align nicely, we utilize <code>startdx</code> and <code>enddx</code> to shift the start and endpoints of a stroke in pixel space. This allows for the spacing between the vertical lines to be consistent.</p>
+      <p>Source is below. Note that we took some liberties when adding the dual lines for the edges for aesthetic effect, so the lines are overlapping slightly. However, the end product is quite acceptable.</p>
       <pre>var obj_line4_v1 = {
     "linename": "Glasgow Subway",
     "iconID": ["ICON_GLASGOW"],
@@ -205,109 +206,125 @@
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.75,
-            "endpoint": -0.75,
+            "startpoint": -0.7,
+            "endpoint": -0.7,
             "startlinkheight": 0 - 7,
-            "endlinkheight": 64 + 7
+            "endlinkheight": 64 + 7,
+            "startdx": -7,
+            "enddx": -7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.75,
+            "startpoint": -0.7,
             "endpoint": -0.25,
             "startlinkheight": 0 - 7,
-            "endlinkheight": -64 - 7
+            "endlinkheight": -64 - 7,
+            "startdx": -7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.75,
+            "startpoint": -0.7,
             "endpoint": -0.25,
             "startlinkheight": 64 + 7,
-            "endlinkheight": 128 + 7
+            "endlinkheight": 128 + 7,
+            "startdx": -7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.65,
-            "endpoint": -0.65,
-            "startlinkheight": 0,
-            "endlinkheight": 64
+            "startpoint": -0.7,
+            "endpoint": -0.7,
+            "startlinkheight": 0 - 2,
+            "endlinkheight": 64 + 2,
+            "startdx": 7,
+            "enddx": 7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.65,
+            "startpoint": -0.7,
             "endpoint": -0.20,
-            "startlinkheight": 0,
-            "endlinkheight": -64 + 7
+            "startlinkheight": 0 - 2,
+            "endlinkheight": -64 + 7,
+            "startdx": 7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": -0.65,
+            "startpoint": -0.7,
             "endpoint": -0.20,
-            "startlinkheight": 64,
-            "endlinkheight": 128 - 7
+            "startlinkheight": 64 + 2,
+            "endlinkheight": 128 - 7,
+            "startdx": 7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": 14.75,
-            "endpoint": 14.75,
+            "startpoint": 14.7,
+            "endpoint": 14.7,
             "startlinkheight": 0 - 7,
-            "endlinkheight": 64 + 7
+            "endlinkheight": 64 + 7,
+            "startdx": 7,
+            "enddx": 7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
             "startpoint": 14.25,
-            "endpoint": 14.75,
+            "endpoint": 14.7,
             "startlinkheight": -64 - 7,
-            "endlinkheight": 0 - 7
+            "endlinkheight": 0 - 7,
+            "enddx": 7
         },
         {
             "color": "rgb(255, 102, 0)",
             "strokewidth": "14px",
             "linecap": "round",
             "startpoint": 14.25,
-            "endpoint": 14.75,
+            "endpoint": 14.7,
             "startlinkheight": 128 + 7,
-            "endlinkheight": 64 + 7
+            "endlinkheight": 64 + 7,
+            "enddx": 7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": 14.65,
-            "endpoint": 14.65,
-            "startlinkheight": 0,
-            "endlinkheight": 64
+            "startpoint": 14.7,
+            "endpoint": 14.7,
+            "startlinkheight": 0 - 2,
+            "endlinkheight": 64 + 2,
+            "startdx": -7,
+            "enddx": -7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": 14.65,
+            "startpoint": 14.7,
             "endpoint": 14.20,
-            "startlinkheight": 0,
-            "endlinkheight": -64 + 7
+            "startlinkheight": 0 - 2,
+            "endlinkheight": -64 + 7,
+            "startdx": -7
         },
         {
             "color": "rgb(85, 85, 86)",
             "strokewidth": "14px",
             "linecap": "round",
-            "startpoint": 14.65,
+            "startpoint": 14.7,
             "endpoint": 14.20,
-            "startlinkheight": 64,
-            "endlinkheight": 128 - 7
+            "startlinkheight": 64 + 2,
+            "endlinkheight": 128 - 7,
+            "startdx": -7
         }
     ],
     "stationtypes": [

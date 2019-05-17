@@ -106,6 +106,15 @@ function SMG_drawLine(lineobj, numstations) {
         if ("dy" in lineStroke) {
             ycoord += lineStroke.dy;
         }
+        // This xshifts are in terms of pixels
+        let xshift_s = 0;
+        let xshift_e = 0;
+        if ("startdx" in lineStroke) {
+            xshift_s = lineStroke.startdx;
+        }
+        if ("enddx" in lineStroke) {
+            xshift_e = lineStroke.enddx;
+        }
         // Additional parameters to strokes
         let additionalParameters = " ";
         if ("dasharray" in lineStroke) {
@@ -119,9 +128,9 @@ function SMG_drawLine(lineobj, numstations) {
             let endoffset = 0;
             if ("startlinkheight" in lineStroke) {startoffset = lineStroke.startlinkheight;}
             if ("endlinkheight" in lineStroke) {endoffset = lineStroke.endlinkheight;}
-            linepath += '<path d="M ' + strokeStart + ' ' + (ycoord + startoffset) + ' L ' + strokeEnd + ' ' + (ycoord + endoffset) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
+            linepath += '<path d="M ' + (strokeStart + xshift_s) + ' ' + (ycoord + startoffset) + ' L ' + (strokeEnd + xshift_e) + ' ' + (ycoord + endoffset) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         } else { //Horizontal
-            linepath += '<path d="M ' + strokeStart + ' ' + ycoord + ' H ' + strokeEnd + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
+            linepath += '<path d="M ' + (strokeStart + xshift_s) + ' ' + ycoord + ' H ' + (strokeEnd + xshift_e) + '" stroke="' + lineStroke.color + '" stroke-width="' + lineStroke.strokewidth + '" ' + additionalParameters + '></path>';
         }
     }
     return linepath;
