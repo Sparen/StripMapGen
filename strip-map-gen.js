@@ -57,7 +57,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
 
     // Extra Icons
     if ("extraicons" in lineobj) {
-        smsvg += SMG_drawExtraIcons(lineobj.extraicons, lineobj, iconobj);
+        smsvg += SMG_drawExtraIcons(lineobj.extraicons, lineobj, iconobj, numstations);
     }
 
     smsvg += '</svg>';
@@ -323,8 +323,17 @@ function SMG_drawStationIcons(stationIcons, lineobj, iconobj, stationxpos, icony
 
 // Helper function for SMG_loadMap that handles extra icons
 // Takes the array of extra icons, the line object, and the master icon object
-function SMG_drawExtraIcons(extraIcons, lineobj, iconobj) {
+function SMG_drawExtraIcons(extraIcons, lineobj, iconobj, numstations) {
     let iconsvg = "";
+    const LINE_LEFT = lineobj.linestart;
+    const LINE_WIDTH = lineobj.lineend - lineobj.linestart;
+    let LINE_STATION_SPACING = LINE_WIDTH/(numstations - 1); // Defaults to line width divided up evenly
+    if ("stationspacing" in lineobj) { // Change mode to override
+        LINE_STATION_SPACING = lineobj.stationspacing;
+    }
+    if ("locknumstations" in lineobj) { // Change width to override
+        LINE_STATION_SPACING = LINE_WIDTH/(lineobj.locknumstations - 1); // Defaults to line width divided up evenly
+    }
     // For every extra icon
     for (let j = 0; j < extraIcons.length; j += 1) {
         let iconfound = false; // Whether or not the icon was found. If not found, defaults to printing the text.
@@ -343,10 +352,17 @@ function SMG_drawExtraIcons(extraIcons, lineobj, iconobj) {
 
         let iconx = currobj.iconx;
         let icony = currobj.icony;
+        let iconx_stn = currobj.iconx_stn;
 
         // Don't crash
-        if (iconx === undefined) {iconx = 0; console.log("Note: X coordinate not found for icon. Defaulting to 0");}
+        if (iconx === undefined && iconx_stn === undefined) {iconx = 0; console.log("Note: X coordinate not found for icon. Defaulting to 0");}
         if (icony === undefined) {icony = 0; console.log("Note: Y coordinate not found for icon. Defaulting to 0");}
+
+        if ("iconx_stn" in currobj) { // If the option to use station-based spacing is enabled
+            console.log("TEST");
+            iconx = LINE_LEFT + LINE_STATION_SPACING * iconx_stn;
+            console.log(iconx)
+        }
 
         // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
         if (!iconfound) {
