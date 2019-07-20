@@ -3,10 +3,16 @@
 // This function takes a line object and icon object (required to include those scripts) and outputs to the specified target div
 // Also returns the SVG
 function SMG_loadMap(lineobj, iconobj, targetdiv) {
-    // Load line-specific data
+    // Set up all default fields for the line object
     SMG_lineObjSetDefault(lineobj);
-    let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 ' + lineobj.canvaswidth + ' ' + lineobj.canvasheight + '" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
-    smsvg += '<rect width="' + lineobj.canvaswidth + '" height="' + lineobj.canvasheight + '" fill="white" stroke="#EEEEEE" stroke-width="2"/>';
+
+    // Before we set the SVG, we must set up the map key, as its size impacts the height of the map
+    // keydata is an object containing the "svg" and "height"
+    let keydata = SMG_GenerateMapKey(lineobj, iconobj);
+
+    // Load line-specific data
+    let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 ' + lineobj.canvaswidth + ' ' + (lineobj.canvasheight + keydata.height) + '" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
+    smsvg += '<rect width="' + lineobj.canvaswidth + '" height="' + (lineobj.canvasheight + keydata.height) + '" fill="white" stroke="#EEEEEE" stroke-width="2"/>';
 
     // Load icon patterns into the SVG
     smsvg += SMG_setPatternDefinitions(iconobj);
@@ -59,6 +65,9 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     if ("extraicons" in lineobj) {
         smsvg += SMG_drawExtraIcons(lineobj.extraicons, lineobj, iconobj, numstations);
     }
+
+    // Draw in the key
+    smsvg += keydata.svg;
 
     smsvg += '</svg>';
     document.getElementById(targetdiv).innerHTML = smsvg;
@@ -221,8 +230,9 @@ function SMG_drawStations(lineobj, numstations, iconobj) {
     return stationsvg;
 }
 
-// Helper function for SMG_drawStations that handles station components
+// Helper function for SMG_drawStations and SMG_GenerateMapKey that handles station components
 // Takes a Station Type Object and x/y coordinates and returns SVG for a single station
+// Pass an empty object for currstn when using this function for SMG_GenerateMapKey.
 function SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord) {
     let stnsvg = "";
     for (let k = 0; k < stntypeobj.stnnodes.length; k += 1) {
@@ -379,6 +389,107 @@ function SMG_drawExtraIcons(extraIcons, lineobj, iconobj, numstations) {
         }
     }
     return iconsvg;
+}
+
+// Given the line object and icon object, generate the key's SVG and determine the height of the key
+function SMG_GenerateMapKey(lineobj, iconobj) {
+    let keysvg = "";
+    if (!("key" in lineobj)) { // If no key is needed
+        return {"svg": "", "height": 0}
+    }
+    const keybuffer = 16; // Pixels to buffer key components by. Might be user-defined in the future.
+    const bottombuffer = 32; // Buffer at bottom of map. Otherwise the last line would render exactly on the bottom of the map as its y coord
+
+    // Otherwise, determine height and SVG
+    let baseheight = lineobj.canvasheight; // Should be set beforehand, so no worries
+    let stationtypeheight = 0; // Cumulative height from station type definitions
+    let iconheight = 0; // Culumative height from tallest column
+
+    // Add divider
+    keysvg += "<path d='M 0 " + baseheight + " H " + lineobj.canvaswidth + "' stroke='#CCCCCC' stroke-width='1px'></path>"
+
+    if ("stationtypes" in lineobj.key) {
+        // Station types. We will render the station icon with the specified text
+        // For each specified station type, locate it and then render.
+        for (let i = 0; i < lineobj.key.stationtypes.length; i += 1) {
+            let currobj = lineobj.key.stationtypes[i];
+            stationtypeheight += currobj.height; // The baseline is exactly at the bottom of the map. Add first.
+            let tgty = baseheight + stationtypeheight;
+            // Locate
+            let stntypeobj;
+            for (let j = 0; j < lineobj.stationtypes.length; j += 1) {
+                if (lineobj.stationtypes[j].stypeID == currobj.type) {
+                    stntypeobj = lineobj.stationtypes[j];
+                }
+            }
+            // Note optional offsets. These are used for example if a dy is applied to the station type definition.
+            let yoffset = 0;
+            let xoffset = 0;
+            if ("xoffset" in currobj) {
+                xoffset = currobj.xoffset
+            }
+            if ("yoffset" in currobj) {
+                yoffset = currobj.yoffset
+            }
+            // Draw
+            keysvg += SMG_drawStationComponents(stntypeobj, {}, keybuffer + currobj.width/2 + xoffset, tgty + yoffset);
+            // Using buffer on both sides of station icon to dictate where text goes
+            let desc = "";
+            if ("description" in currobj) {
+                desc = currobj.description;
+            }
+            keysvg += '<text x="' + (keybuffer + currobj.width + keybuffer) + '" y="' + tgty + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="start" dominant-baseline="central">' + desc + '</text>';
+        }
+    }
+
+    if ("lines" in lineobj.key) {
+        // Line icons. Patterns will have been defined, so no worries there.
+        // lines is made up of columns.
+        let basex = 0; // Cumulative width of all columns so far
+        for (let col = 0; col < lineobj.key.lines.length; col += 1) {
+            let currcol = lineobj.key.lines[col];
+            let currcolht = 0; // Current column height
+            // Determine widest icon in column to dictate location of icon and text
+            // We are using the second scale unit
+            let maxwidth = 0;
+            let targeticons = [];
+            for (let i = 0; i < currcol.services.length; i += 1) {
+                let curricon = SMG_getIconByID(iconobj, currcol.services[i]);
+                targeticons.push(curricon); // Store it so we only need to search once
+                let currwidth = curricon.width * curricon.scale[1];
+                if (currwidth > maxwidth) {
+                    maxwidth = currwidth
+                }
+            }
+            let rendermidpt = keybuffer + maxwidth/2 + basex;
+            let rendertextpt = keybuffer + maxwidth + keybuffer + basex;
+
+            // Draw icons and text (with objects stored in targeticons)
+            for (let j = 0; j < targeticons.length; j += 1) {
+                let curricon = targeticons[j];
+                let currwidth = curricon.width * curricon.scale[1];
+                let currheight = curricon.height * curricon.scale[1]; // Not necessarily equal to row height
+                let tgty = baseheight + stationtypeheight + j * currcol.rowheight; // Does not include offsets due to mismatch between heights
+                if ("iconlink" in curricon) {
+                    keysvg += '<a xlink:href="' + curricon.iconlink + '"><g>';
+                }
+                keysvg += '<rect x="' + (rendermidpt - currwidth/2) + '" y="' + (tgty + (currcol.rowheight - currheight/2)) + '" height="' + currheight + '" width="' + currwidth + '" fill="url(#PATTERN_' + curricon.iconID + '_SCALE2)" />';
+                if ("iconlink" in curricon) {
+                    keysvg += '</g></a>';
+                }
+                keysvg += '<text x="' + rendertextpt + '" y="' + (tgty + currcol.rowheight) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="start" dominant-baseline="central">' + curricon.description + '</text>';
+                currcolht += currcol.rowheight;
+            }
+
+            basex += currcol.colwidth;
+
+            // If this column is taller than the current known tallest column, update the iconheight
+            if (currcolht > iconheight) {
+                iconheight = currcolht;
+            }
+        }
+    }
+    return {"svg": keysvg, "height": (stationtypeheight + iconheight + bottombuffer)};
 }
 
 /* ---------------- Accessory Functions ---------------- */

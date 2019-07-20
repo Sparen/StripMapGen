@@ -1149,3 +1149,123 @@ var obj_lineD = {
         }
     ]
 };
+
+var obj_lineG = {
+    "linename": "Line 18",
+    "iconID": ["ICON_LINE18"],
+    "fonttype": "'DIN Alternate', Helvetica",
+    "maincustomsvgbg": "<text x='16' y='460' font-family='DIN Alternate' font-size='20px' fill='#AAAAAA' text-anchor='start' dominant-baseline='central'>01/2019</text>",
+    "strokes": [
+        {
+            "color": "#00FFAA",
+            "strokewidth": "8px"
+        }
+    ],
+    "stationtypes": [
+        {
+            "stypeID": "STATION_TYPE18",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 8,
+                    "scolor": "#00FFAA"
+                }
+            ],
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'"
+        },
+        {
+            "stypeID": "STATION_TYPE_NONE",
+            "stnnodes": [
+            ],
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'"
+        },
+        {
+            "stypeID": "STATION_TYPE_TRANSFER",
+            "stnnodes": [
+                {
+                    "stationstrokewidth": 2,
+                    "stationradius": 8,
+                    "scolor": "#000000"
+                },
+            ],
+            "stnfonttype": "'Source Sans Pro', 'Helvetica'",
+            "stnfontsize": 18
+        }
+    ],
+    "key": {
+        "stationtypes": [
+            {"type": "STATION_TYPE18", "height": 24, "width": 16, "description": "Regular Station"},
+            {"type": "STATION_TYPE_TRANSFER", "height": 24, "width": 16, "description": "Transfer Station"}
+        ],
+        "lines": [
+            {"colwidth": 1000, "rowheight": 32, "services": ["ICON_LINE11", "ICON_LINE12", "ICON_LINE13", "ICON_LINE14"]},
+            {"colwidth": 1000, "rowheight": 32, "services": ["ICON_LINE15", "ICON_LINE16", "ICON_LINE17", "ICON_LINE_R1"]}
+        ]
+    },
+    "stations": [
+        {
+            "name": ["Asterism - Courway"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+                ["ICON_LINE_R1"]
+            ]
+        },
+        {
+            "name": ["Sapphire Street"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Ruby Road"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Tourmaline Turnpike"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Emerald Expressway"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Beryl Beach"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Strathmore"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+                ["ICON_LINE16"]
+            ]
+        },
+        {
+            "name": ["Lilac Grove"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+                ["ICON_LINE16"]
+            ]
+        },
+        {
+            "name": ["Seashell Street"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+            ]
+        },
+        {
+            "name": ["Garnet Gateway"],
+            "stationtype": "STATION_TYPE18",
+            "icons": [
+                ["ICON_LINE17"]
+            ]
+        }
+    ]
+};

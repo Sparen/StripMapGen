@@ -37,6 +37,7 @@
 <li><code style="color:red">strokes</code> - Array of line stroke objects. See below for specification.</li>
 <li><code style="color:red">stationtypes</code> - Array of station type objects. See below for specification.</li>
 <li><code style="color:red">stations</code> - Array of station objects. See below for specification.</li>
+<li><code style="color:blue">key</code> - Optional Map Key. See below for specification.</li>
 <li><code style="color:blue">canvasheight</code> - Canvas Height. Defaults to <code>480</code> pixels.</li>
 <li><code style="color:blue">canvaswidth</code> - Canvas Width. Defaults to <code>2000</code> pixels.</li>
 <li><code style="color:blue">lineheight</code> - Line Height. Controls how far down vertically the main line is. Defaults to <code>240</code> pixels.</li>
@@ -110,6 +111,27 @@
 <li><code style="color:red">nodesvg</code> - The svg of the extra node.</li>
 </ul>
 
+<p>The optional <code>key</code> field of the line object is an object with two fields:</p>
+<ul>
+<li><code style="color:blue">stationtypes</code> - Array of Station Types to display in the map key.</li>
+<li><code style="color:blue">lines</code> - Array of Icons and Descriptions of lines to display in the map key.</li>
+</ul>
+
+<p>Each object in the <code>stationtypes</code> array for the map key contains the following options.</p>
+<ul>
+<li><code style="color:red">type</code> - Station Type ID. The <code>stypeID</code> field in the main <code>stationtypes</code> object of the line.</li>
+<li><code style="color:red">height</code> - Height of the station icon. No default is provided. Note that text rendering for descriptions uses the <code>texticonfontsize</code> setting for its size. This value MUST be provided as an integer, not a string.</li>
+<li><code style="color:red">width</code> - Width of the station icon. No default is provided. This value MUST be provided as an integer, not a string.</li>
+<li><code style="color:red">description</code> - Text description for the station icon.</li>
+</ul>
+
+<p>Each object in the <code>lines</code> array for the map key contains the following options.</p>
+<ul>
+<li><code style="color:red">colwidth</code> - Width of the column. The <code>lines</code> portion of the map key can be split up into multiple columns. The widths of the columns are specified using this field. No default is provided. This value MUST be provided as an integer, not a string.</li>
+<li><code style="color:red">rowheight</code> - Height of any given row in the column. No default is provided. Ensure that the value is larger than the second scale option of any icon you wish to display. We recommend values such as 32 or 40 for standard usage.  This value MUST be provided as an integer, not a string.</li>
+<li><code style="color:red">services</code> - Array of services to display in the column. These use the <code>iconID</code> fields of the icon definition file. Text icons are not supported here. Descriptions will be generated using the <code>description</code> field of the associated icon object.</li>
+</ul>
+
     </div>
       <h1 style="background-color:#AAAAAA;color:white">Icons</h1>
       <div>The SVG Strip Map Generator also uses reusable icon definitions.</div>
@@ -117,6 +139,7 @@
 <p>Each icon object has a single <code>icons</code> field which is an array of objects with the following specification:</p>
 <ul>
 <li><code style="color:red">iconID</code> - ID of the icon. This ID is used to cross reference specific icons. Naturally, each ID must be unique.</li>
+<li><code style="color:blue">description</code> - Description of the icon. Use in map keys, and is required if using a particular icon in a map key (or else the key is useless).</li>
 <li><code style="color:red">height</code> - Height of this icon (Recommended: <code>48</code>)</li>
 <li><code style="color:red">width</code> - Width of this icon (Recommended: <code>48</code>)</li>
 <li><code style="color:red">scale</code> - Scalings of this icon. First is the large icon (Displayed to the left of the line's name, Recommended: <code>1</code>). Second is the small icon (Displayed under stations, Recommended: <code>0.67</code>)</li>

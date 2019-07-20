@@ -22,6 +22,7 @@
       <h1 style="background-color:#AAAAAA;color:white">SVG Strip Map Generator - Demo</h1>
       <div>This is the demo for the Strip Map Generator.<br>Paste in your JSON and hit 'Generate Map'. Make sure to not have a variable declaration (i.e. <code>var line_name = ...</code>) or a trailing <code>;</code> in the JSON below or it will not work on certain browsers.</div>
       <div>If there are issues (for example, one of the sample maps doesn't render when you hit 'Generate Map'), please post an issue on <a target="_blank" href="https://github.com/Sparen/StripMapGen/issues">GitHub</a>. This may be due to an oversight, as the syntax parsing for this demo is stricter than the parsing when the library is hooked into normally.</div>
+      <div>For a more complete example, press <button id="submit" onclick="resetUTA()">UTA Example</button> to display an example from elsewhere on this website.</div>
       <hr>
       <div id="demo_map"></div>
       <button id="submit" onclick="mapgen()">Generate Map</button>

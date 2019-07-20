@@ -2,6 +2,7 @@ var obj_iconGeneral = {
     "icons": [
         {
             "iconID": "ICON_BLUE",
+            "description": "Blue Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
@@ -9,6 +10,7 @@ var obj_iconGeneral = {
         },
         {
             "iconID": "ICON_RED",
+            "description": "Red Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
@@ -16,6 +18,7 @@ var obj_iconGeneral = {
         },
         {
             "iconID": "ICON_GREEN",
+            "description": "Green Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
@@ -23,6 +26,7 @@ var obj_iconGeneral = {
         },
         {
             "iconID": "ICON_ORANGE",
+            "description": "Orange Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
@@ -30,6 +34,7 @@ var obj_iconGeneral = {
         },
         {
             "iconID": "ICON_PURPLE",
+            "description": "Purple Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
@@ -37,13 +42,23 @@ var obj_iconGeneral = {
         },
         {
             "iconID": "ICON_AQUA",
+            "description": "Aqua Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
             "iconSVG": "<circle cx='24' cy='24' r='18' stroke-width='4px' stroke='none' fill='#00FFFF'></circle>"
         },
         {
+            "iconID": "ICON_LONGAQUA",
+            "description": "Aqua Line Express",
+            "height": 48,
+            "width": 96,
+            "scale": [1.0, 0.67],
+            "iconSVG": "<circle cx='16' cy='24' r='8' fill='#00FFFF' stroke='white' stroke-width='2'></circle></circle><circle cx='80' cy='24' r='8' fill='#00FFFF' stroke='white' stroke-width='2'></circle><circle cx='32' cy='24' r='12' fill='#00FFFF' stroke='white' stroke-width='2'></circle><circle cx='64' cy='24' r='12' fill='#00FFFF' stroke='white' stroke-width='2'></circle><circle cx='48' cy='24' r='18' fill='#00FFFF' stroke='white' stroke-width='2'></circle>"
+        },
+        {
             "iconID": "ICON_AQUAMARINE",
+            "description": "Aquamarine Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
@@ -51,6 +66,7 @@ var obj_iconGeneral = {
         },
         {
             "iconID": "ICON_TURQUOISE",
+            "description": "Turquoise Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
@@ -58,6 +74,7 @@ var obj_iconGeneral = {
         },
         {
             "iconID": "ICON_PINK",
+            "description": "Pink Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
@@ -65,6 +82,7 @@ var obj_iconGeneral = {
         },
         {
             "iconID": "ICON_HOTPINK",
+            "description": "Hot Pink Line",
             "height": 48,
             "width": 48,
             "scale": [1.0, 0.67],
