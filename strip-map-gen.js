@@ -369,9 +369,7 @@ function SMG_drawExtraIcons(extraIcons, lineobj, iconobj, numstations) {
         if (icony === undefined) {icony = 0; console.log("Note: Y coordinate not found for icon. Defaulting to 0");}
 
         if ("iconx_stn" in currobj) { // If the option to use station-based spacing is enabled
-            console.log("TEST");
             iconx = LINE_LEFT + LINE_STATION_SPACING * iconx_stn;
-            console.log(iconx)
         }
 
         // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
