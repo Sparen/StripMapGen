@@ -9,14 +9,16 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     // Dark/Light Mode
     let textcolor = "black";
     let bgcolor = "white";
+    let darkmode = false;
     if ("darkmode" in lineobj && lineobj.darkmode) {
         textcolor = "white";
-        bgcolor = "#222222"
+        bgcolor = "#222222";
+        darkmode = true;
     }
 
     // Before we set the SVG, we must set up the map key, as its size impacts the height of the map
     // keydata is an object containing the "svg" and "height"
-    let keydata = SMG_GenerateMapKey(lineobj, iconobj, textcolor);
+    let keydata = SMG_GenerateMapKey(lineobj, iconobj, textcolor, darkmode);
 
     // Load line-specific data
     let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 ' + lineobj.canvaswidth + ' ' + (lineobj.canvasheight + keydata.height) + '" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
@@ -62,7 +64,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
     // Note that station information must be retrieved
-    smsvg += SMG_drawStations(lineobj, numstations, iconobj, textcolor);
+    smsvg += SMG_drawStations(lineobj, numstations, iconobj, textcolor, darkmode);
 
     // Foreground Custom SVG
     if ("maincustomsvgfg" in lineobj) {
@@ -159,7 +161,7 @@ function SMG_drawLine(lineobj, numstations) {
 }
 
 // Returns SVG for the stations and their names
-function SMG_drawStations(lineobj, numstations, iconobj, textcolor) {
+function SMG_drawStations(lineobj, numstations, iconobj, textcolor, darkmode) {
     let stationsvg = "";
     const LINE_LEFT = lineobj.linestart;
     const LINE_RIGHT = lineobj.lineend;
@@ -215,7 +217,7 @@ function SMG_drawStations(lineobj, numstations, iconobj, textcolor) {
         }
         // Draw Station components
         let stationxpos = LINE_LEFT + xshift + LINE_STATION_SPACING * i; // x position of station icon(s)
-        stationsvg += SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord);
+        stationsvg += SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord, darkmode);
 
         // Station Name(s)
         let stationNames = currstn.name;
@@ -241,7 +243,7 @@ function SMG_drawStations(lineobj, numstations, iconobj, textcolor) {
 // Helper function for SMG_drawStations and SMG_GenerateMapKey that handles station components
 // Takes a Station Type Object and x/y coordinates and returns SVG for a single station
 // Pass an empty object for currstn when using this function for SMG_GenerateMapKey.
-function SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord) {
+function SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord, darkmode) {
     let stnsvg = "";
     for (let k = 0; k < stntypeobj.stnnodes.length; k += 1) {
         const currstntype = stntypeobj.stnnodes[k];
@@ -250,10 +252,16 @@ function SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord) {
             stationstrokewidth = currstntype.stationstrokewidth;
         }
         let nodefill = 'white';
+        if (darkmode) { // Darkmode default
+            nodefill = '#222222';
+        }
         if ("fcolor" in currstntype) {
             nodefill = currstntype.fcolor;
         }
         let nodestroke = 'black';
+        if (darkmode) { // Darkmode default
+            nodestroke = 'white';
+        }
         if ("scolor" in currstntype) {
             nodestroke = currstntype.scolor;
         }
@@ -398,7 +406,7 @@ function SMG_drawExtraIcons(extraIcons, lineobj, iconobj, numstations, textcolor
 }
 
 // Given the line object and icon object, generate the key's SVG and determine the height of the key
-function SMG_GenerateMapKey(lineobj, iconobj, textcolor) {
+function SMG_GenerateMapKey(lineobj, iconobj, textcolor, darkmode) {
     let keysvg = "";
     if (!("key" in lineobj)) { // If no key is needed
         return {"svg": "", "height": 0}
@@ -438,7 +446,7 @@ function SMG_GenerateMapKey(lineobj, iconobj, textcolor) {
                 yoffset = currobj.yoffset
             }
             // Draw
-            keysvg += SMG_drawStationComponents(stntypeobj, {}, keybuffer + currobj.width/2 + xoffset, tgty + yoffset);
+            keysvg += SMG_drawStationComponents(stntypeobj, {}, keybuffer + currobj.width/2 + xoffset, tgty + yoffset, darkmode);
             // Using buffer on both sides of station icon to dictate where text goes
             let desc = "";
             if ("description" in currobj) {
@@ -558,6 +566,3 @@ function SMG_stationTypeObjSetDefault(stntypeobj) {
         stntypeobj.stniconoffset = 16; // Default: 16 px. Must use integer 16, not "16px", since math is performed.
     }
 }
-
-
-
