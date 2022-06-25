@@ -6,21 +6,13 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     // Set up all default fields for the line object
     SMG_lineObjSetDefault(lineobj);
 
-    // Dark/Light Mode
-    let textcolor = "black";
-    let bgcolor = "white";
-    if ("darkmode" in lineobj && lineobj.darkmode) {
-        textcolor = "white";
-        bgcolor = "#222222"
-    }
-
     // Before we set the SVG, we must set up the map key, as its size impacts the height of the map
     // keydata is an object containing the "svg" and "height"
-    let keydata = SMG_GenerateMapKey(lineobj, iconobj, textcolor);
+    let keydata = SMG_GenerateMapKey(lineobj, iconobj);
 
     // Load line-specific data
     let smsvg = '<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 ' + lineobj.canvaswidth + ' ' + (lineobj.canvasheight + keydata.height) + '" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
-    smsvg += '<rect width="' + lineobj.canvaswidth + '" height="' + (lineobj.canvasheight + keydata.height) + '" fill="' + bgcolor + '" stroke="#EEEEEE" stroke-width="2"/>';
+    smsvg += '<rect width="' + lineobj.canvaswidth + '" height="' + (lineobj.canvasheight + keydata.height) + '" fill="white" stroke="#EEEEEE" stroke-width="2"/>';
 
     // Load icon patterns into the SVG
     smsvg += SMG_setPatternDefinitions(iconobj);
@@ -52,7 +44,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
     if (maxmainiconheight === 0) { // Provide a default
         maxmainiconheight = 48;
     }
-    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="' + (maxmainiconheight) + '" font-family="' + lineobj.fonttype +'" font-size="32px" fill="' + textcolor + '" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
+    smsvg += '<text x="' + (32 + linenamexoffset) + '" y="' + (maxmainiconheight) + '" font-family="' + lineobj.fonttype +'" font-size="32px" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="central">' + lineobj.linename + '</text>';
 
     // Number of stations. Used for spacing and placement
     const numstations = lineobj.stations.length;
@@ -62,7 +54,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
 
     // Next, add the stations, their icons, and their names, rotated 45 degrees
     // Note that station information must be retrieved
-    smsvg += SMG_drawStations(lineobj, numstations, iconobj, textcolor);
+    smsvg += SMG_drawStations(lineobj, numstations, iconobj);
 
     // Foreground Custom SVG
     if ("maincustomsvgfg" in lineobj) {
@@ -71,7 +63,7 @@ function SMG_loadMap(lineobj, iconobj, targetdiv) {
 
     // Extra Icons
     if ("extraicons" in lineobj) {
-        smsvg += SMG_drawExtraIcons(lineobj.extraicons, lineobj, iconobj, numstations, textcolor);
+        smsvg += SMG_drawExtraIcons(lineobj.extraicons, lineobj, iconobj, numstations);
     }
 
     // Draw in the key
@@ -159,7 +151,7 @@ function SMG_drawLine(lineobj, numstations) {
 }
 
 // Returns SVG for the stations and their names
-function SMG_drawStations(lineobj, numstations, iconobj, textcolor) {
+function SMG_drawStations(lineobj, numstations, iconobj) {
     let stationsvg = "";
     const LINE_LEFT = lineobj.linestart;
     const LINE_RIGHT = lineobj.lineend;
@@ -223,7 +215,7 @@ function SMG_drawStations(lineobj, numstations, iconobj, textcolor) {
         let stnfontsize = stntypeobj.stnfontsize; // Station Text font size. Used for y padding.
         // Typically, each additional line is rendered below the first. Therefore, we will shift the text up, and rotate around the last one.
         let stnnametransform = 'transform="rotate(-' + stntypeobj.stnfontangle + ' ' + (stationxpos) + ' ' + (textycoord) + ')"';
-        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord - (numStationNames - 1) * stnfontsize) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="' + textcolor + '" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" ' + stnnametransform + '>';
+        stationsvg += '<text x="' + (stationxpos) + '" y="' + (textycoord - (numStationNames - 1) * stnfontsize) + '" font-family="' + stntypeobj.stnfonttype + '" font-size="' + stntypeobj.stnfontsize + '" fill="black" font-weight="bold" text-anchor="start" dominant-baseline="alphabetic" ' + stnnametransform + '>';
         for (let j = 0; j < numStationNames; j += 1) {
             let stnNameDY = stnfontsize; // In the future, needs to be a factor of font size
             if (j === 0) {stnNameDY = 0;} // Prevent the first name from shifting downwards - dy should only be applied to non-first elements
@@ -233,7 +225,7 @@ function SMG_drawStations(lineobj, numstations, iconobj, textcolor) {
         stationsvg += '</text>';
 
         // Draw Icons
-        stationsvg += SMG_drawStationIcons(currstn.icons, lineobj, iconobj, stationxpos, iconycoord, textcolor);
+        stationsvg += SMG_drawStationIcons(currstn.icons, lineobj, iconobj, stationxpos, iconycoord);
     }
     return stationsvg;
 }
@@ -282,7 +274,7 @@ function SMG_drawStationComponents(stntypeobj, currstn, stationxpos, ycoord) {
 
 // Helper function for SMG_drawStations that handles station icons
 // Takes a station's icon list, the line object, the master icon object, and station x/icon y coordinates. Returns SVG for a single station's icons
-function SMG_drawStationIcons(stationIcons, lineobj, iconobj, stationxpos, iconycoord, textcolor) {
+function SMG_drawStationIcons(stationIcons, lineobj, iconobj, stationxpos, iconycoord) {
     let iconsvg = "";
     let totalmaxht = 0;
     // For every array (visually, horizontal line) of icons
@@ -320,7 +312,7 @@ function SMG_drawStationIcons(stationIcons, lineobj, iconobj, stationxpos, icony
             // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
             if (!iconfound) {
                 let currx = stationxpos; // Station position. Assumes centered in x dir around station
-                iconsvg += '<text x="' + currx + '" y="' + (iconycoord + totalmaxht + lineobj.texticonfontsize/2) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="' + textcolor + '" text-anchor="middle" dominant-baseline="central">' + curricon + '</text>';
+                iconsvg += '<text x="' + currx + '" y="' + (iconycoord + totalmaxht + lineobj.texticonfontsize/2) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + curricon + '</text>';
             } else {
                 // NOTE: Current x position rendering assumes icons in same line have same width
                 let iconoffset = curriconwd * k - curriconwd * (currline.length - 1)/2; // e.g. if two icons, they're centered around the main coord
@@ -341,7 +333,7 @@ function SMG_drawStationIcons(stationIcons, lineobj, iconobj, stationxpos, icony
 
 // Helper function for SMG_loadMap that handles extra icons
 // Takes the array of extra icons, the line object, and the master icon object
-function SMG_drawExtraIcons(extraIcons, lineobj, iconobj, numstations, textcolor) {
+function SMG_drawExtraIcons(extraIcons, lineobj, iconobj, numstations) {
     let iconsvg = "";
     const LINE_LEFT = lineobj.linestart;
     const LINE_WIDTH = lineobj.lineend - lineobj.linestart;
@@ -382,7 +374,7 @@ function SMG_drawExtraIcons(extraIcons, lineobj, iconobj, numstations, textcolor
 
         // Icon was not found. Display text. DOES NOT SUPPORT MULTIPLE ARBITRARY TEXT FIELDS IN A ROW.
         if (!iconfound) {
-            iconsvg += '<text x="' + iconx + '" y="' + icony + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="' + textcolor + '" text-anchor="middle" dominant-baseline="central">' + currobj.iconID + '</text>';
+            iconsvg += '<text x="' + iconx + '" y="' + icony + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="middle" dominant-baseline="central">' + currobj.iconID + '</text>';
         } else {
             let currx = (iconx - curriconwd/2); // Station position, offset left to center rect.
             if ("iconlink" in lineIcon) {
@@ -398,7 +390,7 @@ function SMG_drawExtraIcons(extraIcons, lineobj, iconobj, numstations, textcolor
 }
 
 // Given the line object and icon object, generate the key's SVG and determine the height of the key
-function SMG_GenerateMapKey(lineobj, iconobj, textcolor) {
+function SMG_GenerateMapKey(lineobj, iconobj) {
     let keysvg = "";
     if (!("key" in lineobj)) { // If no key is needed
         return {"svg": "", "height": 0}
@@ -444,7 +436,7 @@ function SMG_GenerateMapKey(lineobj, iconobj, textcolor) {
             if ("description" in currobj) {
                 desc = currobj.description;
             }
-            keysvg += '<text x="' + (keybuffer + currobj.width + keybuffer) + '" y="' + tgty + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="' + textcolor + '" text-anchor="start" dominant-baseline="central">' + desc + '</text>';
+            keysvg += '<text x="' + (keybuffer + currobj.width + keybuffer) + '" y="' + tgty + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="start" dominant-baseline="central">' + desc + '</text>';
         }
     }
 
@@ -483,7 +475,7 @@ function SMG_GenerateMapKey(lineobj, iconobj, textcolor) {
                 if ("iconlink" in curricon) {
                     keysvg += '</g></a>';
                 }
-                keysvg += '<text x="' + rendertextpt + '" y="' + (tgty + currcol.rowheight) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="' + textcolor + '" text-anchor="start" dominant-baseline="central">' + curricon.description + '</text>';
+                keysvg += '<text x="' + rendertextpt + '" y="' + (tgty + currcol.rowheight) + '" font-family="' + lineobj.fonttype + '" font-size="' + lineobj.texticonfontsize + 'px" fill="black" text-anchor="start" dominant-baseline="central">' + curricon.description + '</text>';
                 currcolht += currcol.rowheight;
             }
 
